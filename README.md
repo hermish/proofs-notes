@@ -1,6 +1,6 @@
 # Introduction to Mathematical Proofs
 A compilation of my MAT102 notes, typsetset in LaTex from my time taking and
-leading study groups for the course. The planned structure of the course is
+leading study groups for the course. The planned structure of the book is
 as follows:
 
 1. Numbers, Sets & Functions
