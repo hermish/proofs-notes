@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass[twoside]{report}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -1324,7 +1324,7 @@ If we compare the definition of bounded with its negation we notice an interesti
 	\end{align}
 \end{theorem}
 
-\section{Proof Techniques}
+\section{Proving Existential Statements}
 
 The simplest class of statements we need to prove are those with existential quantifiers; those of the form
 
@@ -1332,7 +1332,7 @@ The simplest class of statements we need to prove are those with existential qua
 	(\exists x \in S)P(x).
 \end{align*}
 
-To prove such a statement is rather straightforward and usually involves finding the $x$ for which the claim is true. For example, we can prove the following statement, which is sufficient in the irrational numbers do not obey closure under regualar addition and therefore cannot be considered a field.
+To prove such a statement is rather straightforward and usually involves finding the $x$ for which the claim is true. For example, we can prove the following statement, which is sufficient to show the irrational numbers do not obey closure under regular addition and therefore cannot be considered a field.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -1397,6 +1397,24 @@ Of course, explicitly finding an example which satisfies the statement may not b
 \end{proof}
 \vspace{\baselineskip}
 
+We will now introduce \emph{even} and \emph{odd} integers \marginnote{even, odd} and use this an an opportunity to prove statements about this property.
+
+\begin{align*}
+	\emph{Even. } x \text{ is even means } x = 2k \text{ for some } k \in \mathbb{Z} \\
+	\emph{Odd. }x \text{ is odd means } x = 2k + 1 \text{ for some } k \in \mathbb{Z}
+\end{align*}
+
+Notice with definition every integer is either even or odd but not both. The sets of even and odd numbers look as follows
+
+\begin{align*}
+	\mathbb{Z}_e &= \{ \dots, -4, -2, 0, 2, 4, \dots \} \\
+	\mathbb{Z}_o &= \{ \dots, -3, -1, 1, 3, 5, \dots \}
+\end{align*}
+
+where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. We will leave our discussion of \emph{parity}, \marginnote{parity}, the property of being either even or odd, here for now.
+
+\section{Unary Proofs}
+
 Despite this discussion about proving existential quantifiers, we are primarily interested in proving or disproving statements with universal quantifiers. That is, we prefer more general results about all natural numbers, all integers, or all real numbers. To disprove a statement, we can prove its negation. For a universally quantified statement, these have the following forms.
 
 \begin{align*}
@@ -1447,7 +1465,7 @@ Notice that these statements are actually of the form
 	(\forall x \in S)[H(x) \implies P(x)],
 \end{align*}
 
-where $H(x)$ represents many of the definitions and assumptions we take for granted. For example, in proving the triangle inequality, we assumed that the absolute value function was defined in a particular way, along with a few axioms of the real numbers. However since the hypothesis is not meaningful in the sense that it provides any significant information apart from the generally accepted rules, it is acceptable to omit. The two main methods of proving such a statement are a direct proof and a proof by contradiction. In the former, derive the statement directly from those which are true. An example of such a proof is given below.
+where $H(x)$ represents many of the definitions and assumptions we take for granted. For example, in proving the triangle inequality, we assumed that the absolute value function was defined in a particular way, along with a few axioms of the real numbers. However since the hypotheses are not meaningful in the sense that they provides any significant information apart from the generally accepted rules, they are acceptable to omit. The two main methods of proving such a statement are a direct proof and a proof by contradiction. In the former,we derive the statement directly from those which are true. An example of such a proof is given below.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -1522,9 +1540,41 @@ In proving this statement via contradiction, we need to be careful in taking the
 	\text{there exists some list of real numbers for which all elements are...}
 \end{align*}
 
-Notice this is precisely what we assumed during the proof, thus making it logically sound. 
+Notice this is precisely what we assumed during the proof, thus making it logically sound. Proofs by contradiction are also rather useful for claims of irrationality. Although rational numbers are well-defined and easy to work with, while the irrationals are less so. And example of such a proof is below.
 
-\section{Conditional Proof Techniques}
+\vspace{\baselineskip}
+\begin{theorem}
+	The square root of two $(\sqrt{2})$ is irrational.
+\end{theorem}
+
+\begin{proof}[Proof by Contradiction]
+	Above we used the fact that the square root of 2 was irrational, but we never proved it. We do so now using a proof by contradiction. Assume, then, that the square root of two is rational so we can write
+	
+	\begin{align*}
+		\sqrt{2} = \frac{p}{q}
+	\end{align*}
+	
+	for $p$ and $q$ in lowest terms. We emphasize this point here, that the fraction is in lowest terms, since ever rational number can be written in this way. At this point we square both sides to remove the square root.
+	
+	\begin{align*}
+		2 = \frac{p^2}{q^2} \\
+		\implies 2 q^2 = p^2
+	\end{align*}
+	
+	Notice that $p^2$ can be expressed as two times an integer so it must even. It follows that $p$ must also be even, since if it was odd so would its square. therefore, for some $k \in \mathbb{Z}$, we can write
+	
+	\begin{align*}
+		p = 2k \\
+		2 q^2 = (2k)^2 \\
+		\implies q^2 = 2k^2
+	\end{align*}
+\end{proof}
+
+This means that $q^2$ is also even and so $q$ must be as well. This however is a contradiction, since we assumed the fraction was in reduced form and therefore both the number and denominator cannot be divisible by two.
+\vspace{\baselineskip}
+
+
+\section{Conditional Proofs}
 
 In the last chapter, we also mentioned two other classes of statements we are likely to prove.
 
@@ -1533,23 +1583,8 @@ In the last chapter, we also mentioned two other classes of statements we are li
 	S_3 &\equiv (\forall x \in S)[P(x) \iff Q(x)]
 \end{align*}
 
-Despite being slightly more complex, many of the techniques we see in this section are similar to those we explored earlier. Before we begin however, we will introduce \emph{even} and \emph{odd} integers \marginnote{even, odd} and use this an an opportunity to prove statements about this property.
+Despite being slightly more complex, many of the techniques we see in this section are similar to those we explored earlier. We now tackle the second class of statements of the form $P(x) \implies Q(x)$. A summary of the three techniques we will use throughout the course of the section are below.
 
-\begin{align*}
-	\emph{Even. } x \text{ is even means } x = 2k \text{ for some } k \in \mathbb{Z} \\
-	\emph{Odd. }x \text{ is odd means } x = 2k + 1 \text{ for some } k \in \mathbb{Z}
-\end{align*}
-
-Notice with definition every integer is either even or odd but not both. The sets of even and odd numbers look as follows
-
-\begin{align*}
-	\mathbb{Z}_e &= \{ \dots, -4, -2, 0, 2, 4, \dots \} \\
-	\mathbb{Z}_o &= \{ \dots, -3, -1, 1, 3, 5, \dots \}
-\end{align*}
-
-where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. At this point, we will introduce the three main proof methods that will be examined in this section.
-
-\vspace{\baselineskip}
 \begin{center}
 	\begin{tabular}{ccc}
 		\toprule
@@ -1561,8 +1596,9 @@ where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd intege
 		\bottomrule
 	\end{tabular}
 \end{center}
+\vspace{\baselineskip}
 
-Once again, the most straightforward approach is to attempt a direct proof. For an example, we prove the following theorem.
+Once again, the most straightforward approach is to attempt a direct proof. For an example, we can prove the following theorem rather simply, assuming the hypothesis and manipulating it to arrive at the conclusion.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -1635,13 +1671,13 @@ which are oddly reminiscent of the addition and multiplication tables in a binar
 	(F, e, o, +, \cdot) \text{ with } F = \{ e, o \},
 \end{align*}
 
-its operations would be defined in exactly this way, with $e$ as the additive identity and $o$ the multiplicative identity. For now, we leave this connection as an unlikely coincidence, but we will revisit this after tackling modular arithmetic. This was a rather long digression, but now we return to proving statements of the form
+its operations would be defined in exactly this way, with $e$ as the additive identity and $o$ the multiplicative identity. For now, we leave this connection as an unlikely coincidence, but we will revisit this after tackling modular arithmetic.
 
 \begin{align*}
 	P(x) \implies Q(x) \equiv \underbrace{\neg Q(x) \implies \neg P(x)}_\text{contrapositive}
 \end{align*}
 
-Above is one of the logical equivalences we proved earlier, the left hand side is called is called the \emph{contrapositive} or \emph{contraposition}. \marginnote{contrapositive, contraposition} This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical examples are the set of statements:
+Above is one of the logical equivalences we proved earlier, the right hand side is called is called the \emph{contrapositive} or \emph{contraposition}. \marginnote{contrapositive, contraposition} This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
 
 \vspace{\baselineskip}
 \begin{center}
@@ -1651,13 +1687,77 @@ Above is one of the logical equivalences we proved earlier, the left hand side i
 \vspace{\baselineskip}
 
 
-This is useful when the negations of the hypothesis and conclusions are easier to work with. This often occurs when we have statements with ``not equal to'' or claims of irrationality. In the latter case, rational numbers are well-defined and easy to work with, while the irrationals less so. We present a few examples of these proofs below.
+This is useful when the negations of the hypothesis and conclusions are better defined or easier to work with. This often occurs when we have statements with ``not equal to'' and in claims about parity.
 
+\vspace{\baselineskip}
+\begin{theorem}
+	If the $n^2$ is even, then $n$ must be even as well. Similarly, if $n^2$ is odd, then $n$ must be odd. In other words, $n^2$ always has the same parity as $n$/
+\end{theorem}
+
+\begin{proof}[Proof by Contrapositive]
+	We will show the two parts of this theorem separately, and prove the first with the contrapositive. The second part is left as an exercise.
+	
+	\header{Part 1.}{$n^2$ is even}
+	We can write out our statement formally, so we can see its hypothesis and conclusion more easily. This also makes it easy to see the contrapositive.
+	
+	\begin{align*} 
+		(\forall n \in \mathbb{Z})(n^2 \text{ is even } \implies n \text{ is even}) \\
+		(\forall n \in \mathbb{Z})(n \text{ is odd } \implies n^2 \text{ is odd})
+	\end{align*}
+	
+	The contrapositive is substantially easier to prove; assume that $n$ is odd so that for some integer $k$, $n = 2k + 1$. We can then express the square in terms of $k$.
+	
+	\begin{align*}
+		n^2 &= (2k + 1)^2 \\
+		&= 4k^2 + 4k + 1 \\
+		&= 2(2k^2 + 2) + 1
+	\end{align*}
+	
+	Since $n^2$ can also be expressed as two times an even number it must also be odd. Therefore, we have proved our original statement. Notice we used this fact in the proof that the square root of two was irrational, though only casually proved it.
+\end{proof}
+
+\vspace{\baselineskip}
+
+\begin{theorem}
+	For any two positive numbers $x$ and $y$,
+	
+	\begin{align*}
+		\text{if } x \neq y \text{ then } x^2 \neq y^2
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	This result means that different positive numbers must have different squares. This fact was actually essential in many of our proofs, since it means that given we are working with positive numbers, we are allowed to square root both sides of the equation without affecting the equality. In other words, knowing each positive number has a unique squares allows us to work backward and determine a number uniquely from its square. It turns out this property is not unique to the squaring function but rather applies to an entire class of function; but for now we stick with proving this statement, or rather its contrapositive.
+	
+	\begin{align*}
+		(\forall x, y \in \mathbb{R})(x^2 = y^2 \implies x = y)
+	\end{align*}
+	
+	The proof at this point is rather straightforward, and involves simplifying the hypothesis to reach the conclusion.
+	
+	\begin{align*}
+		x^2 &= y^2 \\
+		\implies \sqrt{x^2} &= \sqrt{y^2} \\
+		\implies |x| &= |y| \\
+		\implies x &= y
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+The final proof technique, as outlined earlier, is a proof by contradiction. Remember the only case in which a conditional is false is when the hypothesis is true and the conclusion is false. Therefore its negation is as follows.
+
+\begin{align*}
+	\neg[P(x) \implies Q(x)] \equiv P(x) \wedge \neg Q(x)
+\end{align*}
+
+Once again, in a proof by contradiction the idea is to assume the negation and show a contradiction. Since we are interested in proving a conditional, we assume the hypothesis and the negation of the conclusion, showing this yields a contradiction.
 
 %\chapter{Mathematical Induction}
 %\chapter{Bijections and Cardinality}
 %\chapter{Divisibility}
 %\chapter{Modular Arithmetic}
+
+
 
 
 \end{document}
