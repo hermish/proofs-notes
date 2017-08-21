@@ -10,6 +10,7 @@
 \usepackage[labelfont=bf]{caption}
 \usepackage{centernot}
 \usepackage[parfill]{parskip}
+\usepackage{enumerate}
 
 \usepackage{thmtools}
 \usepackage[dvipsnames]{xcolor}
@@ -45,10 +46,10 @@
 
 \chapter{Numbers, Sets, and Functions}
 \section{Quadratic Equations}
-One of the simplest classes of equations we regularly solve are \emph{linear equations}, \marginnote{linear equations} equations of the form below, where the greatest power of our variable is one. As a matter of terminology, we denote the constants 
+One of the simplest classes of equations we regularly solve are \emph{linear equations}, \marginnote{linear equations} equations of the form below, where the greatest power of our variable is one. As a matter of convention, we write the general equation as
 
 \begin{align}
-	ax + b = 0 	
+	ax + b = 0.
 \end{align}
 
 Solving this equation can be done by rearranging and then dividing both sides by $a$, yielding
@@ -57,13 +58,13 @@ Solving this equation can be done by rearranging and then dividing both sides by
 	x = -\frac{b}{a}.
 \end{align*}
 
-Naturally, we may want to solve some more complicated \textit{quadratic equations}, \marginnote{quadratic equations} where the greatest power of our variable is two. Such equations take the general form
+Naturally, we may want to solve some more complicated \textit{quadratic equations}, \marginnote{quadratic equations}, where the greatest power of the variable is two. Such equations take the general form
 
 \begin{align}
 	ax^2 + bx + c = 0.
 \end{align}
 
-To solve this equation, we need to isolate $x$ and in doing so, reduce the number of terms with the variable from two to one. This can be accomplished through a problem solving strategy called wishful thinking.
+To solve this equation, we need to isolate $x$ and in doing so, reduce the number of terms with the variable from two to one. This can be accomplished factoring through a problem solving strategy called wishful thinking. First, we being by taking out the coefficient of the first term, $a$.
 
 \begin{align*}
 	a \left( x^2 + \frac{b}{a}x \right) + c
@@ -78,7 +79,7 @@ Writing the left hand side of the equation like this, we can see by adding the r
 	&= a \left( x + \frac{b}{2a} \right)^2 - \left(\frac{b^2}{4a} - c \right)
 \end{align*}
 
-Notice by employing wishful thinking, we've derived the exact type of equation we can easily solve, one in which $x$ is restricted to a single term.
+We've derived the exact type of equation we can easily solve, one in which the variable $x$ is restricted to a single term.
 
 \begin{align*}
 	a \left( x + \frac{b}{2a} \right)^2 - \left( \frac{b^2}{4a} -c \right) &= 0 \\
@@ -93,7 +94,7 @@ We needed to include the plus-minus ($\pm$) sign since squaring removes the sign
 	x + \frac{b}{2a}
 \end{align*}
 
-could be either positive or negative while having the same square. By simplifying the square root, and moving the constant beside $x$ to the other side, we derive the quadratic formula which gives the solutions to a quadratic equation in terms of its coefficients.
+could be either positive or negative and have the same square. By simplifying the square root, and moving the constant beside $x$ to the other side, we derive the quadratic formula which gives the solutions to a quadratic equation in terms of its coefficients.
 
 \begin{align}
 	x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
@@ -103,7 +104,7 @@ From this, we can construct our first theorem in this course.
 
 \vspace{\baselineskip}
 \begin{theorem}
-	A quadratic equation $ax^2 + bx + c = 0$ at least one solution when
+	A quadratic equation $ax^2 + bx + c = 0$ has at least one solution when
 	
 	\begin{align}
 		b^2 - 4ac \ge 0
@@ -123,6 +124,21 @@ From this, we can construct our first theorem in this course.
 	Therefore, we have show a solution exists when  $b^2 - 4ac \ge 0$ for a quadratic equation. More than that, we have determined the specific form of such a solution.
 \end{proof}
 \vspace{\baselineskip}
+
+We can actually show a stronger result about the solutions of a quadratic equation, though the proof is to the reader.
+
+\begin{theorem}
+	If $b^2 - 4ac$ is positive, a quadratic equation has two solutions; if it is negative, the equation has no real solutions; and if it is exactly equal to zero there is only one unique solution. This can be express in the following way.
+	
+	\begin{align*}
+		\begin{cases}
+			b^2 - 4ac > 0 : \text{ two real solutions} \\
+			b^2 - 4ac = 0 : \text{ one real solutions} \\
+			b^2 - 4ac < 0 : \text{ no real solutions}
+		\end{cases}
+	\end{align*}
+\end{theorem}
+
 
 The techniques used to solve this problem and prove its solution provide a preview of the kinds of thinking and problem solving which will be invaluable to this course. More than any one theorem or result, this course is an introduction to mathematical thinking.
 
@@ -146,7 +162,7 @@ Our discussion so far has revolved around statements of equality, and so natural
 
 In order to work with these, it is important to review some basic properties of inequalities.
 
-\begin{enumerate}
+\begin{itemize}
 	\item For any real numbers $a$ and $b$, one of the following statements is true:
 		\begin{align*}
 			a > b \text{ or } a = b \text{ or } a < b
@@ -155,7 +171,7 @@ In order to work with these, it is important to review some basic properties of 
 		\begin{align*}
 			\text{if } a > b \text{ and } b > c, \text{ then } a > c 
 		\end{align*}
-	\item Given that $a > b$, adding or subtracting constants from both sides preserves equality, meaning for any $c$ the inequalities below are also true.
+	\item Given that $a > b$, adding or subtracting constants from both sides preserves equality, meaning for any $c$, the inequalities below are also true.
 		\begin{align*}
 			a + c &> b + c \\
 			a - c &> b - c
@@ -167,7 +183,7 @@ In order to work with these, it is important to review some basic properties of 
 		\end{align*}
 		In other words, if $c$ is negative, the sign of the inequality is flipped.
 	\item The square of any real number is nonnegative. Furthermore, the square of a number is 0 if and only if the number itself is 0.
-\end{enumerate}
+\end{itemize}
 
 These five fundamental properties are essential in proving some foundational inequalities, the first of which is called the \emph{Arithmetic-Geometric Mean Inequality}. In the presentation of the theorem, we explain how to approach proofs. \\
 
@@ -189,9 +205,8 @@ These five fundamental properties are essential in proving some foundational ine
 		\implies (x - y)^2 &\ge 0\\
 	\end{align*}
 	
-	We know the last line is true, since the square of any number must be positive, hence writing the proof is now easy.
+	We know the last line is true, since the square of any number must be nonnegative, hence writing the proof is now easy.
 \end{proof}
-\vspace{\baselineskip}
 
 \begin{proof}
 	For any real numbers $x$ and $y$, we know the square of the difference must be positive.
@@ -210,9 +225,9 @@ These five fundamental properties are essential in proving some foundational ine
 
 Furthermore, in the case where both $x$ and $y$ are nonnegative, we can take positive square roots to obtain another form of the inequality.
 
-\begin{align*}
+\begin{align}
 	\frac{x + y}{2} \ge \sqrt{xy} \text{ for } x, y \ge 0
-\end{align*}
+\end{align}
 
 This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right hand side represents the \emph{geometric mean} \marginnote{mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
 
@@ -226,9 +241,9 @@ Remember the square of any real number is equal to 0 if and only if the number i
 \begin{theorem}
 	Equality hold in the AGM Inequality if and only if $(x - y) = 0$ or $x = y$. In other words
 	
-	\begin{align*}
+	\begin{align}
 		\left( \frac{x + y}{2} \right)^2 = xy \text{ if and only if } x = y.
-	\end{align*}
+	\end{align}
 \end{theorem}
 
 To introduce the second major inequality, the \emph{absolute value} \marginnote{absolute value} of a number, traditionally denoted as $|x|$ needs to be defined.
@@ -294,15 +309,15 @@ The last property is rather interesting, and can be proved. Notice for proving t
 	\end{align*}
 	
 	\header{Case 3.}{$x < 0$}
-	Assume that $x = -a$ for some positive real number $a$. Notice that $|x| = a$ Plugging this into the expression of the square root of the sqaure:
+	Assume that $x = -a$ for some positive real number $a$. Notice that $|x| = a$ Plugging this into the expression of the square root of the square:
 	
 	\begin{align*}
 		\sqrt{x^2} &= \sqrt{(-a)^2} \\
 		&= \sqrt{a^2} \\
-		&= |a|
+		&= a \\
+		&= |x|
 	\end{align*}
 \end{proof}
-\vspace{\baselineskip}
 
 At this point, we can go ahead and introduce the next major inequality. Note that we mentioned that the absolute value of the product of two numbers is the product of the absolute values, or
 
@@ -338,9 +353,8 @@ However, there is a relationship between the two quantities which can be express
 		\implies xy &\le |xy|
 	\end{align*}
 	
-	Notice, we arrived at a statement which is clearly true. Remember that the absolute value of any real number is always greater than or equal to the number. At this point we can write the proof.
+	Notice we arrived at a statement which is clearly true. Remember that the absolute value of any real number is always greater than or equal to the number. At this point we can write the proof.
 \end{proof}
-\vspace{\baselineskip}
 
 \begin{proof}
 	Consider any real number $x$ and $y$. From the basic properties of absolute values we know the product of these numbers must be less than or equal to its absolute value.
@@ -353,7 +367,7 @@ However, there is a relationship between the two quantities which can be express
 		\implies |x + y|^2 &\le (|x| + |y|)^2
 	\end{align*}
 	
-	Both terms inside the square are positive, hence we can safely square root both sides without affect the inequality.
+	Both terms being squared are positive, hence we can safely square root both sides without affecting the inequality.
 	
 	\begin{align*}
 		\therefore |x + y| \le |x| + |y|
@@ -361,7 +375,7 @@ However, there is a relationship between the two quantities which can be express
 \end{proof}
 \vspace{\baselineskip}
 
-Once again in this proof, we used rough work to arrive at a statement we knew was true, and then worked backward to derive the result we wanted from this true statement. Notice we had to be more careful working backward in this example since we square rooted an inequality. Though this works when both terms inside the square are positive, it may fail spectacularly otherwise.
+Once again in this proof, we used rough work to arrive at a statement we knew was true, and then worked backward to derive the result we wanted from this true statement. We had to be more careful working backward in this example since we square rooted an inequality. Though this works when both terms inside the square are positive, it may fail spectacularly otherwise.
 
 \begin{align*}
 	&4 \ge 1 \\
@@ -397,15 +411,15 @@ Though we will explore notions of size in more depth later on, for now we define
 	|A| \text{ or } card(A),
 \end{align*}
 
-as its size. For \emph{finite} \marginnote{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\mathbb{N}_0$, with 0 reserved for the empty set.
+as its size. For \emph{finite} \marginnote{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\{0, 1, 2, \dots\}$, with 0 reserved for the empty set.
 
-Since a set is unordered and cannot contain duplicate items, a natural definition of equality is that both sets contain the identical elements. On the other hand, if every element of set $B$ is in set $A$, then in some sense the latter set contains the former. Mathematically, we write that $B$ is a \emph{subset} \marginnote{subset} of $A$ or
+Since a set is unordered and cannot contain duplicate items, a natural definition of equality is that both sets contain the same elements. On the other hand, if every element of set $B$ is in set $A$, then in some sense the latter set contains the former. Mathematically, we write that $B$ is a \emph{subset} \marginnote{subset} of $A$ or
 
 \begin{align*}
 	B \subseteq A.
 \end{align*}
 
-Notice under this definition, the empty set is a subset of every set. Similarly, a set is always a subset of itself. In cases where we want to exclude this possibility in explaining the relationship between the two sets, we can write $B$ is a proper subset of $A$ or 
+Notice under this definition, the empty set is a subset of every set. Similarly, a set is always a subset of itself. In cases where we want to exclude this possibility, that the sets are equal, in explaining the relationship between the two sets, we can write $B$ is a proper subset of $A$ or 
 
 \begin{align*}
 	B \subset A
@@ -434,11 +448,11 @@ Notice we defined the natural numbers to exclude 0, but the symbol $\mathbb{N}_0
 	\mathbb{N} \subseteq \mathbb{N}_0 \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}.
 \end{align}
 
-Since each set contains the previous, we may wonder what elements are in one but not the other. In some cases, this set itself might be valuable. For example all real numbers which are not rational are  referred to as as irrational, and the set which contains all such numbers the irrational numbers. This set then is a result of taking the real numbers and subtracting the rational numbers. This operation, along with a few more are formalized before for arbitrary sets $A$ and $B$.
+Since each set contains the previous, we may wonder what elements are in one but not the other. In some cases, this set itself might be valuable. For example all real numbers which are not rational are  referred to as as \emph{irrational}, \marginnote{irrational} and the set which contains all such numbers the irrational numbers. This set then is a result of taking the real numbers and subtracting away the rational numbers. This operation, along with a few more are formalized before for arbitrary sets $A$ and $B$.
 
 \begin{align*}
 	\emph{Subtraction. } A - B &= \{ x \in A : x \notin B \} \\
-	\emph{Intesection } A \cap B &= \{ x : x \in A \text{ and } x \in B \} \\ 
+	\emph{Intersection. } A \cap B &= \{ x : x \in A \text{ and } x \in B \} \\ 
 	\emph{Union. } A  \cup B &= \{ x : x \in A \text{ or } x \in B \} \\
 	\emph{Cartesian Product. } A  \times B &= \{ (a, b) : a \in A \text{ and } b \in B \} \
 \end{align*}
@@ -449,7 +463,7 @@ The intersection is the set of all elements in both, while the union is the set 
 	S \cap T = \phi
 \end{align*}
 
-The cartesian product of two sets outputs a set with a completely different structure: a set of tuples containing all possibly pairs of elements from $A$ and $B$. Unlike sets, \emph{tuples} \marginnote{tuples} are ordered list of elements. This idea of product can be extended beyond two sets.
+The cartesian product of two sets outputs a set with a completely different structure: a set of tuples containing all possibly pairs of elements from $A$ and $B$. Unlike sets, \emph{tuples} \marginnote{tuples} are ordered lists of elements which could contain duplicates. This idea of product can be extended beyond two sets.
 
 \begin{align*}
 	A \times B &= \{ (a, b) : a \in A, b \in B \} \\
@@ -464,7 +478,7 @@ Repeated products of the same set can be abbreviated as a power, similar to the 
 	&= \{ (a_1, a_2, \dots, a_k) : a_1, a_2, \dots, a_k \in A \}
 \end{align*} 
 
-One final concept that must be introduced to complete our discussion on introductory set theory is the \emph{power set} \marginnote{power set} of some set, the set which contains all possible subsets. Formally we write this as
+One final concept that must be introduced to complete our discussion on introductory set theory is the \emph{power set} \marginnote{power set} of a set, which contains all possible subsets. Formally we write this as
 
 \begin{align*}
 	\emph{Power set. } \mathcal{P}(A) = \{ S : S \subseteq A \}.
@@ -487,7 +501,6 @@ To ensure this section includes a proof, we end with a simple theorem about the 
 	
 	In each of these cases, the result holds. When the sizes of sets were 0 and 2, their power sets had sizes of 1 and 4 respectively. Notice we would also expect the number of subsets to be even, since for every subset $S \subseteq A$, $(A - S)$ is also one, and  this theorem seems to check out in that regard. At this point we can present the proof
 \end{proof}
-\vspace{\baselineskip}
 
 \begin{proof}
 	Since $A$ is finite and $|A| = n$ then the set must have $n$ elements. Let us arbitrarily assign labels so that
@@ -590,8 +603,6 @@ A function is called \emph{real-valued} \marginnote{real-valued} if its image is
 	\emph{Composition. } (f \circ g)(x) = f(g(x))
 \end{align}
 
-
-
 We are often extremely interested in the image of a real-valued function. In particular, we may wonder about the nature of this set: does it have a maximum or minimum, or does the function go to infinity? Formally, a function $f: A \rightarrow \mathbb{R}$ is \emph{bounded} \marginnote{bounded} if there exists some $M \in \mathbb{R}$ such that
 
 \begin{align*}
@@ -628,7 +639,6 @@ It turns out that sums and products of bounded functions are bounded as well, re
 	
 	This shows that we have discovered a bound for the function: the product of the two bounds of our original function. Hence the function is bounded.
 \end{proof}
-\vspace{\baselineskip}
 
 \begin{proof}
 	Once again, assume there exist $M \in \mathbb{R}$ and $N \in \mathbb{R}$ for which
@@ -655,10 +665,10 @@ In general, approach bounding proofs by expressing the bounded functions by thei
 So far in our deals with $\mathbb{R}$, we have been implicitly relying on properties or axioms of arithmetic in the real numbers. Many of these properties are not exclusive to the reals, and apply to a class of algebraic structures called \emph{fields}. \marginnote{field} A field, $F$, consists of
 
 \begin{align*}
-	(F, 0, 1, +, \cdot) \text{ where } F = \{ 0, 1, \dots \} 
+	(F, 0, 1, +, \cdot) \text{ where } F = \{ 0, 1, \dots \}. 
 \end{align*}
 
-$F$ is a set of elements in the field in including at least the additive identity 0 and the multiplicative identity 1. A field also includes two predefined binary operations, addition and multiplication, which take two inputs in $F$ and return the sum and product in $F$ respectively. These function must obey the following axioms.
+$F$ is a set of elements in the field in including at least the additive identity 0 and the multiplicative identity 1. A field also includes two predefined binary operations, addition and multiplication, which take two inputs in $F$ and return the sum and product in $F$ respectively. These function must obey the following axioms for $x, y, z \in F$.
 
 \begin{align*}
 	+: F \times F \rightarrow F \\
@@ -682,7 +692,7 @@ $F$ is a set of elements in the field in including at least the additive identit
 \end{center}
 \vspace{\baselineskip}
 
-To clarify the inverse axioms, the first states that for any $x \in F$, there exists a $-x$, such that
+To clarify the inverse axioms, the first states that for any $x \in F$, there exists a $-x$ in the field, such that
 
 \begin{align*}
 	x + (-x) = 0, \, -x \in F.
@@ -760,7 +770,7 @@ These suite of axioms lead to a host of simple properties, which should feel fam
 \begin{proof}
 	Proving every statement in the theorem would take up a lot of space, hence we will present proofs for the first and last statement, hopefully providing a model for approaching proofs to the remaining statements.
 	
-	\header{Statement 1.16. }{$x \cdot 0 = 0$}
+	\header{Statement 1.18. }{$x \cdot 0 = 0$}
 	
 	Notice that although we take this for grated in the real numbers, it is not a field axiom and must be proved. Since 0 is the additive inverse, in searching for a proof we should look to exploit its properties.
 
@@ -781,7 +791,7 @@ These suite of axioms lead to a host of simple properties, which should feel fam
 	
 	This is the result we were looking for. Notice instead of subtracting $x \cdot 0$ from each side, as we would in the real numbers, we added the additive inverse to  both sides. In this proof we clearly listed which axiom allowed us to make each step, and although this is not necessary, it makes it less likely to perform an operation which is not allowed.
 	
-	\header{Statement 1.21. }{$\text{if } x \cdot y = x \cdot z \text{ then } y = z \text { if } x \neq 0$}
+	\header{Statement 1.23. }{$\text{if } x \cdot y = x \cdot z \text{ then } y = z \text { if } x \neq 0$}
 	
 	Once again, we attempt a direct proof based on the field axioms. Since $x \neq 0$ from the inverses axiom, we know there exists some $x^{-1} \in F$ such that
 	
@@ -873,7 +883,7 @@ This only leaves one output to be decided, the sum $1 + 1$. In the next theorem 
 		1 &= 0
 	\end{align*}
 	
-	This is clearly false since by definite a field must have distinct elements 0 and 1. Since this would be a logical consequence of letting $1 + 1 = 1$, that assumption must be false. Hence we are left only with the possibility that
+	This is clearly false since by definition a field must have distinct elements 0 and 1. Since this would be a logical consequence of letting $1 + 1 = 1$, that assumption must be false. Hence we are left only with the possibility that
 	
 	\begin{align*}
 		1 + 1 = 0.
@@ -995,7 +1005,7 @@ Fixing $x$ by focusing on an individual role or column, this tells us that diffe
 	\text{if } 1 + 1 = 1 + \omega \text{ then } 1 = \omega.
 \end{align*}
 
-Interestingly, this means every row and column of the addition table must contain each of the field elements. Exploiting the analogous rule for multiplication, every non-zero row or column must have every field element appear exactly once. Armed with this knowledge, we can finally complete the operator definitions, showing a three-element exists.
+Interestingly, this means every row and column of the addition table must contain each of the field elements. Exploiting the analogous rule for multiplication, every non-zero row or column must have every field element appear exactly once. Armed with this knowledge, we can finally complete the operator definitions, showing a three-element field exists.
 
 \begin{align*}
 	T = \{ 0, 1, \omega \}
@@ -1018,9 +1028,83 @@ Interestingly, this means every row and column of the addition table must contai
 \end{center}
 \vspace{\baselineskip}
 
+\section{Exercises}
+
+\begin{enumerate}[{1}.1]
+	\setlength\itemsep{\baselineskip}
+	\item  Prove that for two real numbers $x$ and $y$, $|x - y| \ge |x| - |y|$.
+	
+	\item Given $x + 2y = 100$, determine the maximum value of $xy$ using the arithmetic-geometric mean inequality.
+	
+	\item For real numbers $x, y, u, v,$ show that 
+	\begin{align*}
+		(xu + yv)^2 \le (x^2 + y^2)(u^2 + v^2).
+	\end{align*}
+
+	\item When does equality hold for the triangle inequality? In other words, for what values of $x$ and $y$ does 
+	\begin{align*}
+		|x + y| = |x| + |y|?
+	\end{align*}
+
+	\item Prove for any $a, b > 0$ the following inequality holds true.
+	\begin{align*}
+		\frac{4}{ab} \le \left( \frac{1}{a} + \frac{1}{b} \right)^2	
+	\end{align*}
+
+	\item Prove the following for three real numbers $x$, $y$, and $z$.
+	\begin{align*}
+		|x + y + z| \le |x| + |y| + |z|
+	\end{align*}
+	
+	\item Show the image of the function $f$ is the set (0, 1], for
+	\begin{align*}
+		f: \mathbb{R} \rightarrow \mathbb{R}, \, f(x) = \frac{1}{x^2 + 1}.
+	\end{align*}
+	
+	\item Let $C$ and $D$ be sets in the domain of $g$. Prove the following relationship about the images of the function.
+	\begin{align*}
+		g(C \cap D) \subseteq g(C) \cap g(D)
+	\end{align*}
+	
+	\item Let $f$ and $g$ be two bounded functions. Which of the following functions are also bounded?
+	\begin{align*}
+		f + g, \, f \cdot g, \, \frac{f}{g}, \, \frac{1}{f^2 + 1}
+	\end{align*}
+	
+	\item If $(f - g)$ and $(f \cdot g)$ are bounded, prove that the function $(f + g)$ is bounded.
+	
+	\item Consider the four element field $F = \{0, 1, a, b\}$ with operations $+$ and $\cdot$. Complete the addition and multiplication tables below, if possible, and determine the number of different fields which satisfy the axioms.
+	
+	\vspace{\baselineskip}
+	\begin{center}
+		\begin{TAB}(e, 15pt){c|cccc}{c|cccc}
+			+ & 0 & 1 & $a$ & $b$ \\
+			0 & & & & \\
+			1 & & & & \\
+			$a$ & & & & \\
+			$b$ & & & &
+		\end{TAB}
+		\hspace{15pt}
+		\begin{TAB}(e, 15pt){c|cccc}{c|cccc}
+			$\cdot$ & 0 & 1 & $a$ & $b$ \\
+			0 & & & & \\
+			1 & & & & \\
+			$a$ & & & & \\
+			$b$ & & & &
+		\end{TAB}
+	\end{center}
+	\vspace{\baselineskip}
+	
+	\item For each of the statements below either provide a proof or counterexample. For any field $F$\dots
+	\begin{enumerate}[(a)]
+		\item For any $x \in S$, we have $x \cdot 0 = 0$
+		\item $y \cdot 1^{-1} = y^{-1}$ for any $y \neq 0$ in $S$
+	\end{enumerate}
+\end{enumerate}
+
 \chapter{Language and Proofs}
 \section{Statements and Connectives}
-The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition} \marginnote{proposition}, a sentence that is either true or false. This requirement is based on the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
+The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition}, \marginnote{proposition} a sentence that is either true or false. This requirement is called the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
 
 \begin{align*}
 	P &\equiv \text{$\pi$ is rational} \\
@@ -1122,7 +1206,7 @@ These truth tables provide complete definitions for each of these operators, but
 		P \wedge Q &\equiv \text{$\sqrt{2}$ is irrational and a solution to $x^2 = 2$}
 	\end{align*}
 
-	\item \emph{Disjunction:} $P \lor Q$ is true when either $P$, $Q$, or both $P$ and $Q$. Another way to think about this is that  $P \lor Q$ is only false when both statements $P$ and $Q$ are both false. There is a slight difference between this logical ``or'' and the one in everyday usage; often times ``or'' in English can mean one or the other but not both, which is called the \emph{exclusive-or} in mathematics.
+	\item \emph{Disjunction:} $P \lor Q$ is true when either $P$, $Q$, or both $P$ and $Q$ are true. Another way to think about this is that  $P \lor Q$ is only false when both statements $P$ and $Q$ are both false. There is a slight difference between this logical ``or'' and the one in everyday usage; often times, ``or'' in English can mean one or the other but not both, which would be called the \emph{exclusive-or} in mathematics.
 	\begin{align*}
 		P &\equiv \text{$x$ is positive} \\
 		Q &\equiv \text{$x$ is negative} \\
@@ -1151,10 +1235,10 @@ These truth tables provide complete definitions for each of these operators, but
 	
 	  means when $P$ (the hypothesis) is true, $Q$ (the conclusion) must be true as well. On the other hand, when $P$ is false, it does matter whether $Q$ is true or false, and the statement is true in either case. Once again, the only time a conditional is false is when $P$ is true but $Q$ is false.
 	  
-	  \item \emph{Biconditional:} A biconditional $(P \iff Q)$ is true when both $P$ and $Q$ have the truth value and false they do not. Therefore, if the biconditional is true the statements $P$ and $Q$ are logically interchangeable since both are true or false together. For this reason, $P$ and $Q$ can be said to be ``logically equivalent.'' This concept is expressed as
+	  \item \emph{Biconditional:} A biconditional $(P \iff Q)$ is true when both $P$ and $Q$ have the truth value and false they do not. Therefore, if the biconditional is true the statements $P$ and $Q$ are logically interchangeable since both are true or false together. For this reason, $P$ and $Q$ can be said to be ``logically equivalent.'' This concept can be expressed in two ways as either
 	  	  
 	  \begin{align*}
-	  	P \iff Q \text{ and } P \equiv Q,
+	  	P \iff Q \text{ or } P \equiv Q,
 	  \end{align*}
 	  
 	  where the second notation is traditionally used to indicate the two logical compound expressions are equivalent, especially when one side might itself contain the biconditional connective.
@@ -1172,7 +1256,7 @@ It turns out that from these logical connective we can construct many expression
 \end{theorem}
 
 \begin{proof}
-	The general way to prove logical statements are equivalent is to construct truth tables and show both statements have identical outputs for the same inputs. In order to avoid receptiveness, we will do this for the first statement and leave the proof for the second as an exercise.
+	The general way to prove logical statements are equivalent is to construct truth tables and show both statements have identical outputs for the same inputs. In order to avoid receptiveness, we will do this for the first statement and leave the proof of the second as an exercise.
 	
 	\vspace{\baselineskip}
 	\begin{center}
@@ -1207,7 +1291,7 @@ It turns out that from these logical connective we can construct many expression
 
 \vspace{\baselineskip}
 \begin{theorem}
-	The following logical equivalences are true.
+	The following important logical equivalences are also true.
 	
 	\begin{align}
 		P \iff Q &\equiv (P \implies Q) \wedge (Q \implies P) \\
@@ -1238,8 +1322,8 @@ Notice the truth value changes as a function of the input, though we need only c
 Having introduced this machinery, we can return to DeMorgan's laws and explain its connection to the identically named rules for sets. For two sets $A$ and $B$, consider the following statements.
 
 \begin{align*}
-	R(x) &= x \in A \\
-	S(x) &= x \in B
+	R(x) &\equiv x \in A \\
+	S(x) &\equiv x \in B
 \end{align*}
 
 From DeMorgan's laws, we know the following logical equivalence is true.
@@ -1285,8 +1369,7 @@ So far we have only discussed whether statements are true for individual inputs,
 Attaching either a universal quantifier or existential quantifier to a predicate makes it a statement.
 
 \begin{align*}
-	(\forall x \in S)P(x) \equiv &\text{ ``for all $x$ in $S$ such that} \\
-	& \text{\quad $P(x)$ is true''} \\
+	(\forall x \in S)P(x) \equiv &\text{ ``for all $x$ in $S$,$P(x)$ is true''} \\
 	(\exists x \in S)P(x) \equiv &\text{ ``there exists an $x$ in $S$ such that} \\
 	& \text{\quad $P(x)$ is true''}
 \end{align*}
@@ -1370,7 +1453,7 @@ Of course, explicitly finding an example which satisfies the statement may not b
 \end{theorem}
 
 \begin{proof}[Proof by Cases]
-	This proof seems nearly impossible to attempt directly. The irrational numbers are a very diverse set and finding a starting point is elusive. Instead, we attempt a non-constructive proof with a trick.
+	This proof seems nearly impossible to attempt directly. The irrational numbers are a very diverse set and a clear starting point is elusive. Instead, we attempt a non-constructive proof with a trick.
 	
 	\header{Case 1. }{$\sqrt{2}^{\sqrt{2}}$ is irrational}
 	Notice what happens when this number is raised to the power of $\sqrt{2}$.
@@ -1393,7 +1476,7 @@ Of course, explicitly finding an example which satisfies the statement may not b
 		\left( \sqrt{2}^{\sqrt{2}} \right)^{\sqrt{2}} \text{ or } \sqrt{2}^{\sqrt{2}}
 	\end{align*}
 	
-	must be rational. Although we do not know which case is correct, one of them must be true and thus there must exist two irrational numbers who power is rational. (In case you were still curious, it turns out the first case is correct.)
+	must be rational and the result of raising one irrational number to the power another. Although we do not know which case is correct, one of them must be true and thus there must exist two irrational numbers who power is rational. (In case you were still curious, it turns out the first case is correct.)
 \end{proof}
 \vspace{\baselineskip}
 
@@ -1477,7 +1560,7 @@ where $H(x)$ represents many of the definitions and assumptions we take for gran
 \end{theorem}
 
 \begin{proof}
-	It turns out that this statement is rather useful, and rather appears frequently in other places. This statement is rather easy to prove as well, since it appears to be a special case of the arithmetic-geometric inequality. Take:
+	It turns out that this statement is rather useful, and  appears frequently in other places. This statement is relatively easy to prove as well, since it appears to be a special case of the arithmetic-geometric inequality. Take:
 	
 	\begin{align*}
 		\begin{cases}
@@ -1540,7 +1623,7 @@ In proving this statement via contradiction, we need to be careful in taking the
 	\text{there exists some list of real numbers for which all elements are...}
 \end{align*}
 
-Notice this is precisely what we assumed during the proof, thus making it logically sound. Proofs by contradiction are also rather useful for claims of irrationality. Although rational numbers are well-defined and easy to work with, while the irrationals are less so. And example of such a proof is below.
+Notice this is precisely what we assumed during the proof, thus making it logically sound. Proofs by contradiction are also rather useful for claims of irrationality. Although rational numbers are well-defined and easy to work with, the irrationals are less so. Using a proof by contradiction would allows to work with the former class of numbers rather than the latter. An example of such a proof is below.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -1568,9 +1651,9 @@ Notice this is precisely what we assumed during the proof, thus making it logica
 		2 q^2 = (2k)^2 \\
 		\implies q^2 = 2k^2
 	\end{align*}
+	
+	This means that $q^2$ is also even and so $q$ must be as well. This however is a contradiction, since we assumed the fraction was in reduced form and therefore both the number and denominator cannot be divisible by two.
 \end{proof}
-
-This means that $q^2$ is also even and so $q$ must be as well. This however is a contradiction, since we assumed the fraction was in reduced form and therefore both the number and denominator cannot be divisible by two.
 \vspace{\baselineskip}
 
 
@@ -1691,7 +1774,7 @@ This is useful when the negations of the hypothesis and conclusions are better d
 
 \vspace{\baselineskip}
 \begin{theorem}
-	If the $n^2$ is even, then $n$ must be even as well. Similarly, if $n^2$ is odd, then $n$ must be odd. In other words, $n^2$ always has the same parity as $n$/
+	If the $n^2$ is even, then $n$ must be even as well. Similarly, if $n^2$ is odd, then $n$ must be odd. In other words, $n^2$ always has the same parity as $n$.
 \end{theorem}
 
 \begin{proof}[Proof by Contrapositive]
@@ -1713,7 +1796,7 @@ This is useful when the negations of the hypothesis and conclusions are better d
 		&= 2(2k^2 + 2) + 1
 	\end{align*}
 	
-	Since $n^2$ can also be expressed as two times an even number it must also be odd. Therefore, we have proved our original statement. Notice we used this fact in the proof that the square root of two was irrational, though only casually proved it.
+	Since $n^2$ can also be expressed as one more than an even number, it must also be odd. Therefore, we have proved our original statement. Notice we used this fact in the proof that the square root of two was irrational, though only casually proved it.
 \end{proof}
 
 \vspace{\baselineskip}
@@ -1727,7 +1810,7 @@ This is useful when the negations of the hypothesis and conclusions are better d
 \end{theorem}
 
 \begin{proof}
-	This result means that different positive numbers must have different squares. This fact was actually essential in many of our proofs, since it means that given we are working with positive numbers, we are allowed to square root both sides of the equation without affecting the equality. In other words, knowing each positive number has a unique squares allows us to work backward and determine a number uniquely from its square. It turns out this property is not unique to the squaring function but rather applies to an entire class of function; but for now we stick with proving this statement, or rather its contrapositive.
+	This result means that different positive numbers must have different squares. This fact was actually essential in many of our proofs, since it means that given we are working with positive numbers, we are allowed to square root both sides of the equation without affecting the equality. In other words, knowing each positive number has a unique squares allows us to work backward and determine a number uniquely from its square. It turns out this property is not unique to the squaring function but rather applies to an entire class of functions; but for now we stick with proving this statement, or rather its contrapositive.
 	
 	\begin{align*}
 		(\forall x, y \in \mathbb{R})(x^2 = y^2 \implies x = y)
@@ -1739,7 +1822,7 @@ This is useful when the negations of the hypothesis and conclusions are better d
 		x^2 &= y^2 \\
 		\implies \sqrt{x^2} &= \sqrt{y^2} \\
 		\implies |x| &= |y| \\
-		\implies x &= y
+		\implies x &= y, \text{ since $x, y \ge 0$}
 	\end{align*}
 \end{proof}
 \vspace{\baselineskip}
@@ -1751,8 +1834,8 @@ The final proof technique, as outlined earlier, is a proof by contradiction. Rem
 \end{align*}
 
 Once again, in a proof by contradiction the idea is to assume the negation and show a contradiction. Since we are interested in proving a conditional, we assume the hypothesis and the negation of the conclusion, showing this yields a contradiction.
-
-%\chapter{Mathematical Induction}
+	
+\chapter{Mathematical Induction}
 %\chapter{Bijections and Cardinality}
 %\chapter{Divisibility}
 %\chapter{Modular Arithmetic}
