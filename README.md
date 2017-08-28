@@ -1,5 +1,5 @@
 # Introduction to Mathematical Proofs
-A compilation of my MAT102 notes, typsetset in LaTex from my time taking and
+A compilation of my MAT102 notes, typsetset in LaTeX, from my time taking and
 leading study groups for the course. The planned structure of the book is
 as follows:
 
