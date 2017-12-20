@@ -1,4 +1,5 @@
-\documentclass[twoside]{report}
+\documentclass{report}
+% \documentclass[twoside]{report}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -14,7 +15,8 @@
 
 \usepackage{thmtools}
 \usepackage[dvipsnames]{xcolor}
-\definecolor{light-gray}{gray}{0.95}\declaretheorem[shaded={bgcolor=light-gray}]{theorem}
+\definecolor{light-gray}{gray}{0.95}
+\declaretheorem[shaded={bgcolor=light-gray}]{theorem}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \DeclareMathOperator{\mean}{mean}
 
@@ -27,6 +29,8 @@
 \usepackage{pgfplots}
 
 \pgfplotsset{width=2.25in}
+
+\DeclareMathOperator{\card}{card}
 
 \renewcommand*{\marginfont}{\sffamily\footnotesize}
 \newcommand{\header}[2]{\begin{flushright} \textbf{#1} #2 \end{flushright}}
@@ -70,7 +74,7 @@ To solve this equation, we need to isolate $x$ and in doing so, reduce the numbe
 	a \left( x^2 + \frac{b}{a}x \right) + c
 \end{align*}
 
-Writing the left hand side of the equation like this, we can see by adding the right constant inside the parentheses, this can be reduced to a square. Returning to our original equation, this results in the following steps.
+Writing the left-hand side of the equation like this, we can see by adding the right constant inside the parentheses, this can be reduced to a square. Returning to our original equation, this results in the following steps.
 
 \begin{align*}
 	0 &= ax^2 + bx + c \\
@@ -97,7 +101,8 @@ We needed to include the plus-minus ($\pm$) sign since squaring removes the sign
 could be either positive or negative and have the same square. By simplifying the square root, and moving the constant beside $x$ to the other side, we derive the quadratic formula which gives the solutions to a quadratic equation in terms of its coefficients.
 
 \begin{align}
-	x &= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+	x &= - \frac{b}{2a} \pm \sqrt{\frac{b^2 - 4ac}{4a^2}} \\ 
+	&= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 \end{align}
 
 From this, we can construct our first theorem in this course.
@@ -229,7 +234,7 @@ Furthermore, in the case where both $x$ and $y$ are nonnegative, we can take pos
 	\frac{x + y}{2} \ge \sqrt{xy} \text{ for } x, y \ge 0
 \end{align}
 
-This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right hand side represents the \emph{geometric mean} \marginnote{mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
+This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right-hand side represents the \emph{geometric mean} \marginnote{mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
 
 \begin{align*}
 	(x - y)^2 \ge 0
@@ -271,14 +276,14 @@ The absolute value can be thought of as the positive distance to the origin. For
 
 Once again, we present fundamental properties of absolute values, in order to provide a foundation for working with these mathematical functions.
 
-\begin{enumerate}
+\begin{itemize}
 	\item For any real number $x$, $|x| \ge x$ and $|x| \ge 0$.
 	\item Given real numbers $x$ and $y$, $|xy| = |x| \cdot |y|$.
 	\item Squaring a number strips its negative sign, and taking the positive root ensures the result will be positive. Therefore the [positive] square root of the square is the absolute value.
 	\begin{align*}
 		|x| = \sqrt{x^2}
 	\end{align*}
-\end{enumerate}
+\end{itemize}
 
 The last property is rather interesting, and can be proved. Notice for proving these simple properties of absolute values, a \emph{proof by cases} \marginnote{proof by cases} is often most effective, a proof technique in which we break all possibilities into distinct \emph{cases} or scenarios and prove the claim for each of them. Since the absolute value function behaves different for positive and negative numbers, these are naturally our cases.
 
@@ -408,7 +413,7 @@ In defining sets, we often specify the elements to be included from some \emph{u
 Though we will explore notions of size in more depth later on, for now we define the \emph{cardinality}, \marginnote{cardinality} written as 
 
 \begin{align*}
-	|A| \text{ or } card(A),
+	|A| \text{ or } \card(A),
 \end{align*}
 
 as its size. For \emph{finite} \marginnote{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\{0, 1, 2, \dots\}$, with 0 reserved for the empty set.
@@ -525,7 +530,7 @@ A major class of proofs involves proving two sets are equal. One possible way of
 \end{theorem}
 
 \begin{proof}
-	Since the proof the statements are nearly identical, only the first will be proved; the second is left as an exercise. Since we are proving the equality of sets, we proceed by showing the left hand side (LHS) is a subset of the right hand side (RHS) and vice versa.
+	Since the proof the statements are nearly identical, only the first will be proved; the second is left as an exercise. Since we are proving the equality of sets, we proceed by showing the left-hand side (LHS) is a subset of the right-hand side (RHS) and vice versa.
 	
 	\header{Part 1.}{$(A \cup B)^c \subseteq (A^c \cap B^c)$}
 	
@@ -1030,7 +1035,7 @@ Interestingly, this means every row and column of the addition table must contai
 
 \section{Exercises}
 
-\begin{enumerate}[{1}.1]
+\begin{enumerate}[(a)]
 	\setlength\itemsep{\baselineskip}
 	\item  Prove that for two real numbers $x$ and $y$, $|x - y| \ge |x| - |y|$.
 	
@@ -1095,11 +1100,7 @@ Interestingly, this means every row and column of the addition table must contai
 	\end{center}
 	\vspace{\baselineskip}
 	
-	\item For each of the statements below either provide a proof or counterexample. For any field $F$\dots
-	\begin{enumerate}[(a)]
-		\item For any $x \in S$, we have $x \cdot 0 = 0$
-		\item $y \cdot 1^{-1} = y^{-1}$ for any $y \neq 0$ in $S$
-	\end{enumerate}
+	\item For each of the statements below either provide a proof or counterexample. (1) For any $x \in S$, we have $x \cdot 0 = 0$, and (2) $y \cdot 1^{-1} = y^{-1}$ for any $y \neq 0$ in $S$.
 \end{enumerate}
 
 \chapter{Language and Proofs}
@@ -1271,7 +1272,7 @@ It turns out that from these logical connective we can construct many expression
 	\end{center}
 	\vspace{\baselineskip}
 	
-	This gives us the truth table for the left hand side of the equation. We follow the same process, slow building up the right hand side.
+	This gives us the truth table for the left-hand side of the equation. We follow the same process, slow building up the right-hand side.
 	
 	\vspace{\baselineskip}
 	\begin{center}
@@ -1760,7 +1761,7 @@ its operations would be defined in exactly this way, with $e$ as the additive id
 	P(x) \implies Q(x) \equiv \underbrace{\neg Q(x) \implies \neg P(x)}_\text{contrapositive}
 \end{align*}
 
-Above is one of the logical equivalences we proved earlier, the right hand side is called is called the \emph{contrapositive} or \emph{contraposition}. \marginnote{contrapositive, contraposition} This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
+Above is one of the logical equivalences we proved earlier, the right-hand side is called is called the \emph{contrapositive} or \emph{contraposition}. \marginnote{contrapositive, contraposition} This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
 
 \vspace{\baselineskip}
 \begin{center}
@@ -1800,9 +1801,8 @@ This is useful when the negations of the hypothesis and conclusions are better d
 \end{proof}
 
 \vspace{\baselineskip}
-
 \begin{theorem}
-	For any two positive numbers $x$ and $y$,
+	For any two non-negative numbers $x$ and $y$,
 	
 	\begin{align*}
 		\text{if } x \neq y \text{ then } x^2 \neq y^2
@@ -1833,7 +1833,56 @@ The final proof technique, as outlined earlier, is a proof by contradiction. Rem
 	\neg[P(x) \implies Q(x)] \equiv P(x) \wedge \neg Q(x)
 \end{align*}
 
-Once again, in a proof by contradiction the idea is to assume the negation and show a contradiction. Since we are interested in proving a conditional, we assume the hypothesis and the negation of the conclusion, showing this yields a contradiction.
+Once again, in a proof by contradiction the idea is to assume the negation and show a contradiction. Since we are interested in proving a conditional, we assume the hypothesis and the negation of the conclusion, showing this yields a contradiction. We use this proof technique a revisit and strengthen a theorem we presented earlier.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any prime number $p$, the $k$th root of $p$ is irrational, where $k$ is any integer greater than 1.
+\end{theorem}
+\begin{proof}
+	Notice that this statement can be expressed as a conditional; if $p$ is prime then 
+	
+	\begin{align*}
+		\sqrt[k]{p} \in \mathbb{R} - \mathbb{Q}, \text{ given } k \ge 2.
+	\end{align*}
+	
+	Once again, proving something is irrational positively is difficult, hence it makes sense to approach this via a proof by contradiction. For sake of contradiction then, we assume the hypothesis and the negation of the conclusion, that $p$ is prime and for $k \ge 2$ the $k$th root of $p$ is rational. By definition, this means
+
+	\begin{align*}
+		\sqrt[k]{p} = \frac{r}{s}, \text{ for } r, s \in \mathbb{Z}
+	\end{align*}
+	
+	were $r$ and $s$ are co-prime integers. Proving this same theorem in the special case where both $k$ and $p$ were 2, we can guess the proof for this will likely be similar. Therefore we raise both sides of the equation to the power of $k$ and rearrange.
+	
+	\begin{align*}
+		p = \left( \frac{r}{s} \right)^k \\
+		\implies p s^k = r^k
+	\end{align*}
+	
+	Clearly the left-hand side of this equation is divisible by $p$,  so therefore $r^k$ must be as well. Since $p$ is prime, this implies that $r$ itself must be divisible by $p$. Hence, for some $n \in \mathbb{Z}$, we can write
+	
+	\begin{align*}
+		r = np \text{ so} \\
+		p s^k &= r^k \\
+		&= n^k p^k \\
+	\end{align*}
+	
+	Dividing both sides by $p$, we reach the following equality, which immediately yields the contradiction.
+	
+	\begin{align*}
+		s^k = n^k p^{k - 1}
+	\end{align*}
+	
+	Now the right-hand side is divisible by $p$ so this implies so is the left-hand side. But since $p$ is a prime, $p$ dividing $s^k$ means $p$ also divides $s$. But this is a contradiction, since this means that both $r$ and $s$ are divisible by $p$ and therefore the fraction
+	
+	\begin{align*}
+		\frac{r}{s}
+	\end{align*}
+	
+	was not in lowest terms after all. Therefore, we have proved what we intended us. However, for fun, we offer a proof using a theorem 
+\end{proof}
+\vspace{\baselineskip}
+
 	
 \chapter{Mathematical Induction}
 %\chapter{Bijections and Cardinality}
