@@ -1,5 +1,5 @@
-\documentclass{report}
-% \documentclass[twoside]{report}
+%\documentclass{report}
+\documentclass[twoside]{report}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -38,6 +38,15 @@
 \usepackage[english]{babel}
 \addto\captionsenglish{\renewcommand\chaptername{Note}}
 
+\usepackage{listings}
+
+\lstset{
+    % numbers=left,
+    breaklines=true,
+    tabsize=2,
+    basicstyle=\ttfamily,
+}
+
 \begin{document}
 
 \title{\textsc{Introduction to Mathematical Proofs} \\
@@ -49,7 +58,11 @@
 \tableofcontents
 
 \chapter{Numbers, Sets, and Functions}
+
+% ===========================================================
 \section{Quadratic Equations}
+% ===========================================================
+
 One of the simplest classes of equations we regularly solve are \emph{linear equations}, \marginnote{linear equations} equations of the form below, where the greatest power of our variable is one. As a matter of convention, we write the general equation as
 
 \begin{align}
@@ -147,7 +160,10 @@ We can actually show a stronger result about the solutions of a quadratic equati
 
 The techniques used to solve this problem and prove its solution provide a preview of the kinds of thinking and problem solving which will be invaluable to this course. More than any one theorem or result, this course is an introduction to mathematical thinking.
 
+% ===========================================================
 \section{Inequalities}
+% ===========================================================
+
 Our discussion so far has revolved around statements of equality, and so naturally we might wonder about inequalities. To clearly define our terminology going forward, we will use the following definitions.
 
 \vspace{\baselineskip}
@@ -167,7 +183,7 @@ Our discussion so far has revolved around statements of equality, and so natural
 
 In order to work with these, it is important to review some basic properties of inequalities.
 
-\begin{itemize}
+\begin{enumerate}[\hspace{\baselineskip}i.]
 	\item For any real numbers $a$ and $b$, one of the following statements is true:
 		\begin{align*}
 			a > b \text{ or } a = b \text{ or } a < b
@@ -188,16 +204,16 @@ In order to work with these, it is important to review some basic properties of 
 		\end{align*}
 		In other words, if $c$ is negative, the sign of the inequality is flipped.
 	\item The square of any real number is nonnegative. Furthermore, the square of a number is 0 if and only if the number itself is 0.
-\end{itemize}
+\end{enumerate}
 
 These five fundamental properties are essential in proving some foundational inequalities, the first of which is called the \emph{Arithmetic-Geometric Mean Inequality}. In the presentation of the theorem, we explain how to approach proofs. \\
 
-\begin{theorem}[AGM Inequality] If $x$ and $y$ are real numbers, then:
+\begin{theorem}[AGM Inequality] 
+	If $x$ and $y$ are real numbers, then:
 
-\begin{align}
-	\left( \frac{x + y}{2} \right)^2 \ge xy
-\end{align}
-	
+	\begin{align}
+		\left( \frac{x + y}{2} \right)^2 \ge xy
+	\end{align}	
 \end{theorem}
 \begin{proof}[Rough Work]\let\qed\relax
 	A mathematical proof begins with true statements and derives the desired result through a series of logical sound steps. In looking for an appropriate place to start, it often helps to rearrange the statement we want to prove until we reach a true statement, working backwards to construct the proof. In this case:
@@ -276,14 +292,14 @@ The absolute value can be thought of as the positive distance to the origin. For
 
 Once again, we present fundamental properties of absolute values, in order to provide a foundation for working with these mathematical functions.
 
-\begin{itemize}
+\begin{enumerate}[\hspace{\baselineskip}i.]
 	\item For any real number $x$, $|x| \ge x$ and $|x| \ge 0$.
 	\item Given real numbers $x$ and $y$, $|xy| = |x| \cdot |y|$.
 	\item Squaring a number strips its negative sign, and taking the positive root ensures the result will be positive. Therefore the [positive] square root of the square is the absolute value.
 	\begin{align*}
 		|x| = \sqrt{x^2}
 	\end{align*}
-\end{itemize}
+\end{enumerate}
 
 The last property is rather interesting, and can be proved. Notice for proving these simple properties of absolute values, a \emph{proof by cases} \marginnote{proof by cases} is often most effective, a proof technique in which we break all possibilities into distinct \emph{cases} or scenarios and prove the claim for each of them. Since the absolute value function behaves different for positive and negative numbers, these are naturally our cases.
 
@@ -388,7 +404,10 @@ Once again in this proof, we used rough work to arrive at a statement we knew wa
 	\centernot\implies -2 &\ge 1 \text{ false!}
 \end{align*}
 
+% ===========================================================
 \section{Sets}
+% ===========================================================
+
 So far we have been relying on intuition to define the real numbers, the focus of our attention. Although the formal definitions of the real numbers are outside the scope of these notes, it is worth paying attention to this fundamental notion of a group of numbers. In mathematics, this concept is represented as a \emph{set}, \marginnote{set} a well-defined collection of objects. Some examples are listed below.
 
 \begin{align*}
@@ -562,7 +581,10 @@ A major class of proofs involves proving two sets are equal. One possible way of
 \end{proof}
 \vspace{\baselineskip}
 
+% ===========================================================
 \section{Functions}
+% ===========================================================
+
 At this point we can introduce a very special type of set which has profound uses in mathematics. This, of course, is a \emph{function}, \marginnote{function} which is a set of input-output ordered pairs which can represented as
 
 \begin{align*}
@@ -666,7 +688,10 @@ It turns out that sums and products of bounded functions are bounded as well, re
 
 In general, approach bounding proofs by expressing the bounded functions by their definitional inequality. Then work on manipulating these inequalities through inequality or absolute value rules to obtain the desired result.
 
+% ===========================================================
 \section{Fields}
+% ===========================================================
+
 So far in our deals with $\mathbb{R}$, we have been implicitly relying on properties or axioms of arithmetic in the real numbers. Many of these properties are not exclusive to the reals, and apply to a class of algebraic structures called \emph{fields}. \marginnote{field} A field, $F$, consists of
 
 \begin{align*}
@@ -1033,7 +1058,9 @@ Interestingly, this means every row and column of the addition table must contai
 \end{center}
 \vspace{\baselineskip}
 
+% ===========================================================
 \section{Exercises}
+% ===========================================================
 
 \begin{enumerate}[(a)]
 	\setlength\itemsep{\baselineskip}
@@ -1104,7 +1131,11 @@ Interestingly, this means every row and column of the addition table must contai
 \end{enumerate}
 
 \chapter{Language and Proofs}
+
+% ===========================================================
 \section{Statements and Connectives}
+% ===========================================================
+
 The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition}, \marginnote{proposition} a sentence that is either true or false. This requirement is called the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
 
 \begin{align*}
@@ -1191,7 +1222,7 @@ Notice this truth table shows completely negation, since it tells us how the sta
 
 These truth tables provide complete definitions for each of these operators, but fail to provide very much intuition.
 
-\begin{itemize}
+\begin{enumerate}[\hspace{\baselineskip}i.]
 	\item \emph{Negation:} As mentioned before, if $R$ is true its negation is false and vice versa. The simple interpretation of this that $\neg R$ is the opposite of $R$.
 	\begin{align*}
 		P &\equiv \text{$\pi$ is rational} \\
@@ -1243,7 +1274,7 @@ These truth tables provide complete definitions for each of these operators, but
 	  \end{align*}
 	  
 	  where the second notation is traditionally used to indicate the two logical compound expressions are equivalent, especially when one side might itself contain the biconditional connective.
-\end{itemize}
+\end{enumerate}
 
 It turns out that from these logical connective we can construct many expressions which are identical. We prove a few of the important logical equivalences. \\
 
@@ -1301,7 +1332,9 @@ It turns out that from these logical connective we can construct many expression
 	\end{align}
 \end{theorem}
 
+% ===========================================================
 \section{Predicates and Quantifiers}
+% ===========================================================
 
 Even after the application of connectives, statements are rather limited and specific, and so to express classes of statements, \emph{predicates} \marginnote{predicates} are used. A predicate with variables is an expression which is either true or false when its variables are supplied. Since predicates are not statements until its variables are defined, they are sometime called \emph{open statements}.
 
@@ -1408,7 +1441,9 @@ If we compare the definition of bounded with its negation we notice an interesti
 	\end{align}
 \end{theorem}
 
+% ===========================================================
 \section{Proving Existential Statements}
+% ===========================================================
 
 The simplest class of statements we need to prove are those with existential quantifiers; those of the form
 
@@ -1497,7 +1532,9 @@ Notice with definition every integer is either even or odd but not both. The set
 
 where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. We will leave our discussion of \emph{parity}, \marginnote{parity}, the property of being either even or odd, here for now.
 
+% ===========================================================
 \section{Unary Proofs}
+% ===========================================================
 
 Despite this discussion about proving existential quantifiers, we are primarily interested in proving or disproving statements with universal quantifiers. That is, we prefer more general results about all natural numbers, all integers, or all real numbers. To disprove a statement, we can prove its negation. For a universally quantified statement, these have the following forms.
 
@@ -1657,8 +1694,9 @@ Notice this is precisely what we assumed during the proof, thus making it logica
 \end{proof}
 \vspace{\baselineskip}
 
-
+% ===========================================================
 \section{Conditional Proofs}
+% ===========================================================
 
 In the last chapter, we also mentioned two other classes of statements we are likely to prove.
 
@@ -1722,12 +1760,12 @@ Once again, the most straightforward approach is to attempt a direct proof. For 
 \begin{theorem}
 	For integers $n, m \in \mathbb{Z}$ the following conditions determine whether the sum or product is even or odd.
 	
-	\begin{itemize}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
 		\item if $n$ is even and $m$ is even, $n + m$ is even and $nm$ is even
 		\item if $n$ is even and $m$ is odd, $n + m$ is odd and $nm$ is even
 		\item if $n$ is odd and $m$ is even, $n + m$ is odd and $nm$ is even
 		\item if $n$ is odd and $m$ is odd, $n + m$ is even and $nm$ is odd
-	\end{itemize}
+	\end{enumerate}
 \end{theorem}
 \vspace{\baselineskip}
 
@@ -1827,6 +1865,10 @@ This is useful when the negations of the hypothesis and conclusions are better d
 \end{proof}
 \vspace{\baselineskip}
 
+% ===========================================================
+\section{Conditional Statements and Contradiction}
+% ===========================================================
+
 The final proof technique, as outlined earlier, is a proof by contradiction. Remember the only case in which a conditional is false is when the hypothesis is true and the conclusion is false. Therefore its negation is as follows.
 
 \begin{align*}
@@ -1879,17 +1921,519 @@ Once again, in a proof by contradiction the idea is to assume the negation and s
 		\frac{r}{s}
 	\end{align*}
 	
-	was not in lowest terms after all. Therefore, we have proved what we intended us. However, for fun, we offer a proof using a theorem 
+	was not in lowest terms after all. Therefore, we have proved what we intended to.
 \end{proof}
 \vspace{\baselineskip}
 
+Notice what we proved could be interpreted as showing the polynomial with integer coefficients
+	
+	\begin{align*}
+		x^k - p = 0
+	\end{align*}
+	
+has no rational roots. Naturally, we maybe interested in a more general questions of when polynomials have rational roots; so we now prove a more general result to this effect and see how this above theorem simply follows as a corollary.
+
+\vspace{\baselineskip}
+\begin{theorem}[Rational Root Theorem]
+	Let $p(x)$ be an arbitrary polynomial with integer coefficients, which can be written as
+	
+	\begin{align*}
+		p(x) = a_n x^n + a_{n - 1} x^{n - 1} + \dots + a_1 x + a_0.
+	\end{align*}
+	
+	If $p$ has rational roots, meaning there exists some $x \in \mathbb{Q}$ such that $p(x) = 0$, then if $x$ is expressed as
+	
+	\begin{align*}
+		\frac{p}{q}
+	\end{align*}
+	
+	in lowest terms, then $p$ must divide $a_0$, the constant term, and $q$ must divide $a_n$, the leading coefficient.
+\end{theorem}
+\begin{proof}
+	This could be approached with a proof by contradiction, but instead we provide a direct proof. Assume that there exists a rational solution the $p(x)$ which is expressed as a fraction in lowest terms. Then we can write the evaluation of the polynomial at $x$ which should be equal to 0, by definition.
+	
+	\begin{align*}
+		p\left( \frac{p}{q} \right) &= 0 \\
+		a_n \frac{p^n}{q^n} + a_{n - 1} \frac{p^{n - 1}}{q^{n - 1}} + \cdots + a_1 \frac{p}{q} + a_0 &= 0 
+	\end{align*}
+	
+	Once again, similar to the insight we used in the previous few proofs, we want to clear the fractions so we can once again work    with integers. This can easily be done by multiplying both sides of the equation with $q^n$, yielding
+	
+	\begin{align*}
+		a_n p^n + a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} + a_0 q^n = 0.
+	\end{align*}
+	
+	We then rearrange this polynomial in two ways by isolating all the $p$ and all the $q$ terms, so we can factor.
+	
+	\begin{align*}
+		a_n p^n + a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} &= - a_0 q^n \text{ and} \\
+		a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} + a_0 q^n &= -a_n p^n
+	\end{align*}
+	
+	To reach the first equation we moved the last term to the other side, and for the second equation, we moved the leading coefficient. Notice that both left-hand sides now have a common factor so we can simplify even further.
+	
+	\begin{align*}
+		p (a_n p^{n - 1} + a_{n - 1} p^{n - 2} q + \dots + a_1 q^{n - 1}) &= - a_0 q^n \text{ and} \\
+		q (a_{n - 1} p^{n - 1} + \dots + a_1 p q^{n - 2} + a_0 q^{n - 1}) &= -a_n p^n
+	\end{align*}
+	
+	In the first equation, we can see that left-hand side is divisible by $p$, therefore so must the right-hand side. Notice that since
+	
+	\begin{align*}
+		\frac{p}{q}
+	\end{align*}
+	
+	was in lowest terms, $q^n$ clearly is not divisible by $p$, hence this means that $p$ divides $a_0$. By symmetry, the second equation shows that $q$ must divide $a_n$. This is exactly what we needed to show, which is that if $p(x)$ has a rational root, then
+	
+	\begin{align*}
+		\begin{cases}
+			p \text{ divides } a_0 \\
+			q \text{ divides } a_n.
+		\end{cases}
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+We can now offer a slicker proof to our original statement, using the theorem we just proved. Remember we wanted to prove
+
+\begin{align*}
+	\sqrt[k]{p} \in \mathbb{R} - \mathbb{Q}
+\end{align*}
+
+where $k$ is any integer greater than 1 and $p$ is a prime number. Above we used a long proof by contradiction to show this, but now we offer a simpler proof.
+
+\begin{proof}
+	Consider the following polynomial, for which the $k$th root of $p$ is a solution. 
+
+	\begin{align*}
+		x^k - p = 0
+	\end{align*}
+
+	It is sufficient to show that the polynomial has no rational roots, because that implies the root of $p$ must be irrational. Notice that this is a polynomial with rational roots, hence we can apply the rational roots theorem to conclude that if
+	
+	\begin{align*}
+		x = \frac{m}{n} \text{ for } m, n \in \mathbb{Z} \text{ and } n \neq 0
+	\end{align*}
+	
+	is a rational root of the polynomial then $n$ must divide 1, the leading coefficient, and $m$ must divide $p$, the constant term. There the set of all possible rational roots to this polynomial is
+	
+	\begin{align*}
+		n \in \{ 1, -1 \}, m \in \{ -p, -1, 1, p \} \\
+		\therefore x \in \{ -p, -1, 1, p \}
+	\end{align*}
+	
+	At this point, we simply try all possibilities to conclude no such rational $x$ can exist.
+	
+	\begin{align*}
+		1^k - p &\neq 0 \\
+		(-1)^k - p &\neq 0 \\
+		p^k - p &\neq 0 \\
+		(-p)^k - p &\neq 0
+	\end{align*}
+	
+	Notice this is technically a proof by contradiction; we assume that a rational root exists, then use the rational roots theorem to that this root must then be one of
+	
+	\begin{align*}
+		\{ -p, -1, 1, p \}.
+	\end{align*}
+	
+	Showing that none of these are actually roots results in a contradiction, proving our original statement.
+\end{proof}
+
+In some sense, the rational roots theorem we proved was a more general result than showing
+
+\begin{align*}
+	f(x) = x^k - p
+\end{align*}
+
+has no rational roots. Proving the harder general case allowed us to revisit our original problem and more easily show it was true. In this case it simply amounted to evaluating the polynomial at four points.
+
+\vspace{\baselineskip}
+
+We will revisit this technique of proving more general results and then looking back to apply these to more specific cases later. In the next chapter, we will see cases where this may be necessary; but finding more general principles is a virtue in itself. It turns out that the rational roots theorem, once again, is a specific case of Gauss' Lemma, but this remains out of scope of this set of notes.
 	
 \chapter{Mathematical Induction}
+
+% ===========================================================
+\section{Sum and Product Notation}
+% ===========================================================
+
+In the last note, we ended up working with polynomials with an arbitrary number of terms, relying on the following notation.
+
+\begin{align*}
+	p(x) = \underbrace{a_n x^n + a_{n - 1} x^{n - 1} + \dots + a_1 x + a_0}_\text{$n - 1$ terms}
+\end{align*}
+
+While this was perfectly rigorous, it relies on the reader being able to notice the pattern among terms in the summation. It may be less ambiguous to explicitly state this pattern, for which we introduce the following notation.
+
+\begin{align*}
+	\sum_{i = a}^b f(i) &= f(a) + f(a + 1) + \dots + f(b - 1) + f(b) \\
+	\prod_{i = a}^b f(i) &= f(a) f(a + 1) \dots f(b - 1) f(b)
+\end{align*}
+
+Using this notation, we would express a generic $n$ degree polynomial with coefficients $\{ a_n \dots a_0 \}$ as the following.
+
+\begin{align*}
+	p(x) &= a_n x^n + a_{n - 1} x^{n - 1} + \dots + a_1 x + a_0 \\
+	&= \sum_{i = 0}^n a_i x^i
+\end{align*}
+
+Notice that both of these are common computational processes in computer science which can be expressed as with the following pseudo-code.
+
+\vspace{\baselineskip}
+\begin{lstlisting}
+	def sum(f, a, b):
+		sum = 0
+		for i in [a, ..., b]:
+			sum = sum + f(i)
+		return sum
+		
+	def prod(f, a, b):
+		prod = 1
+		for i in [a, ..., b]:
+			prod = prod * f(i)
+		return prod
+\end{lstlisting}
+
+The following properties of summation and product naturally extend from its definition, and should intuitively be true, though writing out a proof should not be too difficult.
+
+\begin{align*}
+	\sum_{i = a}^b cf(i) &= c \sum_{i = a}^b f(n) \\
+	\sum_{i = a}^b (f(i) + c) &= \underbrace{(b - a + 1)}_\text{number of terms}c + \sum_{i = a}^b f(n) \\
+\end{align*}
+
+There is an analogous equivalence for a product, though this time the number we we pull out get raised to the power of the number of terms.
+
+\begin{align*}
+	\prod_{i = a}^b cf(i) &= c^{b - a + 1} \prod_{i = a}^b f(n) \\
+\end{align*}
+
+These summations (and products) appear frequently in mathematics, especially in calculus where the number of terms goes to infinity, so over the course of this chapter, we help develop tools to help simplify then more useful formula. As an example, consider the sum of the first $n$ natural numbers.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For all natural numbers $n$, the following equation holds.
+	\begin{align*}
+		\sum_{i = 1}^n i &= 1 + 2 + \dots + n \\
+		&= \frac{n(n + 1)}{2}
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	We offer a direct proof of this fact using a trick; first denote the sum itself as $S$, so we have the expression
+	
+	\begin{align*}
+		S = 1 + 2 + 3 + \dots + (n - 1) + n.
+	\end{align*}
+	
+	Now we sum the sequence the with itself in reverse order, in essence adding two equations.
+	
+	\begin{align*}
+		\begin{array}{cccccccccccc}
+			S = & 1 & + & 2 & + & \dots & + & (n - 1) & + & n \\
+			S = & n & + & (n - 1) & + & \dots & + & 2 & + & 1 \\ \hline
+			2S = & (n + 1) & + & (n + 1) & + & \dots & + & (n + 1) & + & (n + 1) \\
+		\end{array}
+	\end{align*}
+	
+	Notice in the bottom sum, each of the $n$ terms is $(n + 1)$. Therefore we can simplify the expression even further to get
+	
+	\begin{align*}
+		2S = n(n + 1) \text{ or} \\
+		S = \frac{n(n + 1)}{2}
+	\end{align*}
+	
+	This is exactly what we need to show, hence we have derived the formula.
+\end{proof}
+\vspace{\baselineskip}
+
+Notice the simplified expression is more useful to us, since it more clearly expresses the relationship between $n$ and the sum. More specifically, from this formula we can tell that the sum is actually a well-defined polynomial in $n$, a fact which is obfuscated by the summation. However in the above proof we used a trick, and it is not clear how we would approach proving formulae like this more generally.
+
+% ===========================================================
+\section{The Naturals Numbers}
+% ===========================================================
+
+While most of our proofs until how have been focused on the real numbers and integers, we now turn our attention to the natural numbers. To develop another fundamental proof technique for working with the rationals, we need a more precise definition of the natural numbers, which we currently refer to with the set
+
+\begin{align*}
+	\mathbb{N} = \{ 1, 2, 3, \dots \}.
+\end{align*}
+
+To avoid the ambiguity of the ellipses, we can define the natural numbers ($\mathbb{N}$) as the intersection of all subsets $A$ of the real numbers with the following properties
+
+\vspace{\baselineskip}
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item $1 \in A$
+	\item if $n \in A$, then $s(n) \in A$ where $s$ is the successor function which represents $s(n) = n + 1$.
+\end{enumerate}
+\vspace{\baselineskip}
+
+Notice this is consistent with our intuitive definition of the natural numbers. If $A$ obeys these two definitions, then we know 1 must be in $A$, along with all number in the sequence $1, 2, 3, \dots$
+
+\begin{align*}
+	\{ 1, 2, 3, \dots \} \subseteq A
+\end{align*}
+
+Furthermore, since this set itself satisfies these conditions, we know that it is an example of one such set $A$. Therefore the intersection of all such sets is indeed what we expected,
+
+\begin{align*}
+	\mathbb{N} = \{ 1, 2, 3, \dots \}.
+\end{align*}
+
+Taking the intersection of all such sets $A$ is essentially equivalent to taking the ``smallest'' set which satisfies these properties; otherwise, notice that the real numbers themselves also satisfy both properties. With this definition, we have a more systematic way to understand the natural numbers which yields a new proof technique.
+
+\vspace{\baselineskip}
+\begin{theorem}[Principle of Induction]
+	Let $P(n)$ be a predicate defined for natural numbers $n \in \mathbb{N}$. If the following two statements hold,
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $P(1)$ is true
+		\item if $P(k)$ is true, then $P(k + 1)$ is true
+	\end{enumerate}
+	\vspace{\baselineskip}
+
+	then $P(n)$ is true for all natural numbers $n \in \mathbb{N}$.
+\end{theorem}
+\begin{proof}
+	We consider the set $A$ for which this predicate is true and show that this is equal to the set of natural numbers.
+	
+	\begin{align*}
+		A = \{ n : P(n) \text{ is true} \}
+	\end{align*}
+	
+	First notice that since $P(n)$ is defined for natural numbers only, hence immediately we know $A \subseteq \mathbb{N}$. Now we know that
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $1 \in A$ because $P(1)$ is true, and
+		\item if $P(k)$ is true, then $P(k + 1)$ is true, so if $k \in A$ then $(k + 1) \in A$.
+	\end{enumerate}
+	\vspace{\baselineskip}
+
+	Therefore we have shown that $A$ is one of the sets used in the above definition. Since $\mathbb{N}$ is the intersection of all possible such sets, we know that it must be contained in $S$ so that
+	
+	\begin{align*}
+		\mathbb{N} \subseteq A
+	\end{align*}
+	
+	Since we have showed $A$ is both a subset and a superset of $\mathbb{N}$, this means $A = \mathbb{N}$. Since $A$ represents the set of number for which $P(n)$ is true, this means $P(n)$ is true for all natural numbers $n$.
+\end{proof}
+\vspace{\baselineskip}
+
+This means that we now have a proof technique which can be applied to proving statements which are true for over the natural numbers, namely by showing that the statements holds for $n = 1$ and that for all $k$, if $P(k)$ is true then it implies $P(k + 1)$. This can be precisely expressed with the following logical equivalence, which conveys the same idea.
+
+\begin{align*}
+	(\forall n \in \mathbb{N})P(n) \equiv P(1) \land (\forall k \in \mathbb{N})[P(k) \implies P(k + 1)]
+\end{align*}
+
+% ===========================================================
+\section{Inductive Proofs}
+% ===========================================================
+
+Through the above manipulation, we have discovered a fundamentally different way to prove universally quantified statements, specifically those which are true over the natural numbers, by exploiting the definition of the natural numbers. The logical equivalence
+
+\begin{align*}
+	(\forall n \in \mathbb{N})P(n) \equiv P(1) \land (\forall k \in \mathbb{N})[P(k) \implies P(k + 1)],
+\end{align*}
+
+shows exactly what is required, but we can unwrap this. Proving some statement $(\forall n \in \mathbb{N})P(n)$ using this tool is called a proof by induction. Since the right-hand side of the expression is a conjunction, we need to show both sides are true, meaning a proof by induction has two separate parts.
+
+\vspace{\baselineskip}
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item \emph{Base Case.} Show $P(1)$ is true.
+	\item \emph{Induction Step.} Assume $P(k)$ is true for any natural number $k$, and use this to show $P(k + 1)$ must be true.
+\end{enumerate}
+\vspace{\baselineskip}
+
+The validity of this proof technique follows directly from the principle of mathematical induction. We can use this the approach the problem of proving equalities like the following systematically.
+
+\begin{align*}
+	\sum_{i = 1}^{n} i = \frac{n(n + 1)}{2}
+\end{align*}
+
+First, let us define the statement we are trying to prove more explicitly. If we denote the above expression with the predicate $P(n)$, we want to show that if the free variable $n$ is a natural number, then the statement is true, or
+
+\begin{align*}
+	(\forall n \in \mathbb{N})P(n).
+\end{align*}
+
+\vspace{\baselineskip}
+\begin{proof}
+	Since we have a statement we wish to prove the over the natural numbers, we use a proof by induction. This involves showing the base case and then the induction step.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} We want to show $P(1)$ is true, which is easy to show.
+		
+		\begin{align*}
+			\sum_{i = 1}^1 n = 1 = \frac{1 (1 + 1)}{2}
+		\end{align*}
+		
+		
+		\item \emph{Induction Step.} Assume $P(k)$ is true for some natural number $k$ so that we have
+		
+		\begin{align*}
+			1 + 2 + \dots + k = \frac{k(k + 1)}{2}.
+		\end{align*}
+		
+		We want to show that the statement $P(k + 1)$ must follow; which written out corresponds to
+		
+		\begin{align*}
+			1 + 2 + \dots + (k + 1) = \frac{(k + 1)(k + 2)}{2}.
+		\end{align*}
+		
+		Notice the similarity in structure on the right-hand side of both equations, which suggests a obvious substitution. We prove $P(k + 1)$ by starting with the right-hand side and deriving the left-hand side.
+		
+		\begin{align*}
+			1 + 2 + \dots + (k + 1) &= \underbrace{1 + 2 + \dots + k}_\text{left-hand side of $P(k)$} + (k + 1) \\
+			&= \frac{k (k + 1)}{2} + (k + 1) \\
+			&= \frac{k (k + 1)}{2} + \frac{2 (k + 1)}{2} \\
+			&= \frac{(k + 1)(k + 2)}{2}
+		\end{align*}
+		
+		We are allowed to make the substitution in the second line, because we assumed precisely this about the sum of the first $k$ natural numbers. We use this assumption to extend what we know to conclude the same thing about the first $(k + 1)$ natural numbers. Therefore, this concludes the proof; we have shown that $P(n)$ is true for all natural numbers $n$.
+	\end{enumerate}
+	\vspace{\baselineskip}
+\end{proof}
+\vspace{\baselineskip}
+
+At this point, we should point out that never do we assume what we are trying to prove. Instead, in the induction step we assume $P(k)$ is true and show that $P(k + 1)$. Assuming that $P(k)$ is true for some particular value of $k$ is different than assuming $P(k)$ is true for all values of $k$, at least in the context of showing $P(k + 1)$ is true. This assumption, that $P(k)$ is referred to as the induction hypothesis. Notice that we were particular verbose in our approach, but we now offer a more streamlined example to prove a similar formula.
+
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For all natural numbers $n$, the following equations hold.
+	
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item 
+		\begin{align*}
+			\sum_{i = 1}^n i^2 &= \frac{n(n + 1)(2n + 1)}{6}
+		\end{align*}
+		\item 
+		\begin{align*}
+			\sum_{i = 1}^n i^3 &= \frac{n^2(n + 1)^2}{4} \\
+		\end{align*}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We only prove the first statement as an example because the proof for the second statement is very similar. 
+\end{proof}
+\vspace{\baselineskip}
+
+%TODO: Complete Section (Inductive Proofs)
+
+% ===========================================================
+\section{Strengthening the Hypothesis}
+% ===========================================================
+
+%TODO: Complete Section (Strengthening the Hypothesis)
+
+% ===========================================================
+\section{Strong Induction}
+% ===========================================================
+
+
+The power of induction is that it allow use to make stronger assumptions in the process of proving our statement. Instead of pricing the statement directly for any arbitrary element $n \in \mathbb{N}$, in the induction step, we assume $P(k)$ is true for some natural number $k$ and simply have to prove $P(k + 1)$ to be true. This advantage comes from knowing something about the structure of the natural numbers themselves. However, it turns out that we are allowed to assume something even stronger during the induction step.
+
+\vspace{\baselineskip}
+\begin{theorem}[Principle of Strong Induction]
+	Let $P(n)$ be a predicate defined for natural numbers $n \in \mathbb{N}$. If the following two statements hold,
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $P(1)$ is true
+		\item if $P(1), P(2), \dots, P(k)$ are true, then $P(k + 1)$ is true
+	\end{enumerate}
+	\vspace{\baselineskip}
+
+	then $P(n)$ is true for all natural numbers $n \in \mathbb{N}$.
+\end{theorem}
+\begin{proof}
+	We prove this by showing that this is essential equivalent to the principle of induction. First, we define the following predicate
+	
+	\begin{align*}
+		Q(n) \equiv P(1) \land P(2) \land \dots \land P(n)
+	\end{align*}
+	
+	so that $Q(n)$ is true if and only if $P(i)$ is true for all $i$ up to $n$. Notice showing $P(n)$ is true for all $n \in \mathbb{N}$ is equivalent to showing $Q(n)$ is true for all natural numbers. Remember the principle of mathematical induction tell us to show this predicate is true, all we need is to show is the following.
+
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $Q(1)$ is true
+		\item if $Q(k)$ is true, then $Q(k + 1)$ is true
+	\end{enumerate}
+	\vspace{\baselineskip}
+
+	Therefore, if we show these two statements hold, then $P(n)$ must be true as well. First consider the first statement; by definition, $Q(1)$ is the same as $P(1)$. Next, we consider the implication, which we express in terms of $P$.
+	
+	\begin{align*}
+		Q(k) &\implies Q(k + 1) \\
+		P(1) \land \dots \land P(k) &\implies \underbrace{P(1) \land \dots \land P(k)}_\text{redundant} \land P(k + 1) \\
+		P(1) \land \dots \land P(k) &\implies P(k + 1)
+	\end{align*}
+	
+	Therefore, we have shown to prove $Q(n)$ is true far all natural numbers $n$, and thus $P(n)$ is true over the natural numbers, we can show
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $P(1)$ is true, and
+		\item if $P(1), P(2), \dots, P(k)$ are true, then $P(k + 1)$ is true.
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
+
+This allows us to augment the amount of information we get for ``free'' during the induction step, which allows us to prove statements that we otherwise might not be able to.
+
+%TODO: Complete Section (Strong Induction)
+
+% ===========================================================
+\section{The Well-Ordering Principle}
+% ===========================================================
+
+We can now show another equivalent fact about the natural numbers which is inextricably linked to induction. This is called the well-ordering principle, which states that every non-empty subset of the natural numbers has a smallest element.
+
+\vspace{\baselineskip}
+\begin{theorem}[Well-ordering Principle]
+	Let $A$ be a non-empty subset of the natural numbers, $A \subseteq \mathbb{N}$. $A$, then, must have a smallest element.
+\end{theorem}
+\begin{proof}
+	We instead prove the contrapositive of this statement, that if $A$ is a subset of the natural numbers which has no smallest element, then it is the empty set. Now consider the relative complement of $A$ in the natural numbers, which we denote
+	
+	\begin{align*}
+		B = \mathbb{N} - A
+	\end{align*}
+	
+	Notice 1 is an element of $B$, since 1 cannot be an element of $A$, otherwise this would be its least element. Now assume
+	
+	\begin{align*}
+		1, 2, \dots, k \in B,
+	\end{align*}
+	
+	which means that none of these numbers are elements of $A$. This implies that $(k + 1)$ cannot be in $A$ otherwise it would be its smallest element. Therefore we have shown that $(k + 1)$ is in $B$. Therefore, we have
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item $1 \in B$, and
+		\item if $1, 2, \dots, k \in B$, then $(k + 1) \in B$.
+	\end{enumerate}
+	\vspace{\baselineskip}
+	
+	Hence from the principle of strong induction, we know that that $B$ contains the natural numbers. However, since $B$ is the result of subtracting $A$ from the natural numbers, we also know that $B$ is a subset of $\mathbb{N}$, which together implies
+	
+	\begin{align*}
+		B = \mathbb{N}. \\
+		\therefore A &= \mathbb{N} - B \\
+		&= \phi
+	\end{align*}
+	
+	This completes the proof of the contrapositive, which means that if $A$ has no smallest element, then it must be the empty set. Equivalently, then, every non-empty subset of the natural numbers must have a smallest element. 
+\end{proof}
+\vspace{\baselineskip}
+
+%TODO: Complete Section (Well-Ordering Principle)
+
 %\chapter{Bijections and Cardinality}
 %\chapter{Divisibility}
 %\chapter{Modular Arithmetic}
-
-
-
 
 \end{document}
