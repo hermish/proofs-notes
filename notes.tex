@@ -2137,10 +2137,10 @@ These summations (and products) appear frequently in mathematics, especially in 
 	
 	Notice in the bottom sum, each of the $n$ terms is $(n + 1)$. Therefore we can simplify the expression even further to get
 	
-	\begin{align*}
+	\begin{align}
 		2S = n(n + 1) \text{ or} \\
 		S = \frac{n(n + 1)}{2}
-	\end{align*}
+	\end{align}
 	
 	This is exactly what we need to show, hence we have derived the formula.
 \end{proof}
@@ -2152,7 +2152,7 @@ Notice the simplified expression is more useful to us, since it more clearly exp
 \section{The Naturals Numbers}
 % ===========================================================
 
-While most of our proofs until how have been focused on the real numbers and integers, we now turn our attention to the natural numbers. To develop another fundamental proof technique for working with the rationals, we need a more precise definition of the natural numbers, which we currently refer to with the set
+While most of our proofs until how have been focused on the real numbers and integers, we now turn our attention to the \emph{natural numbers.} To develop another fundamental proof technique for working with these numbers, we need a more precise definition of the natural numbers, which we currently refer to with the set
 
 \begin{align*}
 	\mathbb{N} = \{ 1, 2, 3, \dots \}.
@@ -2236,7 +2236,7 @@ Through the above manipulation, we have discovered a fundamentally different way
 	(\forall n \in \mathbb{N})P(n) \equiv P(1) \land (\forall k \in \mathbb{N})[P(k) \implies P(k + 1)],
 \end{align*}
 
-shows exactly what is required, but we can unwrap this. Proving some statement $(\forall n \in \mathbb{N})P(n)$ using this tool is called a proof by induction. Since the right-hand side of the expression is a conjunction, we need to show both sides are true, meaning a proof by induction has two separate parts.
+shows exactly what is required, but we can unwrap this. Proving some statement $(\forall n \in \mathbb{N})P(n)$ using this tool is called a \emph{proof by induction.} Since the right-hand side of the expression is a conjunction, we need to show both sides are true, meaning a proof by induction has two separate parts.
 
 \vspace{\baselineskip}
 \begin{enumerate}[\hspace{\baselineskip}i.]
@@ -2266,9 +2266,8 @@ First, let us define the statement we are trying to prove more explicitly. If we
 		\item \emph{Base Case.} We want to show $P(1)$ is true, which is easy to show.
 		
 		\begin{align*}
-			\sum_{i = 1}^1 n = 1 = \frac{1 (1 + 1)}{2}
+			\sum_{i = 1}^1 i = 1 = \frac{1 (1 + 1)}{2}
 		\end{align*}
-		
 		
 		\item \emph{Induction Step.} Assume $P(k)$ is true for some natural number $k$ so that we have
 		
@@ -2291,49 +2290,310 @@ First, let us define the statement we are trying to prove more explicitly. If we
 			&= \frac{(k + 1)(k + 2)}{2}
 		\end{align*}
 		
-		We are allowed to make the substitution in the second line, because we assumed precisely this about the sum of the first $k$ natural numbers. We use this assumption to extend what we know to conclude the same thing about the first $(k + 1)$ natural numbers. Therefore, this concludes the proof; we have shown that $P(n)$ is true for all natural numbers $n$.
+		We are allowed to make the substitution in the second line, because we assumed this about the sum of the first $k$ natural numbers. We use this assumption to extend what we know to conclude the same thing about the first $(k + 1)$ natural numbers. Therefore, this concludes the proof; we have shown that $P(n)$ is true for all natural numbers $n$.
 	\end{enumerate}
-	\vspace{\baselineskip}
 \end{proof}
 \vspace{\baselineskip}
 
-At this point, we should point out that never do we assume what we are trying to prove. Instead, in the induction step we assume $P(k)$ is true and show that $P(k + 1)$. Assuming that $P(k)$ is true for some particular value of $k$ is different than assuming $P(k)$ is true for all values of $k$, at least in the context of showing $P(k + 1)$ is true. This assumption, that $P(k)$ is referred to as the induction hypothesis. Notice that we were particular verbose in our approach, but we now offer a more streamlined example to prove a similar formula.
+At this point, we should point out that never do we assume what we are trying to prove. Instead, in the induction step we assume $P(k)$ is true for one particular value of $k$ and show $P(k + 1)$. This assumption, that $P(k)$ is true, referred to as the \emph{induction hypothesis} in the inductive step.
 
+
+\section{Sequences and Recurrences}
+
+In some sense, induction treats the natural numbers as an ordered list of elements, starting with 1 and increasing in the order we write them out.
+
+\begin{align*}
+	\mathbb{N} = \{ 1, 2, 3, \dots \}
+\end{align*}
+
+A natural generalization of this idea is to consider ordered lists of items with arbitrary elements, a notion we denote a \emph{sequence}, which can be represented as
+
+\begin{align*}
+	\langle a \rangle = a_1, a_2, a_3, \dots
+\end{align*}
+
+
+The subscript represents the \emph{term number}, which gives the position of a particular element, or \emph{term}, in the sequence. More formally a sequence is defined as a function from the natural numbers, which maps term numbers to terms.
+
+\begin{align*}
+	\begin{array}{rrrrrr}
+		n & 1 & 2 & 3 & 4 & \dots \\
+		& \downarrow & \downarrow & \downarrow & \downarrow & \\
+		\langle a \rangle & a_1 & a_2 & a_3 & a_4 & \dots
+	\end{array}
+\end{align*}
+
+
+Now, to take a step back and interpret our result, we shown the following.
 
 \vspace{\baselineskip}
 \begin{theorem}
-	For all natural numbers $n$, the following equations hold.
+	If we define a sequence $\langle a \rangle$ recursively, so that
+	
+	\begin{align*}
+		a_n =
+		\begin{cases}
+			1 &: n = 1 \\
+			a_{n - 1} + n &: n > 1
+		\end{cases}
+	\end{align*}
+	
+	then, for all natural numbers $n$, this sequence is equivalent to the polynomial
+	
+	\begin{align}
+		a_n = \frac{n(n + 1)}{2}.
+	\end{align}
+\end{theorem}
+\begin{proof}
+	We provide an informal proof of this statement, based on our previous result; a more thorough proof would simplify formalize this with induction. Consider $a_n$ for some arbitrary $n$, we begin simplifying the expression using the second rule.
+	
+	\begin{align*}
+		a_n &= a_{n - 1} + n \\
+		&= a_{n - 2} + (n - 1) + n \\
+		&= a_{n - 3} + (n - 2) + (n - 1) + n \\
+		&= a_1 + 2 + \dots + (n - 2) + (n - 1) + n \\
+		&= 1 + 2 + \dots + (n - 1) + n \\
+		&= \frac{n (n + 1)}{2}
+	\end{align*}
+	
+	Notice there is however, one additional case we need to check now, which is when $n = 1$, but clearly the formula trivially holds here.
+\end{proof}
+\vspace{\baselineskip}
+
+The sequence we encountered above is rather different from those which we previously encountered. Such a function is called is a recurrence relation is characterized by two features:
+
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item \emph{Base cases.} Explicit values of the sequence for a small number of terms. In this case, by definition, $a_1 = 1$.
+	\item \emph{Recursive definition.} A relationship between the value of the sequence $a_n$ to other values, typically smaller. In the above example, for non-base cases, we were given
+	
+	\begin{align*}
+		a_n = a_{n - 1} + n.
+	\end{align*}
+\end{enumerate}
+
+While this type of recurrence equation describes a perfectly well-defined sequence, a more explicit definition of each term is often desirable. This explicit formula is called closed-form solution of the recurrence, which usually relates $a_n$ directly to $n$, rather than other terms.
+
+Given the similarity in structure of recurrence relation definitions to inductive proofs, the technique provides a natural way show closed-form solutions hold. Notice our first inductive proof was rather verbose, but we now offer a more streamlined example to prove something similar.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For all non-negative integers $n$, the recurrence relations below have the following closed form solutions.
 	
 	\begin{enumerate}[\hspace{\baselineskip}i.]
 		\item 
 		\begin{align*}
-			\sum_{i = 1}^n i^2 &= \frac{n(n + 1)(2n + 1)}{6}
+		a_n =
+		\begin{cases}
+			1^2 &: n = 1 \\
+			a_{n - 1} + n^2 &: n > 1
+		\end{cases}
 		\end{align*}
+		\begin{align}
+			a_n = \frac{n(n + 1)(2n + 1)}{6}
+		\end{align}
 		\item 
 		\begin{align*}
-			\sum_{i = 1}^n i^3 &= \frac{n^2(n + 1)^2}{4} \\
+			b_n =
+			\begin{cases}
+				1^3 &: n = 1 \\
+				b_{n - 1} + n^3 &: n > 1
+			\end{cases}
 		\end{align*}
+		\begin{align}
+			b_n &= \frac{n^2(n + 1)^2}{4}
+		\end{align}
 	\end{enumerate}
 \end{theorem}
 \begin{proof}
-	We only prove the first statement as an example because the proof for the second statement is very similar. 
+	We only prove the first statement by induction; the proof for the second statement is very similar.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} We want to confirm the statement is true for $n = 1$.
+		
+		\begin{align*}
+			a_1 = 1 = \frac{1 (1 + 1) (2 + 1)}{6}
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume that the statement is true for some arbitrary number $k$, so that
+		
+		\begin{align*}
+			a_k &= \frac{k(k + 1)(2k + 1)}{6}.
+		\end{align*}
+		
+		We wanted to show that the statement is also true, then, for $(k + 1)$. To show this, we first begin by considering the value of $f(k + 1)$ and showing that the closed form solution holds for it as well.
+				
+		\begin{align*}
+			a_{k + 1} &= (k + 1)^2 + a_k \\
+			&= (k + 1)^2 + \frac{k(k + 1)(2k + 1)}{6} \\
+			&= \frac{(k + 1)(k + 2)(2k + 3)}{6}
+		\end{align*}
+		
+		This is exactly what we needed to show, hence this concludes the proof by induction.
+	\end{enumerate}
 \end{proof}
 \vspace{\baselineskip}
 
-%TODO: Complete Section (Inductive Proofs)
+It turns out that similar to our original example, the sequences $a_n$ and $b_n$ represent the sum of the first $n$ squares and cubes respectively, hence we have shown the formulae.
+
+\begin{align}
+	\sum_{i = 1}^k i^2 &= \frac{k(k + 1)(2k + 1)}{6}
+\end{align}
+\begin{align}
+	\sum_{i = 1}^k i^2 &= \frac{k^2(k + 1)^2}{4}
+\end{align}
 
 % ===========================================================
-\section{Strengthening the Hypothesis}
+\section{Extending Induction}
 % ===========================================================
 
-%TODO: Complete Section (Strengthening the Hypothesis)
+So far the power of induction seems rather limited since it applies to only statements of a very particular form, namely statements which are true over the natural numbers. However it turns out that induction can can applied to prove statements which are true over an entire class of sets, including for all non-negative integers, or all even numbers, or all odd numbers, which is explained with the following theorem.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	Suppose we want to prove some predicate $P(n)$ for all $n \in A$, where $A$ is some set which can be expressed as
+	
+	\begin{align*}
+		A = \{ a_1, a_2, a_3, \dots \}.
+	\end{align*}
+	
+	A more precise condition is that $A$ be countable, but we return to this notion in a later chapter. Then it is sufficient to show
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} $P(a_1)$ is true.
+		\item \emph{Induction Step.} if $P(a_k)$ is true for any natural number $k$, then $P(a_{k + 1})$ must be true
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We prove this by reduction, showing that this technique is exactly identical to induction. First consider defining the following new predicate which is related to $P(n)$.
+	
+	\begin{align*}
+		Q(n) \equiv P(a_n)
+	\end{align*}
+	
+	First notice that the elements of $A$ are indexed by $n$, so to prove $P(a_n)$ for all $a_n \in A$ is equivalent to proving $Q(n)$ for all $n \in \mathbb{N}$. At this point, we notice that we can apply induction on $n$ to prove $Q(n)$ for all natural numbers, which entails showing the following two things.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} $Q(1)$ is true.
+		\item \emph{Induction Step.} if $Q(k)$ is true for any natural number $k$, then $Q(k + 1)$ must be true
+	\end{enumerate}
+	\vspace{\baselineskip}
+	
+	Now if we show these both hold, then this proves $Q(n)$ over the natural numbers, which is equivalent to showing $P(a)$ is true for all $a$ in $A$. All that is left is to translate these conditions back into terms of $P$.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} $P(a_1)$ is true.
+		\item \emph{Induction Step.} if $P(a_k)$ is true for any natural number $k$, then $P(a_{k + 1})$ must be true
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
+
+This shows that to prove some predicate over a set which can be expressed as an ordered list, we can: (1) show that it is true for the first element, and (2) that if it is true for some element, it is true for the next element.
+
+\begin{align*}
+	\begin{array}{l}
+		P(a_1) \text{ is true} \\
+		P(a_1) \implies P(a_2) \implies P(a_3) \implies P(a_4) \implies \dots \\
+		\hline
+		P(a_n) \text{ is true for all } n \in A
+	\end{array}
+\end{align*}
+
+This suggests the common ``domino'' analogy for understanding induction. To prove that that a line of dominoes have fallen down, it is sufficient to show that the first one had fallen down and that if a domino has been knocked down, it causes the next one to fall.
+
+With this theorem, we can introduce some common patterns used in induction proofs to prove statements over different sets, and armed with these we can revisit and generalize some of our past results.
+
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		Set & Base Case & Induction Step \\
+		\midrule
+		$\mathbb{N} = \{ 1, 2, 3, \dots \}$ & $P(1)$ & $P(k) \implies P(k + 1)$ \\
+		$\mathbb{N}_0 = \{ 0, 1, 2, \dots \}$ & $P(0)$ & $P(k) \implies P(k + 1)$ \\
+		$\{ 0, 2, 4, \dots \}$ & $P(2)$ & $P(k) \implies P(k + 2)$ \\
+		$\{ 1, 3, 5, \dots \}$ & $P(1)$ & $P(k) \implies P(k + 2)$ \\
+		$\{ 2^0, 2^1, 2^2, \dots \}$ & $P(1)$ & $P(k) \implies P(2k)$ \\
+		$\{ a, a + d, a + 2d, \dots \}$ & $P(a)$ & $P(k) \implies P(k + d)$ \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+So, for example, to prove a statement is true for all odd natural number, we first show that it is true for 1, and that if it true for some odd integer $k$ it is also true for $k + 2$. This is a direct application of the theorem we proved where we define
+
+\begin{align*}
+	a_k = 2k - 1, \text{ so } A = \{1, 3, 5, \dots \}
+\end{align*}
+
+Now, with this technique, we can extend many of the inequalities we showed previously, and solve a more general recurrence.
+
+\vspace{\baselineskip}
+\begin{theorem}[Generalized Triangle Inequality]
+	For any number of real numbers $n \ge 2$, the absolute value of their sum is bounded by the sum of their absolute values.
+	
+	\begin{align*}
+		|a_1 + a_2 + \dots + a_n| \le |a_1| + |a_2| + \dots + |a_n|
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	We apply a proof by induction on $n$ over the set of natural numbers greater than 1. Our base case should then be $n = 2$.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} In the case where $n = 2$, this reduces into the triangle inequality we proved previously.
+		
+		\begin{align*}
+			|a_1 + a_2| \le |a_1| + |a_2|
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume that this generalized triangle inequality holds for $k$ numbers, so that
+		
+		\begin{align*}
+			|a_1 + a_2 + \dots + a_k| \le |a_1| + |a_2| + \dots + |a_k|.
+		\end{align*}
+		
+		 We will now show that this also holds for $k + 1$ numbers;  consider the absolute value of their sum.
+		 
+		 \begin{align*}
+		 	|a_1 + \dots + a_k + a_{k + 1}| &= |(a_1 + \dots + a_k) + a_{k + 1}| \\
+		 	&\le |a_1 + \dots + a_k| + |a_{k + 1}| \\
+		 	&\le |a_1| + |a_2| + \dots + |a_k| + |a_{k + 1}| \\
+		 \end{align*}
+		 
+		 In the last step, we make the substitution from the induction hypothesis, which complete the inductive step and thus the proof.
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
+
+We can now approach more general solutions recurrence relations as well. Note that an equation of the form
+
+\begin{align*}
+	c_n =
+	\begin{cases}
+		c_1 & n = 1 \\
+		a c_{n - 1} + b & n > 1
+	\end{cases}
+\end{align*}
+
+is called a first-order linear recurrence equation, which is a well-defined function, given the base case $f(0)$ is defined. The first order refers to the fact that $f(n)$ refers only $f(n - 1)$, one previous value of the function.
+
+\vspace{\baselineskip}
+\begin{theorem}[First-Order Linear Recurrences]
+	The solution to a first-order linear recurrence equation with co
+\end{theorem}
 
 % ===========================================================
 \section{Strong Induction}
 % ===========================================================
 
 
-The power of induction is that it allow use to make stronger assumptions in the process of proving our statement. Instead of pricing the statement directly for any arbitrary element $n \in \mathbb{N}$, in the induction step, we assume $P(k)$ is true for some natural number $k$ and simply have to prove $P(k + 1)$ to be true. This advantage comes from knowing something about the structure of the natural numbers themselves. However, it turns out that we are allowed to assume something even stronger during the induction step.
+The power of induction is that it allow use to make stronger assumptions in the process of proving our statement. Instead of proving the statement directly for any arbitrary element $n \in \mathbb{N}$, in the induction step, we assume $P(k)$ is true for some natural number $k$ and simply have to prove $P(k + 1)$ to be true. This advantage comes from knowing something about the structure of the natural numbers themselves.
+
+However, it turns out that we are allowed to assume something even stronger during the induction step.
 
 \vspace{\baselineskip}
 \begin{theorem}[Principle of Strong Induction]
@@ -2372,7 +2632,7 @@ The power of induction is that it allow use to make stronger assumptions in the 
 		P(1) \land \dots \land P(k) &\implies P(k + 1)
 	\end{align*}
 	
-	Therefore, we have shown to prove $Q(n)$ is true far all natural numbers $n$, and thus $P(n)$ is true over the natural numbers, we can show
+	Therefore, we have shown to prove $Q(n)$ is true far all natural numbers $n$, and thus $P(n)$ is true, we can show
 	
 	\vspace{\baselineskip}
 	\begin{enumerate}[\hspace{\baselineskip}i.]
