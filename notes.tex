@@ -49,11 +49,15 @@
 
 \begin{document}
 
-\title{\textsc{Introduction to Mathematical Proofs} \\
-	\large at the University of Toronto}
+\title{\textsc{Mathematical Reasoning} \\
+	\large Introductory Notes on Mathematical Proofs and Discrete Math}
 \author{Hermish Mehta \\ University of California, Berkeley}
 \date{\today}
 \maketitle
+
+\begin{abstract}
+	This document presents a compilation of notes I took while taking introductory computer-science focused math classes, namely \emph{Discrete Math \& Probability Theory} at the University of California at Berkeley and \emph{Introduction to Mathematical Proofs} at the University of Toronto. They represent a gentle introduction to the material in the courses I feel is often lacking.
+\end{abstract}
 
 \tableofcontents
 
@@ -63,7 +67,7 @@
 \section{Quadratic Equations}
 % ===========================================================
 
-One of the simplest classes of equations we regularly solve are \emph{linear equations}, \marginnote{linear equations} equations of the form below, where the greatest power of our variable is one. As a matter of convention, we write the general equation as
+One of the simplest classes of equations we regularly solve are \emph{linear equations}, equations of the form below, where the greatest power of our variable is one. As a matter of convention, we write the general equation as
 
 \begin{align}
 	ax + b = 0.
@@ -75,7 +79,7 @@ Solving this equation can be done by rearranging and then dividing both sides by
 	x = -\frac{b}{a}.
 \end{align*}
 
-Naturally, we may want to solve some more complicated \textit{quadratic equations}, \marginnote{quadratic equations}, where the greatest power of the variable is two. Such equations take the general form
+Naturally, we may want to solve some more complicated \emph{quadratic equations}, where the greatest power of the variable is two. Such equations take the general form
 
 \begin{align}
 	ax^2 + bx + c = 0.
@@ -2295,10 +2299,58 @@ First, let us define the statement we are trying to prove more explicitly. If we
 \end{proof}
 \vspace{\baselineskip}
 
-At this point, we should point out that never do we assume what we are trying to prove. Instead, in the induction step we assume $P(k)$ is true for one particular value of $k$ and show $P(k + 1)$. This assumption, that $P(k)$ is true, referred to as the \emph{induction hypothesis} in the inductive step.
+At this point, we should point out that never do we assume what we are trying to prove. Instead, in the induction step we assume $P(k)$ is true for one particular value of $k$ and show $P(k + 1)$. This assumption, that $P(k)$ is true, referred to as the \emph{induction hypothesis} in the inductive step. Our first inductive proof was rather verbose, but we now offer a more streamlined example to prove something similar.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For all non-negative integers $n$, the summation formulas below have the following closed form solutions.
+	
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item 
+		\begin{align}
+			\sum_{i = 1}^k i^2 &= \frac{k(k + 1)(2k + 1)}{6}
+		\end{align}
+
+		\item 
+		\begin{align}
+			\sum_{i = 1}^k i^2 &= \frac{k^2(k + 1)^2}{4}
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	We only prove the first statement by induction; the proof for the second statement is very similar.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} We want to confirm the statement is true for $n = 1$.
+		
+		\begin{align*}
+			\sum_{i = 1}^1 i^2 = 1 = \frac{1 (1 + 1) (2 + 1)}{6}
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume that the statement is true for some arbitrary number $k$, so that
+		
+		\begin{align*}
+			\sum_{i = 1}^k i^2 &= \frac{k(k + 1)(2k + 1)}{6}.
+		\end{align*}
+		
+		We want to show that the statement is also true for $(k + 1)$. To show this, we write out the sum of the first $(k + 1)$ squares and then use the induction to simplify.
+						
+		\begin{align*}
+			\sum_{i = 1}^{k + 1} i &= \underbrace{1^2 + 2^2 + \dots + k^2}_\text{induction hypothesis} + (k + 1)^2  \\
+			&= \frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2 \\
+			&= \frac{(k + 1)(k + 2)(2k + 3)}{6}
+		\end{align*}
+		
+		This is exactly what we needed to show, hence this concludes the proof by induction.
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
 
 
+% ===========================================================
 \section{Sequences and Recurrences}
+% ===========================================================
 
 In some sense, induction treats the natural numbers as an ordered list of elements, starting with 1 and increasing in the order we write them out.
 
@@ -2312,7 +2364,6 @@ A natural generalization of this idea is to consider ordered lists of items with
 	\langle a \rangle = a_1, a_2, a_3, \dots
 \end{align*}
 
-
 The subscript represents the \emph{term number}, which gives the position of a particular element, or \emph{term}, in the sequence. More formally a sequence is defined as a function from the natural numbers, which maps term numbers to terms.
 
 \begin{align*}
@@ -2323,8 +2374,98 @@ The subscript represents the \emph{term number}, which gives the position of a p
 	\end{array}
 \end{align*}
 
+Since the natural numbers are ordered, constructing this function ties the order of the natural numbers to those of the terms in the sequence, imposing an order. Two kinds of sequences that appear frequently in mathematics are \emph{arithmetic sequences} and \emph{geometric sequences}. The former is a sequence such that that the difference between consecutive terms is constant while the later is a sequence in which consecutive terms have the same ratio.
 
-Now, to take a step back and interpret our result, we shown the following.
+\begin{align*}
+	\text{Arithmetic. } a, a + d, a + 2d, a + 3d, a + 4d, \dots \\
+	\text{Geometric. } a, ar, ar^2, ar^3, ar^4, \dots \\
+\end{align*}
+
+In the above sequences, we can specify an arithmetic sequence completely by its first term $a$ and the common difference $d$. Meanwhile, for a geometric sequence, the first term $a$ is needed along with the common ratio $r$. By inspection, we can see that the $n$th term of an arithmetic sequence is
+
+\begin{align*}
+	a_n = a + (n - 1)d,
+\end{align*}
+
+while for a geometric sequence, we simply multiply the ratio to the first term $(n - 1)$ times, giving the formula
+
+\begin{align*}
+	b_n = a r^{n - 1}.
+\end{align*}
+
+Given the similarity in structure of sequences to the natural numbers, induction provides a natural way to prove things about these sequences. Consider the following theorem about the sum of first $n$ terms of arithmetic and geometric sequences.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	Consider the arithmetic sequence $\langle a \rangle$ and the geometric sequence $\langle b \rangle$, with the following terms
+	
+	\begin{align*}
+		a_i &= a + (i - 1)d \\
+		b_i &= a r^{i - 1}
+	\end{align*}
+	
+	The sum of the first $n$ terms of each sequence have the following formula, given $r \neq 1$.
+	
+	\begin{align}
+		\sum_{i = 1}^n a_i &=  a + (a + d) + (a + 2d) + \dots + (a + (n - 1)d) \\
+		&= \frac{n}{2} \left( 2a + (n - 1)d \right)
+	\end{align}
+	
+	\begin{align}
+		\sum_{i = 1}^n b_i &=  a + ar + ar^2 + \dots + ar^{n - 1} \\
+		&= a \frac{r^n - 1}{r - 1}
+	\end{align}
+\end{theorem}
+\begin{proof}
+	We prove both statements in order, using induction, starting with the sum of an arithmetic sequence.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} This is for $n = 1$, because we are simply summing a sequence with 1 term.
+		
+		\begin{align*}
+			\sum_{i = 1}^n a_i = a = \frac{1}{2} (2a + (1 - 1)d)
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume this statement is true for the sum of the first $k$ terms of an arithmetic sequence. We show that also holds for the first $(k + 1)$ terms.
+		
+		\begin{align*}
+			\sum_{i = 1}^{k + 1} a_i &=  a_{k + 1} + \sum_{i = 1}^k a_i \\
+			&= a_{k + 1} + \frac{k}{2} \left( 2a + (k - 1)d \right) \\
+			&= (a + kd) + \frac{k}{2} \left( 2a + (k - 1)d \right) \\
+			&= \frac{k}{2} \left( \frac{2a}{k} + 2d \right) + \frac{k}{2} \left( 2a + (k - 1)d \right) \\
+			&= \frac{k}{2} \left[ 2a \frac{k + 1}{k} + (k + 1)d
+			 \right] \\
+			&= \frac{k + 1}{2} \left( 2a + kd \right)
+		\end{align*}
+	\end{enumerate}
+	\vspace{\baselineskip}
+	
+	This proves the formula for the sum for the first $n$ terms of an arithmetic sequence; we now approach a similar proof for the sum of the first $n$ terms of a geometric sequence.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} Once again, this is trivial for $n = 1$ since that involves summing a one-term sequence.
+		
+		\begin{align*}
+			\sum_{i = 1}^n b_i = a = a \frac{r^1 - 1}{r - 1}
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume this statement is true for the sum of the first $k$ terms. We show that also holds for the first $(k + 1)$ terms.
+		
+		\begin{align*}
+			\sum_{i = 1}^{k + 1} b_i &=  b_{k + 1} + \sum_{i = 1}^k a_i \\
+			&= b_{k + 1} + a \frac{r^k - 1}{r - 1} \\
+			&= ar^k +  a \frac{r^k - 1}{r - 1} \\
+			&= a \frac{r^k(r - 1)}{r - 1} + a \frac{r^k - 1}{r - 1} \\
+			&= a \frac{r^k(r - 1) + r^k - 1}{r - 1} \\
+			&= a \frac{r^{k + 1} - 1}{r - 1}
+		\end{align*}
+	\end{enumerate}	
+\end{proof}
+\vspace{\baselineskip}
+
+Notice that the algebra involved in these proofs were much messier that for those we dealt with before, yet we forged ahead. One benefit of induction is that that if the statement is true, then the algebra will almost certainly work out, so we know how exactly to simply the expression. Now consider a different kind of sequence.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -2360,7 +2501,7 @@ Now, to take a step back and interpret our result, we shown the following.
 \end{proof}
 \vspace{\baselineskip}
 
-The sequence we encountered above is rather different from those which we previously encountered. Such a function is called is a recurrence relation is characterized by two features:
+The sequence we encountered above is rather different from those which we previously encountered. Such a sequence is by a \emph{recurrence relation} is characterized by two features:
 
 \begin{enumerate}[\hspace{\baselineskip}i.]
 	\item \emph{Base cases.} Explicit values of the sequence for a small number of terms. In this case, by definition, $a_1 = 1$.
@@ -2371,77 +2512,27 @@ The sequence we encountered above is rather different from those which we previo
 	\end{align*}
 \end{enumerate}
 
-While this type of recurrence equation describes a perfectly well-defined sequence, a more explicit definition of each term is often desirable. This explicit formula is called closed-form solution of the recurrence, which usually relates $a_n$ directly to $n$, rather than other terms.
+While this type of recurrence equation describes a perfectly well-defined sequence, a more explicit definition of each term is often desirable. This explicit formula is called \emph{closed-form solution} of the recurrence, which usually relates $a_n$ directly to $n$, rather than other terms. However the recursive definition is sometimess cleaner; we can convey the essence of an arithmetic and geometric sequence with the following recurrence relations.
 
-Given the similarity in structure of recurrence relation definitions to inductive proofs, the technique provides a natural way show closed-form solutions hold. Notice our first inductive proof was rather verbose, but we now offer a more streamlined example to prove something similar.
+\begin{align*}
+	\text{Arithmetic. } a_n = \begin{cases}
+		a &: n = 1 \\
+		a_{n - 1} + d &: n > 1
+	\end{cases} 
+\end{align*}
+\begin{align*}
+	\text{Geometric. } b_n = \begin{cases}
+ 		a &: n = 1 \\
+ 		b_{n - 1} \cdot r &: n > 1
+	\end{cases}
+\end{align*}
 
-\vspace{\baselineskip}
-\begin{theorem}
-	For all non-negative integers $n$, the recurrence relations below have the following closed form solutions.
-	
-	\begin{enumerate}[\hspace{\baselineskip}i.]
-		\item 
-		\begin{align*}
-		a_n =
-		\begin{cases}
-			1^2 &: n = 1 \\
-			a_{n - 1} + n^2 &: n > 1
-		\end{cases}
-		\end{align*}
-		\begin{align}
-			a_n = \frac{n(n + 1)(2n + 1)}{6}
-		\end{align}
-		\item 
-		\begin{align*}
-			b_n =
-			\begin{cases}
-				1^3 &: n = 1 \\
-				b_{n - 1} + n^3 &: n > 1
-			\end{cases}
-		\end{align*}
-		\begin{align}
-			b_n &= \frac{n^2(n + 1)^2}{4}
-		\end{align}
-	\end{enumerate}
-\end{theorem}
-\begin{proof}
-	We only prove the first statement by induction; the proof for the second statement is very similar.
-	
-	\vspace{\baselineskip}
-	\begin{enumerate}[\hspace{\baselineskip}i.]
-		\item \emph{Base Case.} We want to confirm the statement is true for $n = 1$.
-		
-		\begin{align*}
-			a_1 = 1 = \frac{1 (1 + 1) (2 + 1)}{6}
-		\end{align*}
-		
-		\item \emph{Induction Step.} Assume that the statement is true for some arbitrary number $k$, so that
-		
-		\begin{align*}
-			a_k &= \frac{k(k + 1)(2k + 1)}{6}.
-		\end{align*}
-		
-		We wanted to show that the statement is also true, then, for $(k + 1)$. To show this, we first begin by considering the value of $f(k + 1)$ and showing that the closed form solution holds for it as well.
-				
-		\begin{align*}
-			a_{k + 1} &= (k + 1)^2 + a_k \\
-			&= (k + 1)^2 + \frac{k(k + 1)(2k + 1)}{6} \\
-			&= \frac{(k + 1)(k + 2)(2k + 3)}{6}
-		\end{align*}
-		
-		This is exactly what we needed to show, hence this concludes the proof by induction.
-	\end{enumerate}
-\end{proof}
-\vspace{\baselineskip}
+The closed forms of these are the term expression we began with, which are
 
-It turns out that similar to our original example, the sequences $a_n$ and $b_n$ represent the sum of the first $n$ squares and cubes respectively, hence we have shown the formulae.
-
-\begin{align}
-	\sum_{i = 1}^k i^2 &= \frac{k(k + 1)(2k + 1)}{6}
-\end{align}
-\begin{align}
-	\sum_{i = 1}^k i^2 &= \frac{k^2(k + 1)^2}{4}
-\end{align}
+\begin{align*}
+	a_n &= a + (n - 1)d \\
+	b_n &= a r^{n - 1}
+\end{align*}
 
 % ===========================================================
 \section{Extending Induction}
@@ -2569,22 +2660,130 @@ Now, with this technique, we can extend many of the inequalities we showed previ
 \end{proof}
 \vspace{\baselineskip}
 
-We can now approach more general solutions recurrence relations as well. Note that an equation of the form
+We can now approach more general solutions recurrence relations as well. A sequence of the form
 
 \begin{align*}
-	c_n =
+	x_n =
 	\begin{cases}
-		c_1 & n = 1 \\
-		a c_{n - 1} + b & n > 1
+		x_1 &: n = 1 \\
+		a x_{n - 1} + b &: n > 1
 	\end{cases}
 \end{align*}
 
-is called a first-order linear recurrence equation, which is a well-defined function, given the base case $f(0)$ is defined. The first order refers to the fact that $f(n)$ refers only $f(n - 1)$, one previous value of the function.
+is called a first-order linear recurrence relation, which is a well-defined sequence, given the base case $x_n$ is defined. The ``first-order'' refers to the fact that $x_n$ refers only to one previous term, and the ``linear'' comes from the fact that $x_n$ is a linear function of $x_{n - 1}$, plus some constant.
 
 \vspace{\baselineskip}
 \begin{theorem}[First-Order Linear Recurrences]
-	The solution to a first-order linear recurrence equation with co
+	The solution to a first-order linear recurrence relation defined as
+	
+	\begin{align*}
+		x_n =
+		\begin{cases}
+			x_1 &: n = 1 \\
+			a x_{n - 1} + b &: n > 1
+		\end{cases}
+	\end{align*}
+	
+	has closed-form solution
+	
+	\begin{align*}
+		x_n = a^{n - 1} x_1 + b \frac{a^{n - 1} - 1}{a - 1}, & \hspace{\baselineskip} a \neq 1 \\
+		x_n = x_1 + (n - 1)b, &\hspace{\baselineskip} a =  1
+	\end{align*}
 \end{theorem}
+\begin{proof}
+	Unsurprisingly, we are going to prove this by induction in a long and messy proof. However, we actually have two cases to consider, one where $a$ is 1 and one where it is not. We will first prove the more general of the two results, which is when $a \neq 1$.
+	
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} This is easy to check, since it only involves the first erm, which we are given.
+		
+		\begin{align*}
+			x_1 =  a^0 x_1 + b \frac{a^0 - 1}{a - 1}
+		\end{align*}
+		\item \emph{Induction Step.} Assume that the closed form is correct for the $k$th term so that
+		
+		\begin{align*}
+			x_k = a^{k - 1} x_1 + b \frac{a^{k - 1} - 1}{a - 1}
+		\end{align*}
+		
+		Now we show the formula also holds for the next term, namely for the $(k + 1)$th term. Do this this, we apply the recursive definition of this term.
+		
+		\begin{align*}
+			x_{k + 1} &= a x_k + b \\
+			&= a \left( a^{k - 1} x_1 + b \frac{a^{k - 1} - 1}{a - 1} \right) + b \\
+			&= a^k x_1 + ab \frac{a^{k - 1} - 1}{a - 1} + b \\
+			&= a^k x_1 + b \left( a \frac{a^{k - 1} - 1}{a - 1} + 1 \right) \\
+			&= a^k x_1 + b \left( \frac{a^k - a}{a - 1} + \frac{a - 1}{a - 1} \right) \\
+			&= a^k x_1 + b \frac{a^k - 1}{a - 1}
+		\end{align*}
+	\end{enumerate}
+	
+	Now, unfortunately, we still have to deal with the case of $a = 1$ separately. In this case, however, this recurrence is easier to work with.
+	
+	\begin{align*}
+		x_n =
+		\begin{cases}
+			x_1 &: n = 1 \\
+			x_{n - 1} + b &: n > 1
+		\end{cases}
+	\end{align*}
+	
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Case.} Once again, it is easy to verify the closed-form solution works for just one term.
+		
+		\begin{align*}
+			x_1 = x_1 + (1 - 1)b
+		\end{align*}
+		
+		\item \emph{Induction Step.} Assume the formula holds for the $k$th term, and show that it also hold for the term after that.
+		
+		\begin{align*}
+			x_{k + 1} &= x_{k} + d \\
+			&= x_1 + (k - 1)d + d \\
+			&= x_1 + kd
+		\end{align*}
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
+
+Notice that this immediately proves the equivalence of the recurrence relation definition of arithmetic and geometric sequences to the one we originally used. If we take $a = 1$, then we get
+
+\begin{align*}
+	x_n =
+	\begin{cases}
+		x_1 &: n = 1 \\
+		x_{n - 1} + b &: n > 1
+	\end{cases} \\
+	\text{then } x_n = x_1 + (n - 1) d
+\end{align*}
+
+which refers to arithmetic sequences, while if we take $b = 0$ then we find
+
+\begin{align*}
+	x_n =
+	\begin{cases}
+		x_1 &: n = 1 \\
+		ax_{n - 1} &: n > 1
+	\end{cases} \\
+	\text{then } x_n = x_1 a^{n - 1}
+\end{align*}
+
+which corresponds exactly to geometric sequences. Of course, it may seem odd that we need a separate case at all to account for when $a = 1$, but it turns out, in some sense, the general formula still holds. Rather than being thrown off guard by noticing the $(a - 1)$ in the denominator, we can instead take the limit as $a$ tends to 1.
+
+\begin{align*}
+	\lim_{a \rightarrow 1} x_n &= \lim_{a \rightarrow 1} \left( a^{n - 1} x_1 + b \frac{a^{n - 1} - 1}{a - 1} \right) \\
+	&= x_1 \lim_{a \rightarrow 1} a^{n - 1} + b \lim_{a \rightarrow 1} \frac{a^{n - 1} - 1}{a - 1} \\
+	&= x_1 + (n -1) b
+\end{align*}
+
+The first limit should be easy to see; the second one is the difference quotient representing derivative of the function
+
+\begin{align*}
+	f(a) = a^{n - 1}
+\end{align*}
+
+at $a = 1$. This is out of the scope of this chapter, but it goes to show that this closed-form solution is not as disjoint as it may appear to be.
+
 
 % ===========================================================
 \section{Strong Induction}
@@ -2642,7 +2841,41 @@ However, it turns out that we are allowed to assume something even stronger duri
 \end{proof}
 \vspace{\baselineskip}
 
-This allows us to augment the amount of information we get for ``free'' during the induction step, which allows us to prove statements that we otherwise might not be able to.
+This allows us to augment the amount of information we get for ``free'' during the induction step, which allows us to prove statements that we otherwise might not be able to. While this unlocks the door to more complicated recurrence relations, we can also re-visit a fact about the natural numbers we have been relying on without proof.
+
+\vspace{\baselineskip}
+\begin{theorem}[Prime Factorization]
+	Any natural number $n$ can be expressed as a, possibly empty, product of primes; meaning
+	
+	\begin{align*}
+		n = \prod_{i} p_i^{\alpha_i}
+	\end{align*}
+	
+	for some set of primes $\{ p_i \}$ and corresponding powers $\{ \alpha_i \}$. By convention, we say that the empty product is 1. In other words, every natural number has a prime factorization.
+\end{theorem}
+\begin{proof}
+	We can prove this by strong induction on $n$, with a base case of $n = 1$.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base case.} As explained, the empty product is taken to be 1 so 1 is trivially the product of primes, namely none at all.
+		
+		\item \emph{Induction Step.} Assume that this holds for all numbers less than or equal to some $k$. We now prove this for $(k + 1)$ by casework. Now by definition, every number greater than or equal to 2 is either prime or composite. If $(k + 1)$, then we are immediately done since we take
+		
+		\begin{align*}
+			k + 1 = \underbrace{(k + 1)^1}_\text{prime}
+		\end{align*}
+		
+		Otherwise, it it composite, which means by definition, it can be written as the product of two numbers less than itself, since it has a divisor that is not equal to 1 or itself. Therefore,
+		
+		\begin{align*}
+			k + 1 = a \cdot b, \text{ for some } a, b \le k.
+		\end{align*}
+		
+		By our induction hypothesis, we know both $a$ and $b$ can be expressed as a product of primes. Since $(k + 1)$ is the product of these, it can clearly also be expressed as a product of prime.
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
 
 %TODO: Complete Section (Strong Induction)
 
