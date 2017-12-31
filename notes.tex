@@ -21,7 +21,6 @@
 \DeclareMathOperator{\mean}{mean}
 
 \usepackage{multicol}
-\usepackage{marginnote}
 
 \usepackage{hyperref}
 \usepackage{graphicx}
@@ -32,7 +31,6 @@
 
 \DeclareMathOperator{\card}{card}
 
-\renewcommand*{\marginfont}{\sffamily\footnotesize}
 \newcommand{\header}[2]{\begin{flushright} \textbf{#1} #2 \end{flushright}}
 
 \usepackage[english]{babel}
@@ -56,7 +54,7 @@
 \maketitle
 
 \begin{abstract}
-	This document presents a compilation of notes I took while taking introductory computer-science focused math classes, namely \emph{Discrete Math \& Probability Theory} at the University of California at Berkeley and \emph{Introduction to Mathematical Proofs} at the University of Toronto. They represent a gentle introduction to the material in the courses I feel is often lacking.
+	This document presents a compilation of notes I took while taking introductory computer-science focused math classes, namely \emph{Discrete Math \& Probability Theory} at the University of California at Berkeley and \emph{Introduction to Mathematical Proofs} at the University of Toronto. They represent a gentle introduction to the material in these courses I wish I had coming in.
 \end{abstract}
 
 \tableofcontents
@@ -254,7 +252,7 @@ Furthermore, in the case where both $x$ and $y$ are nonnegative, we can take pos
 	\frac{x + y}{2} \ge \sqrt{xy} \text{ for } x, y \ge 0
 \end{align}
 
-This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right-hand side represents the \emph{geometric mean} \marginnote{mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
+This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right-hand side represents the \emph{geometric mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
 
 \begin{align*}
 	(x - y)^2 \ge 0
@@ -271,7 +269,7 @@ Remember the square of any real number is equal to 0 if and only if the number i
 	\end{align}
 \end{theorem}
 
-To introduce the second major inequality, the \emph{absolute value} \marginnote{absolute value} of a number, traditionally denoted as $|x|$ needs to be defined.
+To introduce the second major inequality, the \emph{absolute value} of a number, traditionally denoted as $|x|$ needs to be defined.
 
 \begin{align*}
 	|x| = \begin{cases}
@@ -305,7 +303,7 @@ Once again, we present fundamental properties of absolute values, in order to pr
 	\end{align*}
 \end{enumerate}
 
-The last property is rather interesting, and can be proved. Notice for proving these simple properties of absolute values, a \emph{proof by cases} \marginnote{proof by cases} is often most effective, a proof technique in which we break all possibilities into distinct \emph{cases} or scenarios and prove the claim for each of them. Since the absolute value function behaves different for positive and negative numbers, these are naturally our cases.
+The last property is rather interesting, and can be proved. Notice for proving these simple properties of absolute values, a \emph{proof by cases} is often most effective, a proof technique in which we break all possibilities into distinct \emph{cases} or scenarios and prove the claim for each of them. Since the absolute value function behaves different for positive and negative numbers, these are naturally our cases.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -412,7 +410,7 @@ Once again in this proof, we used rough work to arrive at a statement we knew wa
 \section{Sets}
 % ===========================================================
 
-So far we have been relying on intuition to define the real numbers, the focus of our attention. Although the formal definitions of the real numbers are outside the scope of these notes, it is worth paying attention to this fundamental notion of a group of numbers. In mathematics, this concept is represented as a \emph{set}, \marginnote{set} a well-defined collection of objects. Some examples are listed below.
+So far we have been relying on intuition to define the real numbers, the focus of our attention. Although the formal definitions of the real numbers are outside the scope of these notes, it is worth paying attention to this fundamental notion of a group of numbers. In mathematics, this concept is represented as a \emph{set}, a well-defined collection of objects. Some examples are listed below.
 
 \begin{align*}
 	S = \{\text{Saturday}, \text{Sunday}\} \\
@@ -421,27 +419,27 @@ So far we have been relying on intuition to define the real numbers, the focus o
 	\phi \text{ or } \{ \}
 \end{align*}
 
-The last example presents two ways to denote the \emph{empty set}, \marginnote{empty set} the set with no elements. Notice $R$ is the set of squares of all even numbers. The `:' introduces a condition in the set definition. Since every set must be well-defined, every object is either an \emph{element} \marginnote{element} of the set or not. If set $A$ contains element $a$ but does not contain $b$, we can write
+The last example presents two ways to denote the \emph{empty set}, the set with no elements. Notice $R$ is the set of squares of all even numbers. The `:' introduces a condition in the set definition. Since every set must be well-defined, every object is either an \emph{element} of the set or not. If set $A$ contains element $a$ but does not contain $b$, we can write
 
 \begin{align*}
 	a \in A \text{ and } b \notin A.
 \end{align*}
 
-In defining sets, we often specify the elements to be included from some \emph{universe} \marginnote{universe} of objects. However, the elements of elements not in $A$ clearly make a set as well, one which is intrinsically linked to $A$. This set is denoted the \emph{complement} \marginnote{complement} of $A$, written as $A^c$ and defined as
+In defining sets, we often specify the elements to be included from some \emph{universe} of objects. However, the elements of elements not in $A$ clearly make a set as well, one which is intrinsically linked to $A$. This set is denoted the \emph{complement} of $A$, written as $A^c$ and defined as
 
 \begin{align*}
 	A^c = \{ x \in \text{universe } : x \notin A \}
 \end{align*}
 
-Though we will explore notions of size in more depth later on, for now we define the \emph{cardinality}, \marginnote{cardinality} written as 
+Though we will explore notions of size in more depth later on, for now we define the \emph{cardinality}, written as 
 
 \begin{align*}
 	|A| \text{ or } \card(A),
 \end{align*}
 
-as its size. For \emph{finite} \marginnote{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\{0, 1, 2, \dots\}$, with 0 reserved for the empty set.
+as its size. For \emph{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\{0, 1, 2, \dots\}$, with 0 reserved for the empty set.
 
-Since a set is unordered and cannot contain duplicate items, a natural definition of equality is that both sets contain the same elements. On the other hand, if every element of set $B$ is in set $A$, then in some sense the latter set contains the former. Mathematically, we write that $B$ is a \emph{subset} \marginnote{subset} of $A$ or
+Since a set is unordered and cannot contain duplicate items, a natural definition of equality is that both sets contain the same elements. On the other hand, if every element of set $B$ is in set $A$, then in some sense the latter set contains the former. Mathematically, we write that $B$ is a \emph{subset} of $A$ or
 
 \begin{align*}
 	B \subseteq A.
@@ -476,7 +474,7 @@ Notice we defined the natural numbers to exclude 0, but the symbol $\mathbb{N}_0
 	\mathbb{N} \subseteq \mathbb{N}_0 \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}.
 \end{align}
 
-Since each set contains the previous, we may wonder what elements are in one but not the other. In some cases, this set itself might be valuable. For example all real numbers which are not rational are  referred to as as \emph{irrational}, \marginnote{irrational} and the set which contains all such numbers the irrational numbers. This set then is a result of taking the real numbers and subtracting away the rational numbers. This operation, along with a few more are formalized before for arbitrary sets $A$ and $B$.
+Since each set contains the previous, we may wonder what elements are in one but not the other. In some cases, this set itself might be valuable. For example all real numbers which are not rational are  referred to as as \emph{irrational}, and the set which contains all such numbers the irrational numbers. This set then is a result of taking the real numbers and subtracting away the rational numbers. This operation, along with a few more are formalized before for arbitrary sets $A$ and $B$.
 
 \begin{align*}
 	\emph{Subtraction. } A - B &= \{ x \in A : x \notin B \} \\
@@ -491,7 +489,7 @@ The intersection is the set of all elements in both, while the union is the set 
 	S \cap T = \phi
 \end{align*}
 
-The cartesian product of two sets outputs a set with a completely different structure: a set of tuples containing all possibly pairs of elements from $A$ and $B$. Unlike sets, \emph{tuples} \marginnote{tuples} are ordered lists of elements which could contain duplicates. This idea of product can be extended beyond two sets.
+The cartesian product of two sets outputs a set with a completely different structure: a set of tuples containing all possibly pairs of elements from $A$ and $B$. Unlike sets, \emph{tuples} are ordered lists of elements which could contain duplicates. This idea of product can be extended beyond two sets.
 
 \begin{align*}
 	A \times B &= \{ (a, b) : a \in A, b \in B \} \\
@@ -506,7 +504,7 @@ Repeated products of the same set can be abbreviated as a power, similar to the 
 	&= \{ (a_1, a_2, \dots, a_k) : a_1, a_2, \dots, a_k \in A \}
 \end{align*} 
 
-One final concept that must be introduced to complete our discussion on introductory set theory is the \emph{power set} \marginnote{power set} of a set, which contains all possible subsets. Formally we write this as
+One final concept that must be introduced to complete our discussion on introductory set theory is the \emph{power set} of a set, which contains all possible subsets. Formally we write this as
 
 \begin{align*}
 	\emph{Power set. } \mathcal{P}(A) = \{ S : S \subseteq A \}.
@@ -589,7 +587,7 @@ A major class of proofs involves proving two sets are equal. One possible way of
 \section{Functions}
 % ===========================================================
 
-At this point we can introduce a very special type of set which has profound uses in mathematics. This, of course, is a \emph{function}, \marginnote{function} which is a set of input-output ordered pairs which can represented as
+At this point we can introduce a very special type of set which has profound uses in mathematics. This, of course, is a \emph{function}, which is a set of input-output ordered pairs which can represented as
 
 \begin{align*}
 	\{ (x, f(x)) : x \in \text{domain} \}	
@@ -608,7 +606,7 @@ At this point we can introduce a very special type of set which has profound use
 \end{center}
 \vspace{\baselineskip}
 
-The function, then, takes an input from the domain and returns a single output in the codomain. This property of linking the domain to the codomain explains why function are often called \emph{maps}. \marginnote{map} Since the image is the set of outputs, and a subset of the codomain, it would be the set that results from applying the function to every element in the domain. Thus, for a function $f$ with domain $A$, the image is often denoted as $f(A)$.
+The function, then, takes an input from the domain and returns a single output in the codomain. This property of linking the domain to the codomain explains why function are often called \emph{maps}. Since the image is the set of outputs, and a subset of the codomain, it would be the set that results from applying the function to every element in the domain. Thus, for a function $f$ with domain $A$, the image is often denoted as $f(A)$.
 
 \begin{align*}
 	f(A) &= \{ f(a) : a \in A \}
@@ -626,7 +624,7 @@ In defining a function, the domain and codomain must be explicitly specified, he
 	\end{array}
 \end{align*}
 
-A function is called \emph{real-valued} \marginnote{real-valued} if its image is a subset of the real numbers, and thus all its outputs are real numbers. The \emph{graph} \marginnote{graph} of a function is a plot of all the input-output pairs. In working with functions there are a few elementary ways to combine them.
+A function is called \emph{real-valued} if its image is a subset of the real numbers, and thus all its outputs are real numbers. The \emph{graph} of a function is a plot of all the input-output pairs. In working with functions there are a few elementary ways to combine them.
 
 \begin{align}
 	\emph{Addition. } (f + g)(x) = f(x) + g(x) \\
@@ -634,7 +632,7 @@ A function is called \emph{real-valued} \marginnote{real-valued} if its image is
 	\emph{Composition. } (f \circ g)(x) = f(g(x))
 \end{align}
 
-We are often extremely interested in the image of a real-valued function. In particular, we may wonder about the nature of this set: does it have a maximum or minimum, or does the function go to infinity? Formally, a function $f: A \rightarrow \mathbb{R}$ is \emph{bounded} \marginnote{bounded} if there exists some $M \in \mathbb{R}$ such that
+We are often extremely interested in the image of a real-valued function. In particular, we may wonder about the nature of this set: does it have a maximum or minimum, or does the function go to infinity? Formally, a function $f: A \rightarrow \mathbb{R}$ is \emph{bounded} if there exists some $M \in \mathbb{R}$ such that
 
 \begin{align*}
 	|f(x)| \le M
@@ -696,7 +694,7 @@ In general, approach bounding proofs by expressing the bounded functions by thei
 \section{Fields}
 % ===========================================================
 
-So far in our deals with $\mathbb{R}$, we have been implicitly relying on properties or axioms of arithmetic in the real numbers. Many of these properties are not exclusive to the reals, and apply to a class of algebraic structures called \emph{fields}. \marginnote{field} A field, $F$, consists of
+So far in our deals with $\mathbb{R}$, we have been implicitly relying on properties or axioms of arithmetic in the real numbers. Many of these properties are not exclusive to the reals, and apply to a class of algebraic structures called \emph{fields}. A field, $F$, consists of
 
 \begin{align*}
 	(F, 0, 1, +, \cdot) \text{ where } F = \{ 0, 1, \dots \}. 
@@ -847,7 +845,7 @@ These suite of axioms lead to a host of simple properties, which should feel fam
 \end{proof}
 \vspace{\baselineskip}
 
-The two fields we have discussed so far have had an infinite number elements with predefined addition and multiplication operations that mirror their common usage. However, we may wonder what other fields exists, and in particular, what such a field would look like for a finite number of elements, a \emph{finite field}. \marginnote{finite field} Since a field must have at least two elements, let us attempt to construct a two element field, called the \emph{binary field}. \marginnote{binary field} Consider the field
+The two fields we have discussed so far have had an infinite number elements with predefined addition and multiplication operations that mirror their common usage. However, we may wonder what other fields exists, and in particular, what such a field would look like for a finite number of elements, a \emph{finite field}. Since a field must have at least two elements, let us attempt to construct a two element field, called the \emph{binary field}. Consider the field
 
 \begin{align*}
 	(S, 0, 1, +, \cdot) \text{ where } S = \{ 0, 1 \}.
@@ -925,7 +923,7 @@ This only leaves one output to be decided, the sum $1 + 1$. In the next theorem 
 \end{proof}
 \vspace{\baselineskip}
 
-In a \emph{proof by contradiction}, we assume the opposite of the statement we are trying to prove, and show how this leads a result that is clearly false. This \emph{contradiction} \marginnote{contradiction} shows that our initial assumption must be false, and therefore its opposite true. In this way, we indirectly prove our claim is true by showing it cannot be false. In the last proof, we demonstrated if $1 + 1 = 1$ then $0 = 1$, which is clearly false. Therefore, we could conclude $1 + 1 \neq 1$, which meant $1 + 1 = 0$, what we wanted to show.
+In a \emph{proof by contradiction}, we assume the opposite of the statement we are trying to prove, and show how this leads a result that is clearly false. This \emph{contradiction} shows that our initial assumption must be false, and therefore its opposite true. In this way, we indirectly prove our claim is true by showing it cannot be false. In the last proof, we demonstrated if $1 + 1 = 1$ then $0 = 1$, which is clearly false. Therefore, we could conclude $1 + 1 \neq 1$, which meant $1 + 1 = 0$, what we wanted to show.
 
 Moving on, we can tackle the construction of three-element field $T = \{ 0, 1, \omega \}$. Immediately, we write the addition and multiplication tables and fill out the simple rows and columns.
 
@@ -1140,7 +1138,7 @@ Interestingly, this means every row and column of the addition table must contai
 \section{Statements and Connectives}
 % ===========================================================
 
-The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition}, \marginnote{proposition} a sentence that is either true or false. This requirement is called the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
+The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition}, a sentence that is either true or false. This requirement is called the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
 
 \begin{align*}
 	P &\equiv \text{$\pi$ is rational} \\
@@ -1166,7 +1164,7 @@ In our examples, the first statement is false while the other two are true. On t
 \end{center} 
 \vspace{\baselineskip}
 
-Similar to defining operators in a finite field, we provide rigorous definitions for these logical connectives by showing whether the compound statement is true of false for every possible set input. Fortunately there are very few possible inputs since each statement can either be true or false. In composing a table, called a \emph{truth table}, \marginnote{truth table} we let each row correspond to a unique input.
+Similar to defining operators in a finite field, we provide rigorous definitions for these logical connectives by showing whether the compound statement is true of false for every possible set input. Fortunately there are very few possible inputs since each statement can either be true or false. In composing a table, called a \emph{truth table}, we let each row correspond to a unique input.
 
 \vspace{\baselineskip}
 \begin{center}
@@ -1260,7 +1258,7 @@ These truth tables provide complete definitions for each of these operators, but
 		\multicolumn{3}{r}{\text{conclusion}}
 	\end{array}
 	\end{align*}
-	The first statement is called the \emph{hypothesis}\marginnote{hypothesis} and the second statement the \emph{conclusion}\marginnote{conclusion}. The statement $(P \implies Q)$, interpreted as either
+	The first statement is called the \emph{hypothesis} and the second statement the \emph{conclusion}. The statement $(P \implies Q)$, interpreted as either
 	
 	\vspace{\baselineskip}
 	\begin{center}
@@ -1340,7 +1338,7 @@ It turns out that from these logical connective we can construct many expression
 \section{Predicates and Quantifiers}
 % ===========================================================
 
-Even after the application of connectives, statements are rather limited and specific, and so to express classes of statements, \emph{predicates} \marginnote{predicates} are used. A predicate with variables is an expression which is either true or false when its variables are supplied. Since predicates are not statements until its variables are defined, they are sometime called \emph{open statements}.
+Even after the application of connectives, statements are rather limited and specific, and so to express classes of statements, \emph{predicates} are used. A predicate with variables is an expression which is either true or false when its variables are supplied. Since predicates are not statements until its variables are defined, they are sometime called \emph{open statements}.
 
 \begin{align*}
 	P(n) = n \text{ is even}
@@ -1485,7 +1483,7 @@ To prove such a statement is rather straightforward and usually involves finding
 \end{proof}
 \vspace{\baselineskip}
 
-Of course, explicitly finding an example which satisfies the statement may not be as easy. Sometimes it is possible to show such an example must exist without actually finding it in a type of proof called a \emph{non-constructive proof}. \marginnote{non-constructive} The most famous example of such a proof is given below.
+Of course, explicitly finding an example which satisfies the statement may not be as easy. Sometimes it is possible to show such an example must exist without actually finding it in a type of proof called a \emph{non-constructive proof}. The most famous example of such a proof is given below.
 
 \vspace{\baselineskip}
 \begin{theorem}
@@ -1520,7 +1518,7 @@ Of course, explicitly finding an example which satisfies the statement may not b
 \end{proof}
 \vspace{\baselineskip}
 
-We will now introduce \emph{even} and \emph{odd} integers \marginnote{even, odd} and use this an an opportunity to prove statements about this property.
+We will now introduce \emph{even} and \emph{odd} integers and use this an an opportunity to prove statements about this property.
 
 \begin{align*}
 	\emph{Even. } x \text{ is even means } x = 2k \text{ for some } k \in \mathbb{Z} \\
@@ -1534,7 +1532,7 @@ Notice with definition every integer is either even or odd but not both. The set
 	\mathbb{Z}_o &= \{ \dots, -3, -1, 1, 3, 5, \dots \}
 \end{align*}
 
-where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. We will leave our discussion of \emph{parity}, \marginnote{parity}, the property of being either even or odd, here for now.
+where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. We will leave our discussion of \emph{parity}, the property of being either even or odd, here for now.
 
 % ===========================================================
 \section{Unary Proofs}
@@ -1547,7 +1545,7 @@ Despite this discussion about proving existential quantifiers, we are primarily 
 	\neg P &\equiv (\exists x \in S)\neg P(x).
 \end{align*}
 
-Hence, proving such a statement false amounts to finding at least one example for which the result fails to hold. As we showed above, this can either be done explicitly or implicitly (non-constructively). In the scenario where we find such case, we call it a \emph{counterexample}. \marginnote{counterexample} Since the negation of a universal quantifier is existential, only one counterexample is needed to prove the entire claim false.
+Hence, proving such a statement false amounts to finding at least one example for which the result fails to hold. As we showed above, this can either be done explicitly or implicitly (non-constructively). In the scenario where we find such case, we call it a \emph{counterexample}. Since the negation of a universal quantifier is existential, only one counterexample is needed to prove the entire claim false.
 
 
 It follows that we may now want to explore techniques to help prove these statements true. Of course, we usually deal with infinite sets and it is impossible to manually verify the predicate holds for all possible inputs. However, once we realize the majority of results fall within one of three classes of statements, 
@@ -1803,7 +1801,7 @@ its operations would be defined in exactly this way, with $e$ as the additive id
 	P(x) \implies Q(x) \equiv \underbrace{\neg Q(x) \implies \neg P(x)}_\text{contrapositive}
 \end{align*}
 
-Above is one of the logical equivalences we proved earlier, the right-hand side is called is called the \emph{contrapositive} or \emph{contraposition}. \marginnote{contrapositive, contraposition} This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
+Above is one of the logical equivalences we proved earlier, the right-hand side is called is called the \emph{contrapositive} or \emph{contraposition}. This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
 
 \vspace{\baselineskip}
 \begin{center}
@@ -2872,10 +2870,63 @@ This allows us to augment the amount of information we get for ``free'' during t
 			k + 1 = a \cdot b, \text{ for some } a, b \le k.
 		\end{align*}
 		
-		By our induction hypothesis, we know both $a$ and $b$ can be expressed as a product of primes. Since $(k + 1)$ is the product of these, it can clearly also be expressed as a product of prime.
+		By our induction hypothesis, we know both $a$ and $b$ can be expressed as a product of primes. Since $(k + 1)$ is the product of these, it can clearly also be expressed as a product of primes.
 	\end{enumerate}
 \end{proof}
 \vspace{\baselineskip}
+
+It turns out, as you probably already know, that something even stronger is true--that every natural number has a unique prime factorization. This is a theorem called the fundamental theorem of arithmetic, which is currently outside of our grasp, but which we will prove later. As we will see, what we proved just now is an important building block in the proof of the fundamental theorem. A proof that follows a similar pattern, and is also foundational to computers today, is the following.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	Every non-negative integer can be expressed in binary so that it is a sum of distinct powers of 2. In other words, there exists a subset of the non-negative integer $B \in \mathbb{N}_0$ such that
+	
+	\begin{align*}
+		n = \sum_{i \in B} 2^i
+	\end{align*}
+	
+	Once again, we use the convention that the empty sum is 0, which allows us to include 0 in this theorem.
+\end{theorem}
+\begin{proof}
+	We will once again use strong induction.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base case.} Once again, we trivially take $B = \{ \}$ represent 0. The reason this convention makes sense is because we do the same in the decimal numbers system; while we can express 
+		
+		\begin{align*}
+			15 = 1 \times 10^1 + 5 \times 10^0,
+		\end{align*}
+		
+		we can only express 0 by letting all the coefficients of powers of ten be 0. The same reasoning motivates our choice here.
+		
+		\item \emph{Induction step.} Assume that all non-negative numbers less than or equal to $k$ can be expressed as the sum of distinct powers of 2. We will now show the same holds for $(k + 1)$. Now we have two cases to consider, one where this number is even and one where this is odd. In the former we can write
+		
+		\begin{align*}
+			k + 1 &= 2m, m \in \mathbb{N}_0
+		\end{align*}
+		
+		Since $m$ must be strictly less than $(k + 1)$, from the induction hypothesis, we know that it can be expressed as a sum of distinct powers of two. Clearly, when we multiply each of these by two (raising their exponents by one), we find a new representation. The second case to consider is when
+		
+		\begin{align*}
+			k + 1 = k + 2^0
+		\end{align*}
+		
+		is odd. This means that $k$ is even and by the induction hypothesis can be represented as a sum of unique powers of 2. Since it is even, this sum cannot include $2^0$, which means we simply add this to find the desired representation.
+	\end{enumerate}
+\end{proof}
+\vspace{\baselineskip}
+
+Having shown some unique applications of this proof technique, we return, as promised, to more complicated recurrence relations. In particular, we can now prove closed form representations for recurrences beyond first order, in which each term is a function of more than just the previous term. In the extreme case, we could have a sequence for which each term is defined in terms of all its predecessors
+
+\begin{align*}
+	a_n =
+	\begin{cases}
+		a_1 &: n = 1 \\
+		f(a_{n - 1}, a_{n - 2}, \dots a_1) &: n > 1
+	\end{cases}
+\end{align*}
+
 
 %TODO: Complete Section (Strong Induction)
 
