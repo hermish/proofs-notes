@@ -2917,18 +2917,112 @@ It turns out, as you probably already know, that something even stronger is true
 \end{proof}
 \vspace{\baselineskip}
 
-Having shown some unique applications of this proof technique, we return, as promised, to more complicated recurrence relations. In particular, we can now prove closed form representations for recurrences beyond first order, in which each term is a function of more than just the previous term. In the extreme case, we could have a sequence for which each term is defined in terms of all its predecessors
+Having shown some unique applications of this proof technique, we return, as promised, to more complicated recurrence relations. In particular, we can now prove closed form representations for recurrences beyond first order, in which each term is a function of more than just the previous term. In the extreme case, we could have a sequence for which each term is defined in terms of all its predecessors.
 
 \begin{align*}
 	a_n =
 	\begin{cases}
 		a_1 &: n = 1 \\
-		f(a_{n - 1}, a_{n - 2}, \dots a_1) &: n > 1
+		f(a_{n - 1}, a_{n - 2}, \dots, a_1) &: n > 1
 	\end{cases}
 \end{align*}
 
+However, more often, we run into cases where each term is a function of two, three or some other finite number of terms. A famous such sequence is the \emph{Fibonacci sequence},
 
-%TODO: Complete Section (Strong Induction)
+\begin{align*}
+	F_n =
+	\begin{cases}
+		1 &: n = 1 \\
+		1 &: n = 2 \\
+		F_{n - 1} + F_{n - 2} &: n > 2
+	\end{cases}
+\end{align*}
+ 
+in which the first two terms are 1 and each term after this is the sum of the previous two. The first few terms of this sequence are
+
+\begin{align*}
+	\langle F \rangle = 1, 1, 2, 3, 5, 8, 13, 21, 35, 56, 91, \dots
+\end{align*}
+
+It turns out that there indeed is a closed-form solution to the Fibonacci sequence, albeit one which seems far from intuitive, which we will show below 
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The closed form of the Fibonacci sequence is given by the exact formula,
+	
+	\begin{align*}
+		F_n = \frac{1}{\sqrt{5}}\left( \varphi^n - \psi^n \right)
+	\end{align*}
+	
+	where $\varphi$ and $\psi$ are the two roots of the quadratic $x^2 - x - 1$, or explicitly
+	
+	\begin{align*}
+		\varphi = \frac{1 + \sqrt{5}}{2}, \, \psi = \frac{1 - \sqrt{5}}{2}.
+	\end{align*}
+	
+	The number $\varphi$ appears in other places and is often referred to as the golden ratio.
+\end{theorem}
+\begin{proof}
+	It may not immediately be obvious that the closed firm solution holds; it seems rather miraculous that this formula, peppered with radicals, should somehow yield whole numbers, and additionally correspond to the Fibonacci sequence. Yet, we do just that.
+	
+	\vspace{\baselineskip}
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item \emph{Base Cases.}
+		The recursive part of the Fibonacci sequence definition only applies to terms past the fist two, hence we will have to show the formula hold manually; this is will be our base cases.
+		
+		\begin{align*}
+			F_1 &= \frac{1}{\sqrt{5}}\left( \varphi^1 - \psi^1 \right) \\
+			&= \frac{1}{\sqrt{5}}\left( \frac{1 + \sqrt{5}}{2} - \frac{1 - \sqrt{5}}{2} \right) \\
+			&= \frac{1}{\sqrt{5}} \frac{2\sqrt{5}}{2} \\
+			&= 1
+		\end{align*}
+		
+		To show the formula also holds for the seconds term, we use a trick, which is noting that since $\phi$ and $\psi$ are roots of $x^2 - x - 1$,
+		
+		\begin{align*}
+			\varphi^2 - \varphi - 1 = 0, \text{ so } \varphi^2 = \varphi + 1 \text{ and} \\
+			\psi^2 - \psi - 1 = 0, \text{ so } \psi^2 = \psi + 1. \\
+		\end{align*}
+		
+		We can use this to simply the exponents in the canonical closed form representation of the second term.
+		
+		\begin{align*}
+			F_2 &= \frac{1}{\sqrt{5}}\left( \varphi^2 - \psi^2 \right) \\
+			&= \frac{1}{\sqrt{5}}\left( \varphi + 1 - \psi - 1 \right) \\
+			&= \frac{1}{\sqrt{5}}\left( \varphi - \psi \right) \\
+			&= F_1 \\
+			&= 1
+		\end{align*}
+		
+		This matches with the first few terms of the first two terms of the Fibonacci sequence, which means the base cases hold.
+		
+		\item \emph{Induction Step.} Assume that the formula holds for all terms with number less than or equal to $k$, we want to show that it will also hold for the next term. Specifically, we will use,
+		
+		\begin{align*}
+			F_k = \frac{1}{\sqrt{5}} \left( \varphi^k - \psi^k \right) \\
+			F_{k - 1} \frac{1}{\sqrt{5}} \left( \varphi^{k - 1} - \psi^{k - 1} \right).
+		\end{align*}
+		
+		We can now plug this into the recursive definition of $F_{k + 1}$ to show that the closed form also holds for the next term.
+		
+		\begin{align*}
+			F_{k + 1} &= F_k + F_{k - 1} \\
+			&= \frac{1}{\sqrt{5}} \left( \varphi^k - \psi^k \right) +\frac{1}{\sqrt{5}} \left( \varphi^{k - 1} - \psi^{k - 1} \right) \\
+			&= \frac{1}{\sqrt{5}} \left( \varphi^k + \varphi^{k - 1} - \psi^k - \psi^{k - 1} \right) \\
+			&= \frac{1}{\sqrt{5}} \left( \varphi^{k - 1} (\varphi + 1) - \psi^{k - 1} (\psi + 1) \right)
+		\end{align*}
+		
+		Now we can use the observation we used earlier, in reverse, to swiftly finish the proof. Namely $x + 1$ equals $x^2$ when $x$ is $\varphi$ or $\psi$. Making the substitution, we immediately get what we want.
+		
+		\begin{align*}
+			F_{k + 1} &= \frac{1}{\sqrt{5}} \left( \varphi^{k - 1} (\varphi + 1) - \psi^{k - 1} (\psi + 1) \right) \\
+			&= \frac{1}{\sqrt{5}} \left( \varphi^{k - 1} \varphi^2 - \psi^{k - 1} \psi^2 \right) \\
+			&= \frac{1}{\sqrt{5}} \left( \varphi^{k + 1} - \psi^{k + 1} \right)
+		\end{align*}
+	\end{enumerate}
+	This is what we needed to show to prove our claim by induction.
+\end{proof}
+\vspace{\baselineskip}
 
 % ===========================================================
 \section{The Well-Ordering Principle}
@@ -2974,7 +3068,20 @@ We can now show another equivalent fact about the natural numbers which is inext
 \end{proof}
 \vspace{\baselineskip}
 
-%TODO: Complete Section (Well-Ordering Principle)
+In some sense, the well-ordering principle is the opposite of induction, which makes it a powerful tool for proof by contradiction over the natural numbers. If a predicate $P(n)$ about all natural numbers is false then the set 
+
+\begin{align*}
+	\{ n \in \mathbb{N} : P(n) \text{ is false}\}
+\end{align*}
+
+will be non-empty subset of the natural numbers. It must be non-empty because otherwise this means the predicate is true for all natural numbers. By the well-ordering principle, this set must have a smallest element. A common pattern in a proof by contradiction is the following:
+
+\vspace{\baselineskip}
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item Assume that the proposition is false;
+	\item By the well-ordering principle, there must be a smallest natural number for which the predicate is false, denote this $k$;
+	\item Show that we can somehow derive a smaller number for which this proposition is also false, contradicting the original assumption that $k$ was the smallest such couter-example.
+\end{enumerate}
 
 %\chapter{Bijections and Cardinality}
 %\chapter{Divisibility}
