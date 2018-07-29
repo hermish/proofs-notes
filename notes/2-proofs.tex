@@ -1,0 +1,921 @@
+\chapter{Language and Proofs}
+
+% ===========================================================
+\section{Statements and Connectives}
+% ===========================================================
+
+The atomic unit of mathematical reasoning is the \emph{mathematical statement} or \emph{proposition}, a sentence that is either true or false. This requirement is called the \emph{principle of bivalence.} For a statement, its \emph{truth value} is whether it is true or false. Examples of statements are given below.
+
+\begin{align*}
+	P &\equiv \text{$\pi$ is rational} \\
+	Q &\equiv \text{$x^2 + x + 1$ has a real solution} \\
+	R &\equiv \text{July 4, 1776 was a Thursday} \\
+\end{align*}
+ 
+In our examples, the first statement is false while the other two are true. On the other hand ``let them eat cake'' is not a mathematical statement. These statements can be combined with logical connectives to express more complicated thoughts, which are listed below.
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		Name & Usage & Meaning \\
+		\midrule
+		Negation & $\neg P$ & not $P$ \\
+		Conjunction & $P \wedge Q$ & $P$ and $Q$ \\
+		Disjunction & $P \lor Q$ & $P$ or $Q$ \\
+		Conditional & $P \implies Q$ & if $P$ then $Q$ \\
+		Biconditional & $P \iff Q$ & $P$ if and only if $Q$ \\
+		\bottomrule
+	\end{tabular}
+\end{center} 
+\vspace{\baselineskip}
+
+Similar to defining operators in a finite field, we provide rigorous definitions for these logical connectives by showing whether the compound statement is true of false for every possible set input. Fortunately there are very few possible inputs since each statement can either be true or false. In composing a table, called a \emph{truth table}, we let each row correspond to a unique input.
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{TAB}(c, 50pt){cc}{c|cc}
+		$P$ & $\neg P$ \\
+		T & F \\
+		F & T \\
+	\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+Notice this truth table shows completely negation, since it tells us how the statement behaves given every input. In this case, if a statement is true its negation is false and if a statement is false its negation is true. In English, then, the negation of a statement would be its opposite. The truth tables for the remaining connective are given below; notice each require two inputs and thus have four possible inputs.
+
+\vspace{\baselineskip}
+\begin{multicols}{2}
+	\begin{center}
+	\begin{TAB}(c, 50pt){ccc}{c|cccc}
+		$P$ & $Q$ & $P \wedge Q$ \\
+		T & T & T \\
+		T & F & F \\
+		F & T & F \\
+		F & F & F \\
+	\end{TAB}
+	\end{center}
+	
+	\begin{center}
+	\begin{TAB}(c, 50pt){ccc}{c|cccc}
+		$P$ & $Q$ & $P \implies Q$ \\
+		T & T & T \\
+		T & F & F \\
+		F & T & T \\
+		F & F & T \\
+	\end{TAB}
+	\end{center}
+	
+	\begin{center}
+	\begin{TAB}(c, 50pt){ccc}{c|cccc}
+		$P$ & $Q$ & $P \lor Q$ \\
+		T & T & T \\
+		T & F & T \\
+		F & T & T \\
+		F & F & F \\
+	\end{TAB}
+	\end{center}
+
+	\begin{center}
+	\begin{TAB}(c, 50pt){ccc}{c|cccc}
+		$P$ & $Q$ & $P \iff Q$ \\
+		T & T & T \\
+		T & F & F \\
+		F & T & F \\
+		F & F & T \\
+	\end{TAB}
+	\end{center}
+\end{multicols}
+\vspace{\baselineskip}
+
+These truth tables provide complete definitions for each of these operators, but fail to provide very much intuition.
+
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item \emph{Negation:} As mentioned before, if $R$ is true its negation is false and vice versa. The simple interpretation of this that $\neg R$ is the opposite of $R$.
+	\begin{align*}
+		P &\equiv \text{$\pi$ is rational} \\
+		\neg P &\equiv \text{$\pi$ is not rational} \\
+		Q &\equiv \sqrt{2} > 0 \\
+		\neg Q &\equiv \sqrt{2} \le 0
+	\end{align*}
+	
+	\item \emph{Conjunction:} $P \wedge Q$ is true only when both $P$ and $Q$ are true, which matches with we think about ``and.''
+	\begin{align*}
+		P &\equiv \text{$\sqrt{2}$ is irrational} \\
+		Q &\equiv \text{$(x^2 = 2)$ holds when $x = \sqrt{2}$} \\
+		P \wedge Q &\equiv \text{$\sqrt{2}$ is irrational and a solution to $x^2 = 2$}
+	\end{align*}
+
+	\item \emph{Disjunction:} $P \lor Q$ is true when either $P$, $Q$, or both $P$ and $Q$ are true. Another way to think about this is that  $P \lor Q$ is only false when both statements $P$ and $Q$ are both false. There is a slight difference between this logical ``or'' and the one in everyday usage; often times, ``or'' in English can mean one or the other but not both, which would be called the \emph{exclusive-or} in mathematics.
+	\begin{align*}
+		P &\equiv \text{$x$ is positive} \\
+		Q &\equiv \text{$x$ is negative} \\
+		P \lor Q &\equiv \text{$x$ is positive or negative} \\
+		&\equiv \text{$x$ is nonzero}
+	\end{align*}
+	
+	\item \emph{Conditional:} This connective is essential in proofs, and thus is worth taking closer look at.
+	\begin{align*}
+	\begin{array}{lll}
+		\multicolumn{3}{l}{\text{hypothesis}} \\
+		\downarrow && \\
+		P & \implies & Q \\
+		&& \uparrow \\
+		\multicolumn{3}{r}{\text{conclusion}}
+	\end{array}
+	\end{align*}
+	The first statement is called the \emph{hypothesis} and the second statement the \emph{conclusion}. The statement $(P \implies Q)$, interpreted as either
+	
+	\vspace{\baselineskip}
+	\begin{center}
+			``if $P$ then $Q$'' or \\
+			``$P$ implies $Q$,''
+	\end{center}
+	\vspace{\baselineskip}
+	
+	  means when $P$ (the hypothesis) is true, $Q$ (the conclusion) must be true as well. On the other hand, when $P$ is false, it does matter whether $Q$ is true or false, and the statement is true in either case. Once again, the only time a conditional is false is when $P$ is true but $Q$ is false.
+	  
+	  \item \emph{Biconditional:} A biconditional $(P \iff Q)$ is true when both $P$ and $Q$ have the truth value and false they do not. Therefore, if the biconditional is true the statements $P$ and $Q$ are logically interchangeable since both are true or false together. For this reason, $P$ and $Q$ can be said to be ``logically equivalent.'' This concept can be expressed in two ways as either
+	  	  
+	  \begin{align*}
+	  	P \iff Q \text{ or } P \equiv Q,
+	  \end{align*}
+	  
+	  where the second notation is traditionally used to indicate the two logical compound expressions are equivalent, especially when one side might itself contain the biconditional connective.
+\end{enumerate}
+
+It turns out that from these logical connective we can construct many expressions which are identical. We prove a few of the important logical equivalences. \\
+
+\begin{theorem}[De Morgan's laws]
+	For two logical statements $R$ and $S$, the following equivalences are true.
+	
+	\begin{align}
+		\neg(R \wedge S) &\equiv \neg R \lor \neg S \\
+		\neg(R \lor S) &\equiv \neg R \wedge \neg S
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	The general way to prove logical statements are equivalent is to construct truth tables and show both statements have identical outputs for the same inputs. In order to avoid receptiveness, we will do this for the first statement and leave the proof of the second as an exercise.
+	
+	\vspace{\baselineskip}
+	\begin{center}
+		\begin{tabular}{cccc}
+			$R$ & $S$ & $R \wedge S$ & $\neg(R \wedge S)$ \\
+			\midrule
+			T & T & T & F \\
+			T & F & F & T \\
+			F & T & F & T \\
+			F & F & F & T \\
+		\end{tabular}
+	\end{center}
+	\vspace{\baselineskip}
+	
+	This gives us the truth table for the left-hand side of the equation. We follow the same process, slow building up the right-hand side.
+	
+	\vspace{\baselineskip}
+	\begin{center}
+		\begin{tabular}{ccccc}
+			$R$ & $S$ & $\neg R$ & $\neg S$ & $\neg R \lor \neg S$ \\
+			\midrule
+			T & T & F & F & F \\
+			T & F & F & T & T \\
+			F & T & T & F & T \\
+			F & F & T & T & T \\
+		\end{tabular}
+	\end{center}
+	
+	Since $(\neg R \lor \neg S)$ and $\neg(R \wedge S)$ are true and false together, given the same inputs (have identical columns) the two statements are logically equivalent. \\
+\end{proof}
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The following important logical equivalences are also true.
+	
+	\begin{align}
+		P \iff Q &\equiv (P \implies Q) \wedge (Q \implies P) \\
+		P \implies Q &\equiv (\neg Q \implies \neg P) \\
+		P \implies Q &\equiv \neg (P \wedge \neg Q)
+	\end{align}
+\end{theorem}
+
+% ===========================================================
+\section{Predicates and Quantifiers}
+% ===========================================================
+
+Even after the application of connectives, statements are rather limited and specific, and so to express classes of statements, \emph{predicates} are used. A predicate with variables is an expression which is either true or false when its variables are supplied. Since predicates are not statements until its variables are defined, they are sometime called \emph{open statements}.
+
+\begin{align*}
+	P(n) = n \text{ is even}
+\end{align*}
+
+Above is an example of such a predicate; although it currently is neither true nor false, as soon as $P$ is given a reasonable input its truth value is defined.
+
+\begin{align*}
+	P(0) \text{ is true} \\
+	P(1) \text{ is false} \\
+	P(2) \text{ is true} \\
+	\dots
+\end{align*}
+
+Notice the truth value changes as a function of the input, though we need only consider inputs for which it is well-defined. For example, in this case, the expression $P(\pi)$ makes no sense since even and odd are not defined for real numbers.
+
+Having introduced this machinery, we can return to DeMorgan's laws and explain its connection to the identically named rules for sets. For two sets $A$ and $B$, consider the following statements.
+
+\begin{align*}
+	R(x) &\equiv x \in A \\
+	S(x) &\equiv x \in B
+\end{align*}
+
+From DeMorgan's laws, we know the following logical equivalence is true.
+
+\begin{align*}
+	\neg[R(x) \wedge S(x)] &\equiv \neg R(x) \lor \neg S(x) \\
+\end{align*}
+
+We will translate both sides into the language of set theory.
+ 
+\begin{align*}
+	\neg[R(x) \wedge S(x)] &\equiv \neg[(x \in A) \wedge (x \in B)] \\
+	&\equiv \neg[x \in (A \cap B)] \\
+	&\equiv x \notin (A \cap B) \\
+	&\equiv x \in (A \cap B)^c
+\end{align*}
+
+\begin{align*}
+	\neg R(x) \lor \neg S(x) &\equiv \neg(x \in A) \lor \neg(x \in B) \\
+	&\equiv x \notin A \lor x \notin B \\
+	&\equiv x \in A^c \lor x \in B^c \\
+	&\equiv x \in A^c \cup B^c
+\end{align*}
+
+\begin{align*}
+	\therefore (A \cap B)^c = A^c \cup B^c
+\end{align*}
+
+Similarly, with these defined statements,
+
+\begin{align*}
+	\neg[R(x) \lor S(x)] &\equiv \neg R(x) \wedge \neg S(x) \\
+	\text{means } (A \cup B)^c &= A^c \cap B^c
+\end{align*}
+
+So far we have only discussed whether statements are true for individual inputs, but often times we are interested in the behavior of a predicate over a set of inputs. To do this, we introduce two quantifiers.
+
+\begin{align*}
+	\emph{Universal. } \forall x \in S &\equiv \text{ ``for all $x$ in $S$''} \\
+	\emph{Existential. } \exists x \in S &\equiv \text{ ``there exists an $x$ in $S$''}
+\end{align*}
+
+Attaching either a universal quantifier or existential quantifier to a predicate makes it a statement.
+
+\begin{align*}
+	(\forall x \in S)P(x) \equiv &\text{ ``for all $x$ in $S$,$P(x)$ is true''} \\
+	(\exists x \in S)P(x) \equiv &\text{ ``there exists an $x$ in $S$ such that} \\
+	& \text{\quad $P(x)$ is true''}
+\end{align*}
+
+In English these quantifiers can often be disguised, but are commonly used when talking about mathematical statements. A predicate with multiple variables can have multiple quantifiers, where order matters.
+
+\begin{align*}
+	S &= (\forall x \in \mathbb{R})(\exists M \in \mathbb{R})(|x^2| \le M) \\
+	&= \text{for all real numbers $x$, there exists a real $M$ such that $|x^2| \le M$} \\
+	T &= (\exists M \in \mathbb{R})(\forall x \in \mathbb{R})(|x^2| \le M) \\
+	&= \text{there exists a real $M$ such that for all real $x$, $|x^2| \le M$}
+\end{align*}
+
+The first statement means that for any real input of $x^2$, we can find a $y$-value which is more extreme that it. This is trivially true since any finite input of the function is finite, take for example
+
+\begin{align*}
+	M = x^2 + 1.
+\end{align*}
+
+On the other hand, the second statements says there is some bound $M$ for which all values in the image of $f(x) = x^2$ lie between $-M$ and $M$. Note this is identical to the definition of a bounded function we discussed earlier, only written in the form of a statement. Now consider the negation of this statement. To argue a function is not bounded is to should for all bounds $M$ we can chose at least one point which exceeds this bound.
+
+\begin{align*}
+	\neg T &= (\forall M \in \mathbb{R})(\exists x \in \mathbb{R})(x^2 > M)
+\end{align*}
+
+If we compare the definition of bounded with its negation we notice an interesting relationship, where, in addition to the predicate being negated, all universal quantifiers turn into existential ones and vice versa. This is formalized below.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	When negating a quantified predicate, flip the quantifiers in addition to negating the predicate.
+	
+	\begin{align}
+		\neg [(\forall x \in S)P(x)] &\equiv (\exists x \in S)\neg P(x) \\
+		\neg [(\exists x \in S)P(x)] &\equiv (\forall x \in S)\neg P(x) 
+	\end{align}
+\end{theorem}
+
+% ===========================================================
+\section{Proving Existential Statements}
+% ===========================================================
+
+The simplest class of statements we need to prove are those with existential quantifiers; those of the form
+
+\begin{align*}
+	(\exists x \in S)P(x).
+\end{align*}
+
+To prove such a statement is rather straightforward and usually involves finding the $x$ for which the claim is true. For example, we can prove the following statement, which is sufficient to show the irrational numbers do not obey closure under regular addition and therefore cannot be considered a field.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	There exist two irrational numbers $r$ and $s$ for which $r$ + $s$ is rational.
+\end{theorem}
+\begin{proof}
+	Expressed as a logical statement, we are interested in the statement
+	
+	\begin{align*}
+		(\exists r, s \in \mathbb{R} - \mathbb{Q})(r - s \in \mathbb{Q}).
+	\end{align*}
+	
+	We will prove this existentially qualified statement by fining such a pair of irrational $r$ and $s$ for which their sum is irrational. Consider now:
+	
+	\begin{align*}
+		\begin{cases}
+			r = \pi \\
+			s = -\pi \\
+		\end{cases}
+	\end{align*}
+	
+	\begin{align*}
+		r - s = \pi + (-\pi) = 0
+	\end{align*}
+	
+	Since we have found at least one pair of elements for which this statement is true, we have proved that the sum of two irrational numbers can be rational.
+\end{proof}
+\vspace{\baselineskip}
+
+Of course, explicitly finding an example which satisfies the statement may not be as easy. Sometimes it is possible to show such an example must exist without actually finding it in a type of proof called a \emph{non-constructive proof}. The most famous example of such a proof is given below.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	There exist two irrational numbers $r$ and $s$ for which $r^s$ is rational.
+\end{theorem}
+
+\begin{proof}[Proof by Cases]
+	This proof seems nearly impossible to attempt directly. The irrational numbers are a very diverse set and a clear starting point is elusive. Instead, we attempt a non-constructive proof with a trick.
+	
+	\header{Case 1. }{$\sqrt{2}^{\sqrt{2}}$ is irrational}
+	Notice what happens when this number is raised to the power of $\sqrt{2}$.
+	
+	\begin{align*}
+		\left( \sqrt{2}^{\sqrt{2}} \right)^{\sqrt{2}} &= \sqrt{2}^{\sqrt{2} \cdot \sqrt{2}} \\
+		&= \sqrt{2}^2 \\
+		&= 2 \in \mathbb{Q}
+	\end{align*}
+	
+	Therefore if $\sqrt{2}^{\sqrt{2}}$ is irrational, then we have found two irrational numbers for which their power is rational.
+	
+	\header{Case 2. }{$\sqrt{2}^{\sqrt{2}}$ is rational}
+	
+	It turns out that if this case is correct, then our proof is automatically done, since the square root of two, an irrational number, when raised to the power of itself is rational.
+	
+	Ultimately, we have shown that either
+	
+	\begin{align*}
+		\left( \sqrt{2}^{\sqrt{2}} \right)^{\sqrt{2}} \text{ or } \sqrt{2}^{\sqrt{2}}
+	\end{align*}
+	
+	must be rational and the result of raising one irrational number to the power another. Although we do not know which case is correct, one of them must be true and thus there must exist two irrational numbers who power is rational. (In case you were still curious, it turns out the first case is correct.)
+\end{proof}
+\vspace{\baselineskip}
+
+We will now introduce \emph{even} and \emph{odd} integers and use this an an opportunity to prove statements about this property.
+
+\begin{align*}
+	\emph{Even. } x \text{ is even means } x = 2k \text{ for some } k \in \mathbb{Z} \\
+	\emph{Odd. }x \text{ is odd means } x = 2k + 1 \text{ for some } k \in \mathbb{Z}
+\end{align*}
+
+Notice with definition every integer is either even or odd but not both. The sets of even and odd numbers look as follows
+
+\begin{align*}
+	\mathbb{Z}_e &= \{ \dots, -4, -2, 0, 2, 4, \dots \} \\
+	\mathbb{Z}_o &= \{ \dots, -3, -1, 1, 3, 5, \dots \}
+\end{align*}
+
+where $\mathbb{Z}_e$ denotes the even integers and $\mathbb{Z}_o$ the odd integers. We will leave our discussion of \emph{parity}, the property of being either even or odd, here for now.
+
+% ===========================================================
+\section{Unary Proofs}
+% ===========================================================
+
+Despite this discussion about proving existential quantifiers, we are primarily interested in proving or disproving statements with universal quantifiers. That is, we prefer more general results about all natural numbers, all integers, or all real numbers. To disprove a statement, we can prove its negation. For a universally quantified statement, these have the following forms.
+
+\begin{align*}
+	P &\equiv (\forall x \in S)P(x) \\
+	\neg P &\equiv (\exists x \in S)\neg P(x).
+\end{align*}
+
+Hence, proving such a statement false amounts to finding at least one example for which the result fails to hold. As we showed above, this can either be done explicitly or implicitly (non-constructively). In the scenario where we find such case, we call it a \emph{counterexample}. Since the negation of a universal quantifier is existential, only one counterexample is needed to prove the entire claim false.
+
+
+It follows that we may now want to explore techniques to help prove these statements true. Of course, we usually deal with infinite sets and it is impossible to manually verify the predicate holds for all possible inputs. However, once we realize the majority of results fall within one of three classes of statements, 
+
+\begin{align*}
+	S_1 &\equiv (\forall x \in S)P(x), \\
+	S_2 &\equiv (\forall x \in S)[P(x) \implies Q(x)], \text{ and} \\
+	S_3 &\equiv (\forall x \in S)[P(x) \iff Q(x)],
+\end{align*} 
+
+we can apply the tools mathematical logic to discover more efficient methods to approach these proofs. But first, we provide examples of statements  of this form statements we have already encountered.
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{tabular}{rp{0.6\linewidth}}
+		\toprule
+		Type & Examples \\
+		\midrule
+		$P(x)$ & for all real numbers $x$, $\sqrt{x^2} = |x|$ \\
+		& for all $x, y \in \mathbb{R}$, $|x| + |y| \ge |x +y|$ \\
+		& for any finite set $S$, the size of $\mathcal{P}(S)$ is $2^{|S|}$ \\
+		& for any statements $S$ and $T$, $\neg(S \wedge T) \equiv \neg S \wedge \neg T $ \vspace{0.25\baselineskip} \\
+		$P(x) \implies Q(x)$ & if $x = y$ and $x, y > 0$ then their arithmetic mean equals their geometric mean. \\
+		& if $b^2 - 4ac \ge 0$ then a quadrative equation has at least one solution \\
+		& if $F$ is a field with $x, y \in F$, then $(x + y) \in F$ \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+We first begin our examination of proof techniques with statements of the form
+
+\begin{align*}
+	(\forall x \in S)P(x).
+\end{align*}
+
+Notice that these statements are actually of the form
+
+\begin{align*}
+	(\forall x \in S)[H(x) \implies P(x)],
+\end{align*}
+
+where $H(x)$ represents many of the definitions and assumptions we take for granted. For example, in proving the triangle inequality, we assumed that the absolute value function was defined in a particular way, along with a few axioms of the real numbers. However since the hypotheses are not meaningful in the sense that they provides any significant information apart from the generally accepted rules, they are acceptable to omit. The two main methods of proving such a statement are a direct proof and a proof by contradiction. In the former,we derive the statement directly from those which are true. An example of such a proof is given below.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any real number $x$ the following inequality is always true.
+	
+	\begin{align}
+		|x| + \frac{1}{|x|} \ge 2
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	It turns out that this statement is rather useful, and  appears frequently in other places. This statement is relatively easy to prove as well, since it appears to be a special case of the arithmetic-geometric inequality. Take:
+	
+	\begin{align*}
+		\begin{cases}
+			a = |x| \\
+			b = 1 / |x|
+		\end{cases}
+	\end{align*}
+		
+	Since both $a$ and $b$ are greater than 0 we can apply the special case of the theorem which hold for positive numbers.
+	
+	\begin{align*}
+		a + b &\ge 2 \sqrt{ab} \\
+		&= 2 \sqrt{|x| \cdot 1 / |x|} \\
+		&= 2 \\
+		\therefore |x| + \frac{1}{|x|} &\ge 2
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+While a direct proof is rather straightforward, it can difficult to see how to proceed when confronted with a statement. In this case, a \emph{proof by contradiction} can be used: assume the negation of the statement and show that it must be wrong. Remember that a either a statement or its negation must be true, therefore showing the negation to be false is equivalent to proving the statement true. An example where a direct proof might be difficult is given below.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any list of real numbers, there must be at least one value which is a large as the average. Alternatively, this can be expressed as:
+	
+	\begin{align}
+		\max(x_1, x_2, \dots, x_n) \ge \frac{x_1 + x_2 + \dots + x_n}{n}
+	\end{align}
+\end{theorem}
+
+\begin{proof}[Proof by Contradiction]
+	Attempting a direct proof seems unwise; instead, we approach this with a proof by contradiction. Assume there exist a list of real numbers for which every number is less than the average. Therefore we would have
+	
+	\begin{align*}
+		x_1, x_2, \dots, x_n < \frac{x_1 + x_2 + \dots + x_n}{n}
+	\end{align*} 
+	
+	Since we have a bound on every single term, we can find a bound on the sum.
+	
+	\begin{align*}
+		x_1 + x_2 + \dots + x_n &< \underbrace{\left( \frac{x_1 + \dots + x_n}{n} \right)}_\text{for each of $n$ terms} + \dots \\
+		&= n \left( \frac{x_1 + \dots + x_n}{n} \right) \\
+		&= x_1 + x_2 + \dots + x_n
+	\end{align*}
+	
+	At this point, we have arrive at the conclusion that the sum of the numbers is less than itself. This is a contradiction, and thus such a list cannot exist.
+\end{proof}
+
+Notice in this case, the result we where trying to prove was actually doubly quantified. Formally, we would write
+
+\begin{align*}
+	(\forall \, (x_1, \dots, x_n) \in \mathbb{R}^n)(\exists \, x_i \in (x_1, \dots, x_n))[x_i \ge \mean(x_1, \dots, x_n)] \equiv \\
+	\text{for all lists of real numbers, there exists some element in the list for which...}
+\end{align*}
+
+In proving this statement via contradiction, we need to be careful in taking the negation, remembering to swap quantifier types. Our negation is then
+
+\begin{align*}
+	(\exists \, (x_1, \dots, x_n) \in \mathbb{R}^n)(\forall \, x_i \in (x_1, \dots, x_n))[x_i \ge \mean(x_1, \dots, x_n)] \equiv \\
+	\text{there exists some list of real numbers for which all elements are...}
+\end{align*}
+
+Notice this is precisely what we assumed during the proof, thus making it logically sound. Proofs by contradiction are also rather useful for claims of irrationality. Although rational numbers are well-defined and easy to work with, the irrationals are less so. Using a proof by contradiction would allows to work with the former class of numbers rather than the latter. An example of such a proof is below.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The square root of two $(\sqrt{2})$ is irrational.
+\end{theorem}
+
+\begin{proof}[Proof by Contradiction]
+	Above we used the fact that the square root of 2 was irrational, but we never proved it. We do so now using a proof by contradiction. Assume, then, that the square root of two is rational so we can write
+	
+	\begin{align*}
+		\sqrt{2} = \frac{p}{q}
+	\end{align*}
+	
+	for $p$ and $q$ in lowest terms. We emphasize this point here, that the fraction is in lowest terms, since ever rational number can be written in this way. At this point we square both sides to remove the square root.
+	
+	\begin{align*}
+		2 = \frac{p^2}{q^2} \\
+		\implies 2 q^2 = p^2
+	\end{align*}
+	
+	Notice that $p^2$ can be expressed as two times an integer so it must even. It follows that $p$ must also be even, since if it was odd so would its square. therefore, for some $k \in \mathbb{Z}$, we can write
+	
+	\begin{align*}
+		p = 2k \\
+		2 q^2 = (2k)^2 \\
+		\implies q^2 = 2k^2
+	\end{align*}
+	
+	This means that $q^2$ is also even and so $q$ must be as well. This however is a contradiction, since we assumed the fraction was in reduced form and therefore both the number and denominator cannot be divisible by two.
+\end{proof}
+\vspace{\baselineskip}
+
+% ===========================================================
+\section{Conditional Proofs}
+% ===========================================================
+
+In the last chapter, we also mentioned two other classes of statements we are likely to prove.
+
+\begin{align*}
+	S_2 &\equiv (\forall x \in S)[P(x) \implies Q(x)] \\
+	S_3 &\equiv (\forall x \in S)[P(x) \iff Q(x)]
+\end{align*}
+
+Despite being slightly more complex, many of the techniques we see in this section are similar to those we explored earlier. We now tackle the second class of statements of the form $P(x) \implies Q(x)$. A summary of the three techniques we will use throughout the course of the section are below.
+
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		Method & Approach & Statement \\
+		\midrule
+		Direct & assume $P(x)$, show $Q(x)$ & $P(x) \implies Q(x)$ \\
+		Contrapostive & assume $\neg Q(x)$, show $\neg P(x)$ & $\neg Q(x) \implies \neg P(x)$ \\
+		Contradiction & assume $P(x) \wedge \neg Q(x)$, show contradiction & $\neg[P(x) \wedge \neg Q(x)]$ \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+Once again, the most straightforward approach is to attempt a direct proof. For an example, we can prove the following theorem rather simply, assuming the hypothesis and manipulating it to arrive at the conclusion.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The sum and product of two even numbers are both even. 
+\end{theorem}
+
+\begin{proof}
+	We proceed with a direct proof; to help see the hypothesis and conclusion we can write this out as a logical statement.
+	
+	\begin{align*}
+		(\forall n, m \in \mathbb{Z})[(n, m \in \mathbb{Z}_e) \implies (n + m, nm \in \mathbb{Z}_e)]
+	\end{align*}
+	
+	We're using shorthand here where $n, m \in \mathbb{Z}$ is a more compact way of writing $n \in \mathbb{Z}$ and $m \in \mathbb{Z}$. Nonetheless, our assumptions and desired conclusion are now clear, and we can proceed. Assume $n, m$ are even so that for some $k_1, k_2 \in \mathbb{Z}$:
+	
+	\begin{align*}
+		\begin{cases}
+			n = 2 k_1 \\
+			m = 2 k_2
+		\end{cases}
+	\end{align*} 
+	
+	We will now express both the product and sum in terms of $k_1$ and $k_2$.
+	
+	\begin{align*}
+		n + m &= 2 k_1 + 2 k_2 \\
+		&= 2 (k_1 + k_2) \\
+		nm &= (2 k_1)(2 k_2) \\
+		&= 4 k_1 k_2 \\
+		&= 2 (2 k_1 k_2)
+	\end{align*}
+	
+	Since the sum and product can be expressed as 2 times some integer we can conclude they are both even. For sake of completeness, we introduce a more general theorem. The proof of each of its remaining parts are very similar and left as an exercise.
+\end{proof}
+\vspace{\baselineskip}
+
+\begin{theorem}
+	For integers $n, m \in \mathbb{Z}$ the following conditions determine whether the sum or product is even or odd.
+	
+	\begin{enumerate}[\hspace{\baselineskip}i.]
+		\item if $n$ is even and $m$ is even, $n + m$ is even and $nm$ is even
+		\item if $n$ is even and $m$ is odd, $n + m$ is odd and $nm$ is even
+		\item if $n$ is odd and $m$ is even, $n + m$ is odd and $nm$ is even
+		\item if $n$ is odd and $m$ is odd, $n + m$ is even and $nm$ is odd
+	\end{enumerate}
+\end{theorem}
+\vspace{\baselineskip}
+
+This theorem can be summarized with the following two tables,
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	+ & e & o \\
+	e & e & o \\
+	o & o & e
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	$\cdot$ & e & o\\
+	e & e & e \\
+	o & e & o \\
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+which are oddly reminiscent of the addition and multiplication tables in a binary field. In fact, if we constructed a field 
+
+\begin{align*}
+	(F, e, o, +, \cdot) \text{ with } F = \{ e, o \},
+\end{align*}
+
+its operations would be defined in exactly this way, with $e$ as the additive identity and $o$ the multiplicative identity. For now, we leave this connection as an unlikely coincidence, but we will revisit this after tackling modular arithmetic.
+
+\begin{align*}
+	P(x) \implies Q(x) \equiv \underbrace{\neg Q(x) \implies \neg P(x)}_\text{contrapositive}
+\end{align*}
+
+Above is one of the logical equivalences we proved earlier, the right-hand side is called is called the \emph{contrapositive} or \emph{contraposition}. This fundamental equivalence tells us that to prove a conditional we can instead prove the contrapositive by assuming the negation of the conclusion and deriving the negation of the hypothesis. The canonical example is the set of statements:
+
+\vspace{\baselineskip}
+\begin{center}
+	\emph{Original.} if it rains the streets are wet \\
+	\emph{Contrapositive.} if the streets are dry then it did not rain
+\end{center}
+\vspace{\baselineskip}
+
+
+This is useful when the negations of the hypothesis and conclusions are better defined or easier to work with. This often occurs when we have statements with ``not equal to'' and in claims about parity.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	If the $n^2$ is even, then $n$ must be even as well. Similarly, if $n^2$ is odd, then $n$ must be odd. In other words, $n^2$ always has the same parity as $n$.
+\end{theorem}
+
+\begin{proof}[Proof by Contrapositive]
+	We will show the two parts of this theorem separately, and prove the first with the contrapositive. The second part is left as an exercise.
+	
+	\header{Part 1.}{$n^2$ is even}
+	We can write out our statement formally, so we can see its hypothesis and conclusion more easily. This also makes it easy to see the contrapositive.
+	
+	\begin{align*} 
+		(\forall n \in \mathbb{Z})(n^2 \text{ is even } \implies n \text{ is even}) \\
+		(\forall n \in \mathbb{Z})(n \text{ is odd } \implies n^2 \text{ is odd})
+	\end{align*}
+	
+	The contrapositive is substantially easier to prove; assume that $n$ is odd so that for some integer $k$, $n = 2k + 1$. We can then express the square in terms of $k$.
+	
+	\begin{align*}
+		n^2 &= (2k + 1)^2 \\
+		&= 4k^2 + 4k + 1 \\
+		&= 2(2k^2 + 2) + 1
+	\end{align*}
+	
+	Since $n^2$ can also be expressed as one more than an even number, it must also be odd. Therefore, we have proved our original statement. Notice we used this fact in the proof that the square root of two was irrational, though only casually proved it.
+\end{proof}
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any two non-negative numbers $x$ and $y$,
+	
+	\begin{align*}
+		\text{if } x \neq y \text{ then } x^2 \neq y^2
+	\end{align*}
+\end{theorem}
+
+\begin{proof}
+	This result means that different positive numbers must have different squares. This fact was actually essential in many of our proofs, since it means that given we are working with positive numbers, we are allowed to square root both sides of the equation without affecting the equality. In other words, knowing each positive number has a unique squares allows us to work backward and determine a number uniquely from its square. It turns out this property is not unique to the squaring function but rather applies to an entire class of functions; but for now we stick with proving this statement, or rather its contrapositive.
+	
+	\begin{align*}
+		(\forall x, y \in \mathbb{R})(x^2 = y^2 \implies x = y)
+	\end{align*}
+	
+	The proof at this point is rather straightforward, and involves simplifying the hypothesis to reach the conclusion.
+	
+	\begin{align*}
+		x^2 &= y^2 \\
+		\implies \sqrt{x^2} &= \sqrt{y^2} \\
+		\implies |x| &= |y| \\
+		\implies x &= y, \text{ since $x, y \ge 0$}
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+% ===========================================================
+\section{Conditional Statements and Contradiction}
+% ===========================================================
+
+The final proof technique, as outlined earlier, is a proof by contradiction. Remember the only case in which a conditional is false is when the hypothesis is true and the conclusion is false. Therefore its negation is as follows.
+
+\begin{align*}
+	\neg[P(x) \implies Q(x)] \equiv P(x) \wedge \neg Q(x)
+\end{align*}
+
+Once again, in a proof by contradiction the idea is to assume the negation and show a contradiction. Since we are interested in proving a conditional, we assume the hypothesis and the negation of the conclusion, showing this yields a contradiction. We use this proof technique a revisit and strengthen a theorem we presented earlier.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any prime number $p$, the $k$th root of $p$ is irrational, where $k$ is any integer greater than 1.
+\end{theorem}
+\begin{proof}
+	Notice that this statement can be expressed as a conditional; if $p$ is prime then 
+	
+	\begin{align*}
+		\sqrt[k]{p} \in \mathbb{R} - \mathbb{Q}, \text{ given } k \ge 2.
+	\end{align*}
+	
+	Once again, proving something is irrational positively is difficult, hence it makes sense to approach this via a proof by contradiction. For sake of contradiction then, we assume the hypothesis and the negation of the conclusion, that $p$ is prime and for $k \ge 2$ the $k$th root of $p$ is rational. By definition, this means
+
+	\begin{align*}
+		\sqrt[k]{p} = \frac{r}{s}, \text{ for } r, s \in \mathbb{Z}
+	\end{align*}
+	
+	were $r$ and $s$ are co-prime integers. Proving this same theorem in the special case where both $k$ and $p$ were 2, we can guess the proof for this will likely be similar. Therefore we raise both sides of the equation to the power of $k$ and rearrange.
+	
+	\begin{align*}
+		p = \left( \frac{r}{s} \right)^k \\
+		\implies p s^k = r^k
+	\end{align*}
+	
+	Clearly the left-hand side of this equation is divisible by $p$,  so therefore $r^k$ must be as well. Since $p$ is prime, this implies that $r$ itself must be divisible by $p$. Hence, for some $n \in \mathbb{Z}$, we can write
+	
+	\begin{align*}
+		r = np \text{ so} \\
+		p s^k &= r^k \\
+		&= n^k p^k \\
+	\end{align*}
+	
+	Dividing both sides by $p$, we reach the following equality, which immediately yields the contradiction.
+	
+	\begin{align*}
+		s^k = n^k p^{k - 1}
+	\end{align*}
+	
+	Now the right-hand side is divisible by $p$ so this implies so is the left-hand side. But since $p$ is a prime, $p$ dividing $s^k$ means $p$ also divides $s$. But this is a contradiction, since this means that both $r$ and $s$ are divisible by $p$ and therefore the fraction
+	
+	\begin{align*}
+		\frac{r}{s}
+	\end{align*}
+	
+	was not in lowest terms after all. Therefore, we have proved what we intended to.
+\end{proof}
+\vspace{\baselineskip}
+
+Notice what we proved could be interpreted as showing the polynomial with integer coefficients
+	
+	\begin{align*}
+		x^k - p = 0
+	\end{align*}
+	
+has no rational roots. Naturally, we maybe interested in a more general questions of when polynomials have rational roots; so we now prove a more general result to this effect and see how this above theorem simply follows as a corollary.
+
+\vspace{\baselineskip}
+\begin{theorem}[Rational Root Theorem]
+	Let $p(x)$ be an arbitrary polynomial with integer coefficients, which can be written as
+	
+	\begin{align*}
+		p(x) = a_n x^n + a_{n - 1} x^{n - 1} + \dots + a_1 x + a_0.
+	\end{align*}
+	
+	If $p$ has rational roots, meaning there exists some $x \in \mathbb{Q}$ such that $p(x) = 0$, then if $x$ is expressed as
+	
+	\begin{align*}
+		\frac{p}{q}
+	\end{align*}
+	
+	in lowest terms, then $p$ must divide $a_0$, the constant term, and $q$ must divide $a_n$, the leading coefficient.
+\end{theorem}
+\begin{proof}
+	This could be approached with a proof by contradiction, but instead we provide a direct proof. Assume that there exists a rational solution the $p(x)$ which is expressed as a fraction in lowest terms. Then we can write the evaluation of the polynomial at $x$ which should be equal to 0, by definition.
+	
+	\begin{align*}
+		p\left( \frac{p}{q} \right) &= 0 \\
+		a_n \frac{p^n}{q^n} + a_{n - 1} \frac{p^{n - 1}}{q^{n - 1}} + \cdots + a_1 \frac{p}{q} + a_0 &= 0 
+	\end{align*}
+	
+	Once again, similar to the insight we used in the previous few proofs, we want to clear the fractions so we can once again work    with integers. This can easily be done by multiplying both sides of the equation with $q^n$, yielding
+	
+	\begin{align*}
+		a_n p^n + a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} + a_0 q^n = 0.
+	\end{align*}
+	
+	We then rearrange this polynomial in two ways by isolating all the $p$ and all the $q$ terms, so we can factor.
+	
+	\begin{align*}
+		a_n p^n + a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} &= - a_0 q^n \text{ and} \\
+		a_{n - 1} p^{n - 1} q + a_{n - 2} p^{n - 2} q^2 + \dots + a_1 p q^{n - 1} + a_0 q^n &= -a_n p^n
+	\end{align*}
+	
+	To reach the first equation we moved the last term to the other side, and for the second equation, we moved the leading coefficient. Notice that both left-hand sides now have a common factor so we can simplify even further.
+	
+	\begin{align*}
+		p (a_n p^{n - 1} + a_{n - 1} p^{n - 2} q + \dots + a_1 q^{n - 1}) &= - a_0 q^n \text{ and} \\
+		q (a_{n - 1} p^{n - 1} + \dots + a_1 p q^{n - 2} + a_0 q^{n - 1}) &= -a_n p^n
+	\end{align*}
+	
+	In the first equation, we can see that left-hand side is divisible by $p$, therefore so must the right-hand side. Notice that since
+	
+	\begin{align*}
+		\frac{p}{q}
+	\end{align*}
+	
+	was in lowest terms, $q^n$ clearly is not divisible by $p$, hence this means that $p$ divides $a_0$. By symmetry, the second equation shows that $q$ must divide $a_n$. This is exactly what we needed to show, which is that if $p(x)$ has a rational root, then
+	
+	\begin{align*}
+		\begin{cases}
+			p \text{ divides } a_0 \\
+			q \text{ divides } a_n.
+		\end{cases}
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+We can now offer a slicker proof to our original statement, using the theorem we just proved. Remember we wanted to prove
+
+\begin{align*}
+	\sqrt[k]{p} \in \mathbb{R} - \mathbb{Q}
+\end{align*}
+
+where $k$ is any integer greater than 1 and $p$ is a prime number. Above we used a long proof by contradiction to show this, but now we offer a simpler proof.
+
+\begin{proof}
+	Consider the following polynomial, for which the $k$th root of $p$ is a solution. 
+
+	\begin{align*}
+		x^k - p = 0
+	\end{align*}
+
+	It is sufficient to show that the polynomial has no rational roots, because that implies the root of $p$ must be irrational. Notice that this is a polynomial with rational roots, hence we can apply the rational roots theorem to conclude that if
+	
+	\begin{align*}
+		x = \frac{m}{n} \text{ for } m, n \in \mathbb{Z} \text{ and } n \neq 0
+	\end{align*}
+	
+	is a rational root of the polynomial then $n$ must divide 1, the leading coefficient, and $m$ must divide $p$, the constant term. There the set of all possible rational roots to this polynomial is
+	
+	\begin{align*}
+		n \in \{ 1, -1 \}, m \in \{ -p, -1, 1, p \} \\
+		\therefore x \in \{ -p, -1, 1, p \}
+	\end{align*}
+	
+	At this point, we simply try all possibilities to conclude no such rational $x$ can exist.
+	
+	\begin{align*}
+		1^k - p &\neq 0 \\
+		(-1)^k - p &\neq 0 \\
+		p^k - p &\neq 0 \\
+		(-p)^k - p &\neq 0
+	\end{align*}
+	
+	Notice this is technically a proof by contradiction; we assume that a rational root exists, then use the rational roots theorem to that this root must then be one of
+	
+	\begin{align*}
+		\{ -p, -1, 1, p \}.
+	\end{align*}
+	
+	Showing that none of these are actually roots results in a contradiction, proving our original statement.
+\end{proof}
+
+In some sense, the rational roots theorem we proved was a more general result than showing
+
+\begin{align*}
+	f(x) = x^k - p
+\end{align*}
+
+has no rational roots. Proving the harder general case allowed us to revisit our original problem and more easily show it was true. In this case it simply amounted to evaluating the polynomial at four points.
+
+\vspace{\baselineskip}
+
+We will revisit this technique of proving more general results and then looking back to apply these to more specific cases later. In the next chapter, we will see cases where this may be necessary; but finding more general principles is a virtue in itself. It turns out that the rational roots theorem, once again, is a specific case of Gauss' Lemma, but this remains out of scope of this set of notes.

@@ -1,0 +1,48 @@
+% Standard Math Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Document
+\usepackage{microtype}
+\usepackage[parfill]{parskip}
+\usepackage{multicol}
+\usepackage{centernot}
+\usepackage[english]{babel}
+
+% Utilities
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage[thinlines]{easytable}
+\usepackage{thmtools}
+
+% Figures
+\usepackage[labelfont=bf]{caption}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{xcolor} %[dvipsnames]
+
+% Tweaking Settings 
+\addto\captionsenglish{\renewcommand\chaptername{Note}}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\DeclareMathOperator{\mean}{mean}
+\pgfplotsset{width=2.25in}
+\lstset{
+    % numbers=left,
+    breaklines=true,
+    tabsize=2,
+    basicstyle=\ttfamily,
+}
+
+% Macros
+\definecolor{light-gray}{gray}{0.95}
+\declaretheorem[shaded={bgcolor=light-gray}]{theorem}
+\DeclareMathOperator{\card}{card}
+\newcommand{\header}[2]{\begin{flushright} \textbf{#1} #2 \end{flushright}}
+
+
+
+

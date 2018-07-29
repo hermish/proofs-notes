@@ -1,0 +1,1072 @@
+\chapter{Numbers, Sets, and Functions}
+
+% ===========================================================
+\section{Quadratic Equations}
+% ===========================================================
+
+One of the simplest classes of equations we regularly solve are \emph{linear equations}, equations of the form below, where the greatest power of our variable is one. As a matter of convention, we write the general equation as
+
+\begin{align}
+	ax + b = 0.
+\end{align}
+
+Solving this equation can be done by rearranging and then dividing both sides by $a$, yielding
+
+\begin{align*}
+	x = -\frac{b}{a}.
+\end{align*}
+
+Naturally, we may want to solve some more complicated \emph{quadratic equations}, where the greatest power of the variable is two. Such equations take the general form
+
+\begin{align}
+	ax^2 + bx + c = 0.
+\end{align}
+
+To solve this equation, we need to isolate $x$ and in doing so, reduce the number of terms with the variable from two to one. This can be accomplished factoring through a problem solving strategy called wishful thinking. First, we being by taking out the coefficient of the first term, $a$.
+
+\begin{align*}
+	a \left( x^2 + \frac{b}{a}x \right) + c
+\end{align*}
+
+Writing the left-hand side of the equation like this, we can see by adding the right constant inside the parentheses, this can be reduced to a square. Returning to our original equation, this results in the following steps.
+
+\begin{align*}
+	0 &= ax^2 + bx + c \\
+	&= a \left( x^2 + \frac{b}{a}x \right) + c \\
+	&= a \left( x^2 + \frac{b}{a}x + \frac{b^2}{4a^2} \right) - \frac{b^2}{4a} + c \\
+	&= a \left( x + \frac{b}{2a} \right)^2 - \left(\frac{b^2}{4a} - c \right)
+\end{align*}
+
+We've derived the exact type of equation we can easily solve, one in which the variable $x$ is restricted to a single term.
+
+\begin{align*}
+	a \left( x + \frac{b}{2a} \right)^2 - \left( \frac{b^2}{4a} -c \right) &= 0 \\
+	a \left( x + \frac{b}{2a} \right)^2 &= \frac{b^2}{4a} - c \\
+	\left( x + \frac{b}{2a} \right)^2 &= \frac{b^2 - 4ac}{4a^2} \\
+	x + \frac{b}{2a} &= \pm \sqrt{\frac{b^2 - 4ac}{4a^2}} \\
+\end{align*}
+
+We needed to include the plus-minus ($\pm$) sign since squaring removes the sign and therefore the term
+
+\begin{align*}
+	x + \frac{b}{2a}
+\end{align*}
+
+could be either positive or negative and have the same square. By simplifying the square root, and moving the constant beside $x$ to the other side, we derive the quadratic formula which gives the solutions to a quadratic equation in terms of its coefficients.
+
+\begin{align}
+	x &= - \frac{b}{2a} \pm \sqrt{\frac{b^2 - 4ac}{4a^2}} \\ 
+	&= \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\end{align}
+
+From this, we can construct our first theorem in this course.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	A quadratic equation $ax^2 + bx + c = 0$ has at least one solution when
+	
+	\begin{align}
+		b^2 - 4ac \ge 0
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	In the case where $b^2 - 4ac \ge 0$, we have explicitly constructed a solution to the quadratic equation. To verify this, we will plug the positive root into the equation to ensure the result is 0.
+	
+	\begin{align*}
+		ax^2 + bx + c
+		&= a \left( \frac{-b + \sqrt{b^2 - 4ac}}{2a} \right)^2 + b \left( \frac{-b + \sqrt{b^2 - 4ac}}{2a} \right) + c \\
+		&= \left( \frac{b^2}{2a} - \frac{b\sqrt{b^2 - 4ac}}{2a} - c\right) + \left( \frac{b\sqrt{b^2 - 4ac}}{2a} - \frac{b^2}{2a}\right) + c \\
+		&= 0
+	\end{align*}
+	
+	Therefore, we have show a solution exists when  $b^2 - 4ac \ge 0$ for a quadratic equation. More than that, we have determined the specific form of such a solution.
+\end{proof}
+\vspace{\baselineskip}
+
+We can actually show a stronger result about the solutions of a quadratic equation, though the proof is to the reader.
+
+\begin{theorem}
+	If $b^2 - 4ac$ is positive, a quadratic equation has two solutions; if it is negative, the equation has no real solutions; and if it is exactly equal to zero there is only one unique solution. This can be express in the following way.
+	
+	\begin{align*}
+		\begin{cases}
+			b^2 - 4ac > 0 : \text{ two real solutions} \\
+			b^2 - 4ac = 0 : \text{ one real solutions} \\
+			b^2 - 4ac < 0 : \text{ no real solutions}
+		\end{cases}
+	\end{align*}
+\end{theorem}
+
+
+The techniques used to solve this problem and prove its solution provide a preview of the kinds of thinking and problem solving which will be invaluable to this course. More than any one theorem or result, this course is an introduction to mathematical thinking.
+
+% ===========================================================
+\section{Inequalities}
+% ===========================================================
+
+Our discussion so far has revolved around statements of equality, and so naturally we might wonder about inequalities. To clearly define our terminology going forward, we will use the following definitions.
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{tabular}{cc}
+		\toprule
+		Terminology & Definition \\
+		\midrule
+		Positive & $x > 0$ \\
+		Negative & $x < 0$ \\
+		Nonnegative & $x \ge 0$ \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+
+In order to work with these, it is important to review some basic properties of inequalities.
+
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item For any real numbers $a$ and $b$, one of the following statements is true:
+		\begin{align*}
+			a > b \text{ or } a = b \text{ or } a < b
+		\end{align*}
+	\item For real numbers $a$, $b$, and $c$...
+		\begin{align*}
+			\text{if } a > b \text{ and } b > c, \text{ then } a > c 
+		\end{align*}
+	\item Given that $a > b$, adding or subtracting constants from both sides preserves equality, meaning for any $c$, the inequalities below are also true.
+		\begin{align*}
+			a + c &> b + c \\
+			a - c &> b - c
+		\end{align*}
+	\item If $a > b$, the effect of multiplying by another number $c \neq 0$ depends on the sign of $c$.
+		\begin{align*}
+			ac > bc \text{ if } c > 0 \\
+			ac < bc \text{ if } c < 0
+		\end{align*}
+		In other words, if $c$ is negative, the sign of the inequality is flipped.
+	\item The square of any real number is nonnegative. Furthermore, the square of a number is 0 if and only if the number itself is 0.
+\end{enumerate}
+
+These five fundamental properties are essential in proving some foundational inequalities, the first of which is called the \emph{Arithmetic-Geometric Mean Inequality}. In the presentation of the theorem, we explain how to approach proofs. \\
+
+\begin{theorem}[AGM Inequality] 
+	If $x$ and $y$ are real numbers, then:
+
+	\begin{align}
+		\left( \frac{x + y}{2} \right)^2 \ge xy
+	\end{align}	
+\end{theorem}
+\begin{proof}[Rough Work]\let\qed\relax
+	A mathematical proof begins with true statements and derives the desired result through a series of logical sound steps. In looking for an appropriate place to start, it often helps to rearrange the statement we want to prove until we reach a true statement, working backwards to construct the proof. In this case:
+	
+	\begin{align*}
+		\left( \frac{x + y}{2} \right)^2 &\ge xy \\
+		\implies \frac{x^2 + 2xy + y^2}{4} &\ge xy \\
+		\implies x^2 + 2xy + y^2 &\ge 4xy \\
+		\implies x^2 - 2xy + y^2 &\ge 0 \\
+		\implies (x - y)^2 &\ge 0\\
+	\end{align*}
+	
+	We know the last line is true, since the square of any number must be nonnegative, hence writing the proof is now easy.
+\end{proof}
+
+\begin{proof}
+	For any real numbers $x$ and $y$, we know the square of the difference must be positive.
+	
+	\begin{align*}
+		(x - y)^2 &\ge 0 \\
+		\implies x^2 - 2xy + y^2 &\ge 0 \\
+		\implies x^2 + 2xy + y^2 &\ge 4xy \\
+		\implies \frac{x^2 + 2xy + y^2}{4} &\ge xy \\
+		\implies \left( \frac{x + y}{2} \right)^2 &\ge xy \\
+	\end{align*}
+	
+	Therefore, the Arithmetic-Geometric Mean holds for any real numbers.
+\end{proof}
+\vspace{\baselineskip}
+
+Furthermore, in the case where both $x$ and $y$ are nonnegative, we can take positive square roots to obtain another form of the inequality.
+
+\begin{align}
+	\frac{x + y}{2} \ge \sqrt{xy} \text{ for } x, y \ge 0
+\end{align}
+
+This form elucidates the name of this inequality; the left side is the \emph{arithmetic mean} of $x$ and $y$, while the right-hand side represents the \emph{geometric mean}, while powerful inequality relates the two types of averages. Our proof also provides us some additional insight, since it begins with the claim
+
+\begin{align*}
+	(x - y)^2 \ge 0
+\end{align*}
+
+Remember the square of any real number is equal to 0 if and only if the number is 0. Therefore we have a simple condition for equality in the AGM Inequality.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	Equality hold in the AGM Inequality if and only if $(x - y) = 0$ or $x = y$. In other words
+	
+	\begin{align}
+		\left( \frac{x + y}{2} \right)^2 = xy \text{ if and only if } x = y.
+	\end{align}
+\end{theorem}
+
+To introduce the second major inequality, the \emph{absolute value} of a number, traditionally denoted as $|x|$ needs to be defined.
+
+\begin{align*}
+	|x| = \begin{cases}
+		x &: x \ge 0 \\
+		-x &: x < 0
+	\end{cases}
+\end{align*}
+
+The absolute value can be thought of as the positive distance to the origin. For example, $-2$ is exactly 2 units away from the origin. The absolute value can also be visualized through its graph.
+
+\begin{figure}
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{axis}[axis lines = center]
+				\addplot[color=lightgray]	{abs(x)};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	\caption{The graph $y = |x|$}
+\end{figure}
+
+
+Once again, we present fundamental properties of absolute values, in order to provide a foundation for working with these mathematical functions.
+
+\begin{enumerate}[\hspace{\baselineskip}i.]
+	\item For any real number $x$, $|x| \ge x$ and $|x| \ge 0$.
+	\item Given real numbers $x$ and $y$, $|xy| = |x| \cdot |y|$.
+	\item Squaring a number strips its negative sign, and taking the positive root ensures the result will be positive. Therefore the [positive] square root of the square is the absolute value.
+	\begin{align*}
+		|x| = \sqrt{x^2}
+	\end{align*}
+\end{enumerate}
+
+The last property is rather interesting, and can be proved. Notice for proving these simple properties of absolute values, a \emph{proof by cases} is often most effective, a proof technique in which we break all possibilities into distinct \emph{cases} or scenarios and prove the claim for each of them. Since the absolute value function behaves different for positive and negative numbers, these are naturally our cases.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For any real number $x$, we have:
+	
+	\begin{align}
+		|x| = \sqrt{x^2}
+	\end{align}
+\end{theorem}
+
+\begin{proof}[Proof by Cases]
+	Consider the cases when $x$ is positive, zero and negative separately. Note formally, one of these cases must be true from the trichotomy property (see the first property of inequalities above).
+	
+	\header{Case 1.}{$x > 0$}
+	
+	\begin{align*}
+		\sqrt{x^2} &= x \\
+		&= |x|
+	\end{align*}
+	
+	\header{Case 2.}{$x = 0$}
+	
+	\begin{align*}
+		\sqrt{0^2} &= 0 \\
+		&= |0|
+	\end{align*}
+	
+	\header{Case 3.}{$x < 0$}
+	Assume that $x = -a$ for some positive real number $a$. Notice that $|x| = a$ Plugging this into the expression of the square root of the square:
+	
+	\begin{align*}
+		\sqrt{x^2} &= \sqrt{(-a)^2} \\
+		&= \sqrt{a^2} \\
+		&= a \\
+		&= |x|
+	\end{align*}
+\end{proof}
+
+At this point, we can go ahead and introduce the next major inequality. Note that we mentioned that the absolute value of the product of two numbers is the product of the absolute values, or
+
+\begin{align*}
+	|xy| = |x| \cdot |y|.
+\end{align*}
+
+Unfortunately, the same does not hold true for sums--the analogous statement is false.
+
+\begin{align*}
+	|2 + (-1)| \neq |2| + |-1|
+\end{align*}
+
+However, there is a relationship between the two quantities which can be expressed as an inequality. \\
+
+\begin{theorem}[Triangle Inequality]
+	Given real numbers $x$, $y$ the sum of the absolute values is always greater than or equal to the absolute value of the sum.
+	
+	\begin{align}
+		|x + y| \le |x| + |y|
+	\end{align}
+\end{theorem}
+
+\begin{proof}[Rough work]\let\qed\relax
+	Once again, we begin with rough work to determine how to progress on the proof. In order to remove the absolute value sides, it seems reasonable to square both sides.
+	
+	\begin{align*}
+		|x + y| &\le |x| + |y| \\
+		\implies |x + y|^2 &\le (|x| + |y|)^2 \\
+		\implies (x + y)^2 &\le (|x| + |y|)^2 \\
+		\implies x^2 + 2xy + y^2 &\le |x|^2 + 2|x||y| + |y|^2 \\
+		\implies x^2 + 2xy + y^2 &\le x^2 + 2|xy| + y^2 \\
+		\implies xy &\le |xy|
+	\end{align*}
+	
+	Notice we arrived at a statement which is clearly true. Remember that the absolute value of any real number is always greater than or equal to the number. At this point we can write the proof.
+\end{proof}
+
+\begin{proof}
+	Consider any real number $x$ and $y$. From the basic properties of absolute values we know the product of these numbers must be less than or equal to its absolute value.
+	
+	\begin{align*}
+		xy &\le |xy| \\
+		\implies x^2 + 2xy + y^2 &\le x^2 + 2|xy| + y^2 \\
+		\implies x^2 + 2xy + y^2 &\le |x|^2 + 2|x||y| + |y|^2 \\
+		\implies (x + y)^2 &\le (|x| + |y|)^2 \\
+		\implies |x + y|^2 &\le (|x| + |y|)^2
+	\end{align*}
+	
+	Both terms being squared are positive, hence we can safely square root both sides without affecting the inequality.
+	
+	\begin{align*}
+		\therefore |x + y| \le |x| + |y|
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+Once again in this proof, we used rough work to arrive at a statement we knew was true, and then worked backward to derive the result we wanted from this true statement. We had to be more careful working backward in this example since we square rooted an inequality. Though this works when both terms inside the square are positive, it may fail spectacularly otherwise.
+
+\begin{align*}
+	&4 \ge 1 \\
+	\implies (-2)^2 &\ge (1)^2 \\
+	\centernot\implies -2 &\ge 1 \text{ false!}
+\end{align*}
+
+% ===========================================================
+\section{Sets}
+% ===========================================================
+
+So far we have been relying on intuition to define the real numbers, the focus of our attention. Although the formal definitions of the real numbers are outside the scope of these notes, it is worth paying attention to this fundamental notion of a group of numbers. In mathematics, this concept is represented as a \emph{set}, a well-defined collection of objects. Some examples are listed below.
+
+\begin{align*}
+	S = \{\text{Saturday}, \text{Sunday}\} \\
+	T = \{1, 2, 3, \dots \} \\
+	R = \{n^2 : n \text{ is even} \} \\
+	\phi \text{ or } \{ \}
+\end{align*}
+
+The last example presents two ways to denote the \emph{empty set}, the set with no elements. Notice $R$ is the set of squares of all even numbers. The `:' introduces a condition in the set definition. Since every set must be well-defined, every object is either an \emph{element} of the set or not. If set $A$ contains element $a$ but does not contain $b$, we can write
+
+\begin{align*}
+	a \in A \text{ and } b \notin A.
+\end{align*}
+
+In defining sets, we often specify the elements to be included from some \emph{universe} of objects. However, the elements of elements not in $A$ clearly make a set as well, one which is intrinsically linked to $A$. This set is denoted the \emph{complement} of $A$, written as $A^c$ and defined as
+
+\begin{align*}
+	A^c = \{ x \in \text{universe } : x \notin A \}
+\end{align*}
+
+Though we will explore notions of size in more depth later on, for now we define the \emph{cardinality}, written as 
+
+\begin{align*}
+	|A| \text{ or } \card(A),
+\end{align*}
+
+as its size. For \emph{finite} sets, sets without an infinite number of elements, the cardinality is simply the number of elements. All such cardinalities are in the set $\{0, 1, 2, \dots\}$, with 0 reserved for the empty set.
+
+Since a set is unordered and cannot contain duplicate items, a natural definition of equality is that both sets contain the same elements. On the other hand, if every element of set $B$ is in set $A$, then in some sense the latter set contains the former. Mathematically, we write that $B$ is a \emph{subset} of $A$ or
+
+\begin{align*}
+	B \subseteq A.
+\end{align*}
+
+Notice under this definition, the empty set is a subset of every set. Similarly, a set is always a subset of itself. In cases where we want to exclude this possibility, that the sets are equal, in explaining the relationship between the two sets, we can write $B$ is a proper subset of $A$ or 
+
+\begin{align*}
+	B \subset A
+\end{align*}
+
+which means $B \subseteq A$ but $B \neq A$. Along with the real numbers there are a handful of other important sets used to refer to classes of numbers.
+
+\vspace{\baselineskip}
+\begin{center}
+	\begin{tabular}{ccc}
+		\toprule
+		Symbol & Name & Set \\
+		\midrule
+		$\mathbb{N}$ & Natural Numbers & $\{1, 2, 3, 4, \dots\}$ \\[10pt]
+		$\mathbb{Z}$ & Integers & $\{\dots, -2, -1, 0, 1, 2, \dots\}$ \\[10pt]
+		$\mathbb{Q}$ & Rational Numbers & $\left\{ \dfrac{p}{q} : p,q \in \mathbb{Z}\right\}$ \\[10pt]
+		$\mathbb{R}$ & Real Numbers & \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+Notice we defined the natural numbers to exclude 0, but the symbol $\mathbb{N}_0$ could be used to refer to all naturals along with 0. Based on the descriptions of each of these sets, each contains the previous plus some additional elements. Therefore, we can write
+
+\begin{align}
+	\mathbb{N} \subseteq \mathbb{N}_0 \subseteq \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R}.
+\end{align}
+
+Since each set contains the previous, we may wonder what elements are in one but not the other. In some cases, this set itself might be valuable. For example all real numbers which are not rational are  referred to as as \emph{irrational}, and the set which contains all such numbers the irrational numbers. This set then is a result of taking the real numbers and subtracting away the rational numbers. This operation, along with a few more are formalized before for arbitrary sets $A$ and $B$.
+
+\begin{align*}
+	\emph{Subtraction. } A - B &= \{ x \in A : x \notin B \} \\
+	\emph{Intersection. } A \cap B &= \{ x : x \in A \text{ and } x \in B \} \\ 
+	\emph{Union. } A  \cup B &= \{ x : x \in A \text{ or } x \in B \} \\
+	\emph{Cartesian Product. } A  \times B &= \{ (a, b) : a \in A \text{ and } b \in B \} \
+\end{align*}
+
+The intersection is the set of all elements in both, while the union is the set of all elements in either. Two sets are called \emph{disjoint} if their intersection is the empty set meaning they have no common elements. Written out this would mean for disjoint sets $S$ and $T$,
+
+\begin{align*}
+	S \cap T = \phi
+\end{align*}
+
+The cartesian product of two sets outputs a set with a completely different structure: a set of tuples containing all possibly pairs of elements from $A$ and $B$. Unlike sets, \emph{tuples} are ordered lists of elements which could contain duplicates. This idea of product can be extended beyond two sets.
+
+\begin{align*}
+	A \times B &= \{ (a, b) : a \in A, b \in B \} \\
+	B \times A &= \{ (b, a) : a \in A, b \in B \} \\
+	A \times B \times C &= \{ (a, b, c) : a \in A, b \in B, c \in C \} \\
+\end{align*}
+
+Repeated products of the same set can be abbreviated as a power, similar to the real numbers.
+
+\begin{align*}
+	A^k &= \underbrace{A \times \cdots \times A}_\text{$k$ times} \\
+	&= \{ (a_1, a_2, \dots, a_k) : a_1, a_2, \dots, a_k \in A \}
+\end{align*} 
+
+One final concept that must be introduced to complete our discussion on introductory set theory is the \emph{power set} of a set, which contains all possible subsets. Formally we write this as
+
+\begin{align*}
+	\emph{Power set. } \mathcal{P}(A) = \{ S : S \subseteq A \}.
+\end{align*}
+
+To ensure this section includes a proof, we end with a simple theorem about the size of a power set. We will explore another proof of this theorem later in the course.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For a finite set $A$, if $|A| = n$, then its power set $\mathcal{P}(A)$ has cardinality $2^n$.
+\end{theorem}
+
+\begin{proof}[Examples]\let\qed\relax
+	One way to begin working on a proof is the test the claim with examples, since they may yield insight into why the result is true.
+	
+	\begin{align*}
+		\mathcal{\phi} &= \{ \phi \} \\
+		\mathcal{P}(\{ 0, 1 \}) &= \{ \phi, \{ 0 \}, \{ 1 \}, \{ 0, 1 \}\}
+	\end{align*}
+	
+	In each of these cases, the result holds. When the sizes of sets were 0 and 2, their power sets had sizes of 1 and 4 respectively. Notice we would also expect the number of subsets to be even, since for every subset $S \subseteq A$, $(A - S)$ is also one, and  this theorem seems to check out in that regard. At this point we can present the proof
+\end{proof}
+
+\begin{proof}
+	Since $A$ is finite and $|A| = n$ then the set must have $n$ elements. Let us arbitrarily assign labels so that
+	
+	\begin{align*}
+		A = \{ a_1, a_2, \dots a_n \}
+	\end{align*}
+	
+	In constructing a subset, each of these $n$ distinct elements can be chosen to either be included or excluded from the set. Since every subset can be created with these series of $n$ choices, and each choice has two options, the number of subsets is $2^n$.
+\end{proof}
+\vspace{\baselineskip}
+
+A major class of proofs involves proving two sets are equal. One possible way of doing this involves showing each set is a subset of another. To prove set $S$ is a subset of $T$, we must show if $x$ is an element of $S$ then it is also an element of $T$. This would mean every element in $S$ is contained in $T$ and therefore $S \subseteq T$. To provide an example, we introduce another theorem. \\
+
+\begin{theorem}[De Morgan's laws]
+	Given two sets $A$ and $B$, the following statements are true.
+	
+	\begin{align}
+		(A \cup B)^c &= A^c \cap B^c \\
+		(A \cap B)^c &= A^c \cup B^c
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	Since the proof the statements are nearly identical, only the first will be proved; the second is left as an exercise. Since we are proving the equality of sets, we proceed by showing the left-hand side (LHS) is a subset of the right-hand side (RHS) and vice versa.
+	
+	\header{Part 1.}{$(A \cup B)^c \subseteq (A^c \cap B^c)$}
+	
+	Assume that $x \in (A \cup B)^c$, we will show $x$ is also an element of $(A^c \cap B^c)$ through a series of implications.
+	
+	\begin{align*}
+		x \in (A \cup B)^c &\implies x \notin (A \cup B) \\
+		&\implies x \notin A \text{ and } x \notin B \\
+		&\implies x \in A^c \text{ and } x \in B^c \\
+		&\implies x \in A^c \cap B^c
+	\end{align*}
+		
+	\header{Part 2.}{$(A^c \cap B^c) \subseteq (A \cup B)^c$}
+	
+	Now assume that $x \in (A^c \cap B^c)$, we will show $x$ is also an element of $x \in (A \cup B)^c$.
+	
+	\begin{align*}
+		x \in (A^c \cap B^c) &\implies x \in A^c \text{ and } x \in B^c \\
+		&\implies x \notin A \text{ and } x \notin B \\
+		&\implies x \notin (A \cup B) \\
+		&\implies x \in (A \cup B)^c
+	\end{align*}
+	
+	Since we have proved that $(A \cup B)^c \subseteq (A^c \cap B^c)$ and $(A^c \cap B^c) \subseteq (A \cup B)^c$, this is enough to show equality.
+	
+	\begin{align*}
+		\therefore (A \cup B)^c &= A^c \cap B^c
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+% ===========================================================
+\section{Functions}
+% ===========================================================
+
+At this point we can introduce a very special type of set which has profound uses in mathematics. This, of course, is a \emph{function}, which is a set of input-output ordered pairs which can represented as
+
+\begin{align*}
+	\{ (x, f(x)) : x \in \text{domain} \}	
+\end{align*}
+
+\begin{center}
+	\begin{tabular}{rl}
+		\toprule
+		Term & Definition \\
+		\midrule
+		Domain & The set of all allowed inputs \\
+		Codomain (Target Space) & The set of all allowed outputs \\
+		Image (Range) & The set of all actual outputs \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+The function, then, takes an input from the domain and returns a single output in the codomain. This property of linking the domain to the codomain explains why function are often called \emph{maps}. Since the image is the set of outputs, and a subset of the codomain, it would be the set that results from applying the function to every element in the domain. Thus, for a function $f$ with domain $A$, the image is often denoted as $f(A)$.
+
+\begin{align*}
+	f(A) &= \{ f(a) : a \in A \}
+\end{align*}
+
+In defining a function, the domain and codomain must be explicitly specified, hence the following notation is often used.
+
+\begin{align*}
+	\begin{array}{llll}
+		\multicolumn{4}{l}{\text{domain}} \\
+		& \downarrow && \\
+		f: & A & \rightarrow & B \\
+		&&& \uparrow \\
+		\multicolumn{4}{r}{\text{codomain}}
+	\end{array}
+\end{align*}
+
+A function is called \emph{real-valued} if its image is a subset of the real numbers, and thus all its outputs are real numbers. The \emph{graph} of a function is a plot of all the input-output pairs. In working with functions there are a few elementary ways to combine them.
+
+\begin{align}
+	\emph{Addition. } (f + g)(x) = f(x) + g(x) \\
+	\emph{Multiplication. } (f \cdot g)(x) = f(x) \cdot g(x) \\
+	\emph{Composition. } (f \circ g)(x) = f(g(x))
+\end{align}
+
+We are often extremely interested in the image of a real-valued function. In particular, we may wonder about the nature of this set: does it have a maximum or minimum, or does the function go to infinity? Formally, a function $f: A \rightarrow \mathbb{R}$ is \emph{bounded} if there exists some $M \in \mathbb{R}$ such that
+
+\begin{align*}
+	|f(x)| \le M
+\end{align*}
+
+for all $x \in A$. Notice in this definition $M$ acts both a positive and negative bound since the statement is equivalent to
+
+\begin{align*}
+	-M \le f(x) \le M.
+\end{align*}
+
+It turns out that sums and products of bounded functions are bounded as well, results we prove below. Notice in these proofs we clearly state our assumptions and what we plan on showing, a technique that helps inform our approach.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	If functions $f$ and $g$ are bounded so are the functions $(f \cdot g)$ and $(f + g)$, formed by the sum and product of these functions respectively.
+\end{theorem}
+
+\begin{proof}
+	Since $f$ and $g$ are bounded, there exist $M \in \mathbb{R}$ and $N \in \mathbb{R}$ for which 
+	
+	\begin{align*}
+		|f(x)| \le M \text{ and } |g(x)| \le N.
+	\end{align*}
+	
+	We hope to show there exists some bound on $|(f \cdot g)(x)|$, therefore our aim should be to express this in terms of the quantities we already have bounds for.
+	
+	\begin{align*}
+		|(f \cdot g)(x)| &= |f(x) \cdot g(x)| \\
+		&= |f(x)| \cdot |g(x)| \\
+		&\le M \cdot N
+	\end{align*}
+	
+	This shows that we have discovered a bound for the function: the product of the two bounds of our original function. Hence the function is bounded.
+\end{proof}
+
+\begin{proof}
+	Once again, assume there exist $M \in \mathbb{R}$ and $N \in \mathbb{R}$ for which
+	
+	\begin{align*}
+		|f(x)| \le M \text{ and } |g(x)| \le N.
+	\end{align*}
+	
+	We wish to find a bound for $|(f + g)(x)|$. However, in this case it is more tricky to decompose this into $|f(x)|$ and $|g(x)|$, and requires the triangle inequality.
+	
+	\begin{align*}
+		|(f + g)(x)| &= |f(x) + g(x)| \\
+		&\le |f(x)| + |g(x)| \\
+		&\le M + N
+	\end{align*}
+	
+	Thus, we have proved $(f + g)$, showing the sum of the bounds of the functions is the bound for the sum of the functions.
+\end{proof}
+\vspace{\baselineskip}
+
+In general, approach bounding proofs by expressing the bounded functions by their definitional inequality. Then work on manipulating these inequalities through inequality or absolute value rules to obtain the desired result.
+
+% ===========================================================
+\section{Fields}
+% ===========================================================
+
+So far in our deals with $\mathbb{R}$, we have been implicitly relying on properties or axioms of arithmetic in the real numbers. Many of these properties are not exclusive to the reals, and apply to a class of algebraic structures called \emph{fields}. A field, $F$, consists of
+
+\begin{align*}
+	(F, 0, 1, +, \cdot) \text{ where } F = \{ 0, 1, \dots \}. 
+\end{align*}
+
+$F$ is a set of elements in the field in including at least the additive identity 0 and the multiplicative identity 1. A field also includes two predefined binary operations, addition and multiplication, which take two inputs in $F$ and return the sum and product in $F$ respectively. These function must obey the following axioms for $x, y, z \in F$.
+
+\begin{align*}
+	+: F \times F \rightarrow F \\
+	\cdot: F \times F \rightarrow F
+\end{align*}
+
+\begin{center}
+	\begin{tabular}{rp{1.5in}p{1.5in}}
+		\toprule
+		Name & Addition & Multiplication \\
+		\midrule
+		\emph{Closure} & $x + y \in F$ & $x \cdot y \in F$ \\
+		\emph{Associativity} & $(x + y) + z = x + (y + z)$ & $(x \cdot y) \cdot z = x \cdot (y \cdot z)$ \\
+		\emph{Commutativity} & $x + y = y + x$ & $x \cdot y = y \cdot x$ \\
+		\emph{Identity} & $x + 0 = x$ & $x \cdot 1 = x$ \\
+		\emph{Inverses} & each non-zero element has an additive inverse & each element has an multiplicative inverse \\[10pt]
+		\emph{Distributivity} & \multicolumn{2}{c}{$x \cdot (y + z) = x 
+\cdot y + x \cdot z$} \\
+		\bottomrule
+	\end{tabular}
+\end{center}
+\vspace{\baselineskip}
+
+To clarify the inverse axioms, the first states that for any $x \in F$, there exists a $-x$ in the field, such that
+
+\begin{align*}
+	x + (-x) = 0, \, -x \in F.
+\end{align*}
+
+In this case, $-x$ is simply an element of the field, and is called the additive inverse of $x$. Commutatively, $x$ is the additive inverse of $-x$. Sometimes, the additive inverse of a field element is itself--the trivial example is 0:
+
+\begin{align*}
+	0 + 0 = 0.
+\end{align*}
+
+For non-zero elements in the field, a multiplicative inverse exists as well, which means for $x \in F - \{ 0 \}$, there exists a $x^{-1}$, such that
+
+\begin{align*}
+	x \cdot x^{-1} = 1,\, x^{-1} \in F.
+\end{align*}
+
+Similar to the additive inverse, this inverse is an element of the field and likewise can be the same number. With this axiom, we can define two new operations in the field. Subtraction amounts to adding by the additive inverse and division is multiplication by the multiplicative inverse. For field elements $x$, $y$ in some field $F$.
+
+\begin{align}
+	x - y &:= x + (-y) \\
+	x / y &:= x \cdot y^{-1} \text{ given } y \neq 0
+\end{align}
+
+Notice the $:=$ here emphasizes the expression on the left is defined to be equal to the expression on the right. To avoid confusion, when working in fields, we will refrain from using subtraction and division and instead refer to the inverses.
+
+Naturally, we may now wonder, having laid out these axioms, which sets which classes of numbers, with regularly defined addition and multiplication, constitute fields. To prove whether a set with defined operations is a field is simply a matter of checking each of the axioms. \\
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The natural numbers $(\mathbb{N})$ and integers $(\mathbb{Z})$ are not fields. 
+\end{theorem}
+
+\begin{proof} 
+	We will prove this theorem in two parts, first dealing with the natural numbers proceeded by the integers.
+	\header{Part 1. }{$\mathbb{N}$}
+	The additive inverse axiom fails for all integers. Specifically, the number 1, for example, has no additive inverse since for all $n \in \mathbb{N}, 1 + n > 0$. Since 1 had no additive inverse this is not a field.
+	
+	\header{Part 2. }{$\mathbb{Z}$}
+	The multiplicative inverse axiom fails for $2 \in \mathbb{Z}$. Once way of rigourously showing this is to notice $2 \cdot n$ is even for all $n \in \mathbb{Z}$. Therefore this value can never be 1, and hence no multiplicative inverse exists. \\
+\end{proof}
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{theorem}
+	The rational numbers $(\mathbb{Q})$ and real numbers $(\mathbb{R})$ with regularly defined addition and multiplication constitute fields.
+\end{theorem}
+
+\begin{proof}
+	The process of proving these are fields are rather tedious, verifying each of the field axioms individually, and left as an exercise. However, note that the inverse axioms that failed for the natural numbers and integers hold for these two sets. The additive and multiplicative inverses are respectively shown below.
+	
+	\begin{align*}
+		\frac{p}{q} \in \mathbb{Q} \rightarrow -\frac{p}{q}, \, \frac{q}{p} \in \mathbb{Q} \\
+		x \in \mathbb{R} \rightarrow -x, \, \frac{1}{x} \in \mathbb{R}
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+These suite of axioms lead to a host of simple properties, which should feel familiar to us after working with the real numbers. We introduce an expansive theorem which lays out many of these properties.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	Given a field $F$ defined with addition and multiplication and three elements $x$, $y$, and $z$, the following properties must hold.
+	
+	\begin{align}
+		x \cdot 0 = 0 \\
+		\text{if } x \cdot y = 0 \text{ then } x = 0 \text { or } y = 0 \\
+		-x = x \cdot (-1) \\
+		(-x) \cdot (-y) = x \cdot y \\
+		\text{if } x + y = x + z \text{ then } y = z \\
+		\text{if } x \cdot y = x \cdot z \text{ then } y = z \text { if } x \neq 0
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	Proving every statement in the theorem would take up a lot of space, hence we will present proofs for the first and last statement, hopefully providing a model for approaching proofs to the remaining statements.
+	
+	\header{Statement 1.18. }{$x \cdot 0 = 0$}
+	
+	Notice that although we take this for grated in the real numbers, it is not a field axiom and must be proved. Since 0 is the additive inverse, in searching for a proof we should look to exploit its properties.
+
+	\begin{align*}
+		x \cdot 0 &= x \cdot (0 + 0) &&\emph{identity} \\
+		&= x \cdot 0 + x \cdot 0 &&\emph{distributive}
+	\end{align*}
+	
+	At this point notice by closure we know $x \cdot 0$ lies within the field. Therefore, by the inverses axiom it must have an additive inverse. Now we add this to both sides of the equation.
+	
+	\begin{align*}
+		x \cdot 0 + x \cdot 0 &= x \cdot 0 && \\
+		x \cdot 0 + x \cdot 0 + (-(x \cdot 0)) &= x \cdot 0 + (-(x \cdot 0)) && \\
+		x \cdot 0 + (x \cdot 0 + (-(x \cdot 0))) &= 0  &&\emph{associative} \\
+		x \cdot 0 + 0 &= 0 &&\emph{inverse} \\
+		x \cdot 0 &= 0 &&\emph{identity}
+	\end{align*}
+	
+	This is the result we were looking for. Notice instead of subtracting $x \cdot 0$ from each side, as we would in the real numbers, we added the additive inverse to  both sides. In this proof we clearly listed which axiom allowed us to make each step, and although this is not necessary, it makes it less likely to perform an operation which is not allowed.
+	
+	\header{Statement 1.23. }{$\text{if } x \cdot y = x \cdot z \text{ then } y = z \text { if } x \neq 0$}
+	
+	Once again, we attempt a direct proof based on the field axioms. Since $x \neq 0$ from the inverses axiom, we know there exists some $x^{-1} \in F$ such that
+	
+	\begin{align*}
+		x \cdot x^{-1} = 1
+	\end{align*}
+	
+	We simply multiply both sides of out equation with this term.
+	
+	\begin{align*}
+		x \cdot y &= x \cdot z && \\
+		x^{-1} \cdot x \cdot y &= x^{-1} \cdot x \cdot z && \\
+		(x^{-1} \cdot x) \cdot y &= (x^{-1} \cdot x) \cdot z &&\emph{associativity} \\
+		1 \cdot y &= 1 \cdot z &&\emph{inverse} \\
+		y &= z &&\emph{identity}
+	\end{align*}
+	
+	Once again, we have arrived at our result, hence we have proved this this statement for arbitrary fields. Notice we could approach this problem as if we were asked to prove this for real numbers. Instead of dividing both sides by $x$ we multiplied by $x^{-1}$ to arrive at the result. 
+\end{proof}
+\vspace{\baselineskip}
+
+The two fields we have discussed so far have had an infinite number elements with predefined addition and multiplication operations that mirror their common usage. However, we may wonder what other fields exists, and in particular, what such a field would look like for a finite number of elements, a \emph{finite field}. Since a field must have at least two elements, let us attempt to construct a two element field, called the \emph{binary field}. Consider the field
+
+\begin{align*}
+	(S, 0, 1, +, \cdot) \text{ where } S = \{ 0, 1 \}.
+\end{align*}
+	
+Unfortunately, we must define multiplication and addition in this field since otherwise the latter would defy the closure field axiom as
+
+\begin{align*}
+	1 + 1 &= 2 \notin S.
+\end{align*}
+
+For finite fields with a small number of elements, the most effective method of defining these operations involves writing addition and multiplication tables, providing outputs for all possible pairs of input for each function.
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	+ & 0 & 1 \\
+	0 & & \\
+	1 & &
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	$\cdot$ & 0 & 1\\
+	0 & & \\
+	1 & & \\
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+Notice, that multiplying by 0 always returns 0 (as we proved above) and multiplying by 1 gives the same number. Similarly, adding 0 returns the same number by the identity property. 
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	+ & 0 & 1 \\
+	0 & 0 & 1 \\
+	1 & 1 &
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|cc}{c|cc}
+	$\cdot$ & 0 & 1\\
+	0 & 0 & 0 \\
+	1 & 0 & 1 \\
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+This only leaves one output to be decided, the sum $1 + 1$. In the next theorem we prove that this is equal to 0. To do this, we introduce a new type of proof, a proof by contradiction.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	If $S$ is the binary field with $S = \{ 0, 1\}$, then $1 + 1 = 0$.
+\end{theorem}
+
+\begin{proof}[Proof by Contradiction]
+	By the closure property of fields, we know the sum $1 + 1$ must lie within $S$ and is therefore it is either 0 or 1. Assume for sake of contradiction that it is indeed 1, so that
+	
+	\begin{align*}
+		1 + 1 = 1.
+	\end{align*}
+	
+	By the inverse axiom, we know that 1 has an additive inverse in the field. We now add this inverse to both sides of the equation.
+	
+	\begin{align*}
+		1 + 1 + (-1) &= 1 + (-1) \\
+		1 + 0 &= 0 \\
+		1 &= 0
+	\end{align*}
+	
+	This is clearly false since by definition a field must have distinct elements 0 and 1. Since this would be a logical consequence of letting $1 + 1 = 1$, that assumption must be false. Hence we are left only with the possibility that
+	
+	\begin{align*}
+		1 + 1 = 0.
+	\end{align*}
+\end{proof}
+\vspace{\baselineskip}
+
+In a \emph{proof by contradiction}, we assume the opposite of the statement we are trying to prove, and show how this leads a result that is clearly false. This \emph{contradiction} shows that our initial assumption must be false, and therefore its opposite true. In this way, we indirectly prove our claim is true by showing it cannot be false. In the last proof, we demonstrated if $1 + 1 = 1$ then $0 = 1$, which is clearly false. Therefore, we could conclude $1 + 1 \neq 1$, which meant $1 + 1 = 0$, what we wanted to show.
+
+Moving on, we can tackle the construction of three-element field $T = \{ 0, 1, \omega \}$. Immediately, we write the addition and multiplication tables and fill out the simple rows and columns.
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	+ & 0 & 1 & $\omega$\\
+	0 & 0 & 1 & $\omega$ \\
+	1 & 1 & & \\
+	$\omega$ & $\omega$ &&
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	$\cdot$ & 0 & 1 & $\omega$\\
+	0 & 0 & 0 & 0 \\
+	1 & 0 & 1 & $\omega$ \\
+	$\omega$ & 0 & $\omega$ &
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+Completing the multiplication table is simple; since every element in the field must have a multiplicative inverse, in the case of $\omega$, this must be itself. In other words, every non-zero row or column in a field multiplication table must have a single 1.
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	+ & 0 & 1 & $\omega$\\
+	0 & 0 & 1 & $\omega$ \\
+	1 & 1 & & \\
+	$\omega$ & $\omega$ &&
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	$\cdot$ & 0 & 1 & $\omega$\\
+	0 & 0 & 0 & 0 \\
+	1 & 0 & 1 & $\omega$ \\
+	$\omega$ & 0 & $\omega$ & 1
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+	
+This leaves the addition table to be completed, to do this we introduce a new theorem which helps complete the non-diagonal entries.
+
+\vspace{\baselineskip}
+\begin{theorem}
+	For a three-element field $(T, 0, 1, +, \cdot)$ with $T = \{ 0, 1, \omega \}$ the following equation must be true.
+	
+	\begin{align*}
+		1 + \omega &= 0 \\
+	\end{align*}
+\end{theorem}
+
+\begin{proof}[Proof by Contradiction]
+	Assume for sake of contradiction that $1 + \omega \neq 0$. Then, by closure the sum must either be $\omega$ or 1. We would show either case results in a contradiction.
+	
+	\header{Case 1.}{$1 + \omega = 1$}
+	
+	Since 1 is in the field, the inverses property tells us that an additive inverse exists. Adding both sides with this additive inverse we immediately see the contradiction.
+	
+	\begin{align*}
+		1 + \omega &= 1 \\
+		(-1) + 1 + \omega &= 1 + (-1) \\
+		\omega &= 0
+	\end{align*}
+	
+	Since the elements are distinct this is a contradiction.
+
+	\header{Case 2.}{$1 + \omega = \omega$}
+	
+	We approach this case in a very similar way, clearing the $\omega$'s from both sides to expose a contradiction.
+	
+	\begin{align*}
+		1 + \omega &= \omega \\
+		1 + \omega + (-\omega) &= \omega + (-\omega) \\
+		1 &= 0
+	\end{align*}
+	
+	This again, is a contradiction. Therefore in the absence of any alternatives, we have proved that $1 + \omega = 0$
+\end{proof}
+\vspace{\baselineskip}
+
+Note in this proof, we applied a case-by-case approach to a proof by contradiction. This is analogous to a proof by cases where we prove the result in every case, except we actually show a contradiction in each case.
+
+\vspace{\baselineskip}
+\begin{center}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	+ & 0 & 1 & $\omega$\\
+	0 & 0 & 1 & $\omega$ \\
+	1 & 1 & & 0 \\
+	$\omega$ & $\omega$ & 0 &
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	$\cdot$ & 0 & 1 & $\omega$\\
+	0 & 0 & 0 & 0 \\
+	1 & 0 & 1 & $\omega$ \\
+	$\omega$ & 0 & $\omega$ & 1
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+	
+The remaining two spaces are rather easy to fill out if we remember the property that in a field
+
+\begin{align*}
+	\text{if } x + y = x + z \text{ then } y = z
+\end{align*}
+
+Fixing $x$ by focusing on an individual role or column, this tells us that different entries must be different. This is because, for example,
+
+\begin{align*}
+	\text{if } 1 + 1 = 1 + \omega \text{ then } 1 = \omega.
+\end{align*}
+
+Interestingly, this means every row and column of the addition table must contain each of the field elements. Exploiting the analogous rule for multiplication, every non-zero row or column must have every field element appear exactly once. Armed with this knowledge, we can finally complete the operator definitions, showing a three-element field exists.
+
+\begin{align*}
+	T = \{ 0, 1, \omega \}
+\end{align*}
+
+\begin{center}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	+ & 0 & 1 & $\omega$\\
+	0 & 0 & 1 & $\omega$ \\
+	1 & 1 & $\omega$ & 0 \\
+	$\omega$ & $\omega$ & 0 & 1
+\end{TAB}
+\hspace{15pt}
+\begin{TAB}(e, 15pt){c|ccc}{c|ccc}
+	$\cdot$ & 0 & 1 & $\omega$\\
+	0 & 0 & 0 & 0 \\
+	1 & 0 & 1 & $\omega$ \\
+	$\omega$ & 0 & $\omega$ & 1
+\end{TAB}
+\end{center}
+\vspace{\baselineskip}
+
+% ===========================================================
+\section{Exercises}
+% ===========================================================
+
+\begin{enumerate}[(a)]
+	\setlength\itemsep{\baselineskip}
+	\item  Prove that for two real numbers $x$ and $y$, $|x - y| \ge |x| - |y|$.
+	
+	\item Given $x + 2y = 100$, determine the maximum value of $xy$ using the arithmetic-geometric mean inequality.
+	
+	\item For real numbers $x, y, u, v,$ show that 
+	\begin{align*}
+		(xu + yv)^2 \le (x^2 + y^2)(u^2 + v^2).
+	\end{align*}
+
+	\item When does equality hold for the triangle inequality? In other words, for what values of $x$ and $y$ does 
+	\begin{align*}
+		|x + y| = |x| + |y|?
+	\end{align*}
+
+	\item Prove for any $a, b > 0$ the following inequality holds true.
+	\begin{align*}
+		\frac{4}{ab} \le \left( \frac{1}{a} + \frac{1}{b} \right)^2	
+	\end{align*}
+
+	\item Prove the following for three real numbers $x$, $y$, and $z$.
+	\begin{align*}
+		|x + y + z| \le |x| + |y| + |z|
+	\end{align*}
+	
+	\item Show the image of the function $f$ is the set (0, 1], for
+	\begin{align*}
+		f: \mathbb{R} \rightarrow \mathbb{R}, \, f(x) = \frac{1}{x^2 + 1}.
+	\end{align*}
+	
+	\item Let $C$ and $D$ be sets in the domain of $g$. Prove the following relationship about the images of the function.
+	\begin{align*}
+		g(C \cap D) \subseteq g(C) \cap g(D)
+	\end{align*}
+	
+	\item Let $f$ and $g$ be two bounded functions. Which of the following functions are also bounded?
+	\begin{align*}
+		f + g, \, f \cdot g, \, \frac{f}{g}, \, \frac{1}{f^2 + 1}
+	\end{align*}
+	
+	\item If $(f - g)$ and $(f \cdot g)$ are bounded, prove that the function $(f + g)$ is bounded.
+	
+	\item Consider the four element field $F = \{0, 1, a, b\}$ with operations $+$ and $\cdot$. Complete the addition and multiplication tables below, if possible, and determine the number of different fields which satisfy the axioms.
+	
+	\vspace{\baselineskip}
+	\begin{center}
+		\begin{TAB}(e, 15pt){c|cccc}{c|cccc}
+			+ & 0 & 1 & $a$ & $b$ \\
+			0 & & & & \\
+			1 & & & & \\
+			$a$ & & & & \\
+			$b$ & & & &
+		\end{TAB}
+		\hspace{15pt}
+		\begin{TAB}(e, 15pt){c|cccc}{c|cccc}
+			$\cdot$ & 0 & 1 & $a$ & $b$ \\
+			0 & & & & \\
+			1 & & & & \\
+			$a$ & & & & \\
+			$b$ & & & &
+		\end{TAB}
+	\end{center}
+	\vspace{\baselineskip}
+	
+	\item For each of the statements below either provide a proof or counterexample. (1) For any $x \in S$, we have $x \cdot 0 = 0$, and (2) $y \cdot 1^{-1} = y^{-1}$ for any $y \neq 0$ in $S$.
+\end{enumerate}
